@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bison/Resources/Private/Language/locallang_csh_tx_bison_domain_model_language.xlf" date="2022-12-09T18:41:08Z" product-name="bison">
+		<header/>
+		<body>
+			<trans-unit id="lang.description" resname="lang.description">
+				<source>lang</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

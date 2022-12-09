@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bison/Resources/Private/Language/locallang_csh_tx_bison_domain_model_journal.xlf" date="2022-12-09T18:41:08Z" product-name="bison">
+		<header/>
+		<body>
+			<trans-unit id="idx.description" resname="idx.description">
+				<source>idx</source>
+			</trans-unit>
+			<trans-unit id="retains_copyright_author.description" resname="retains_copyright_author.description">
+				<source>retainsCopyrightAuthor</source>
+			</trans-unit>
+			<trans-unit id="discontinued_date.description" resname="discontinued_date.description">
+				<source>discontinuedDate</source>
+			</trans-unit>
+			<trans-unit id="editorial_board_date.description" resname="editorial_board_date.description">
+				<source>editorialBoardDate</source>
+			</trans-unit>
+			<trans-unit id="eissn.description" resname="eissn.description">
+				<source>eissn</source>
+			</trans-unit>
+			<trans-unit id="pissn.description" resname="pissn.description">
+				<source>pissn</source>
+			</trans-unit>
+			<trans-unit id="publication_time_weeks.description" resname="publication_time_weeks.description">
+				<source>publicationTimeWeeks</source>
+			</trans-unit>
+			<trans-unit id="publisher_country.description" resname="publisher_country.description">
+				<source>publisherCountry</source>
+			</trans-unit>
+			<trans-unit id="publisher_name.description" resname="publisher_name.description">
+				<source>publisherName</source>
+			</trans-unit>
+			<trans-unit id="has_preservation.description" resname="has_preservation.description">
+				<source>hasPreservation</source>
+			</trans-unit>
+			<trans-unit id="ref_journal.description" resname="ref_journal.description">
+				<source>refJournal</source>
+			</trans-unit>
+			<trans-unit id="ref_author_instructions.description" resname="ref_author_instructions.description">
+				<source>refAuthorInstructions</source>
+			</trans-unit>
+			<trans-unit id="title.description" resname="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="has_apc.description" resname="has_apc.description">
+				<source>hasApc</source>
+			</trans-unit>
+			<trans-unit id="has_other_charges.description" resname="has_other_charges.description">
+				<source>hasOtherCharges</source>
+			</trans-unit>
+			<trans-unit id="has_pid_scheme.description" resname="has_pid_scheme.description">
+				<source>hasPidScheme</source>
+			</trans-unit>
+			<trans-unit id="last_updated.description" resname="last_updated.description">
+				<source>lastUpdated</source>
+			</trans-unit>
+			<trans-unit id="doi_pid_scheme.description" resname="doi_pid_scheme.description">
+				<source>doiPidScheme</source>
+			</trans-unit>
+			<trans-unit id="created_date.description" resname="created_date.description">
+				<source>createdDate</source>
+			</trans-unit>
+			<trans-unit id="aims_scope.description" resname="aims_scope.description">
+				<source>aimsScope</source>
+			</trans-unit>
+			<trans-unit id="alternative_title.description" resname="alternative_title.description">
+				<source>alternativeTitle</source>
+			</trans-unit>
+			<trans-unit id="score.description" resname="score.description">
+				<source>score</source>
+			</trans-unit>
+			<trans-unit id="plan_s_compliance.description" resname="plan_s_compliance.description">
+				<source>planSCompliance</source>
+			</trans-unit>
+			<trans-unit id="journal_apc_max_m_m.description" resname="journal_apc_max_m_m.description">
+				<source>journalApcMaxMM</source>
+			</trans-unit>
+			<trans-unit id="journal_article_m_m.description" resname="journal_article_m_m.description">
+				<source>journalArticleMM</source>
+			</trans-unit>
+			<trans-unit id="journal_editorial_review_process_m_m.description" resname="journal_editorial_review_process_m_m.description">
+				<source>journalEditorialReviewProcessMM</source>
+			</trans-unit>
+			<trans-unit id="journal_is_replaced_by_m_m.description" resname="journal_is_replaced_by_m_m.description">
+				<source>journalIsReplacedByMM</source>
+			</trans-unit>
+			<trans-unit id="journal_keyword_m_m.description" resname="journal_keyword_m_m.description">
+				<source>journalKeywordMM</source>
+			</trans-unit>
+			<trans-unit id="journal_language_m_m.description" resname="journal_language_m_m.description">
+				<source>journalLanguageMM</source>
+			</trans-unit>
+			<trans-unit id="journal_license_m_m.description" resname="journal_license_m_m.description">
+				<source>journalLicenseMM</source>
+			</trans-unit>
+			<trans-unit id="journal_subject_m_m.description" resname="journal_subject_m_m.description">
+				<source>journalSubjectMM</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

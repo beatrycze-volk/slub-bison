@@ -1,0 +1,14 @@
+plugin.tx_bison_recommender {
+    view {
+        # cat=plugin.tx_bison_recommender/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:bison/Resources/Private/Templates/
+        # cat=plugin.tx_bison_recommender/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:bison/Resources/Private/Partials/
+        # cat=plugin.tx_bison_recommender/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:bison/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_bison_recommender//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:bison/Resources/Private/Language/locallang_csh_tx_bison_domain_model_license.xlf" date="2022-12-09T18:41:08Z" product-name="bison">
+		<header/>
+		<body>
+			<trans-unit id="non_commercial.description" resname="non_commercial.description">
+				<source>nonCommercial</source>
+			</trans-unit>
+			<trans-unit id="no_derivative.description" resname="no_derivative.description">
+				<source>noDerivative</source>
+			</trans-unit>
+			<trans-unit id="attribution.description" resname="attribution.description">
+				<source>attribution</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
