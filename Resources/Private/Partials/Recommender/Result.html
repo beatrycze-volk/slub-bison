@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+      
+<div class="mt-3">
+    <div>
+        <div class="container mb-2">
+            <div class="row">
+                <h2 class="col no-padding"><f:translate key="result.count" arguments="{count: '{resultCount}'}"></f:translate></h2>
+                <div id="result-action-wrapper" class="col row col-md-auto align-self-center">
+                    <div id="button-action-wrapper">
+                        <button id="filterCollapseButton" class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><f:translate key="button.filter" default="Filter"/></button>
+                        <a id="export-button" class="btn btn-primary"><f:translate key="button.export" default="Export"/></a>
+                        <div class="btn-group" role="group" aria-label="Switch between list and table view">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnlist" autocomplete="off" value="list">
+                            <label class="btn btn-outline-primary" for="btnlist"><f:translate key="button.list" default="List"/></label>
+                            <input type="radio" class="btn-check" name="btnradio" id="btntable" autocomplete="off" value="table"">
+                            <label class="btn btn-outline-primary" for="btntable"><f:translate key="button.table" default="Table"/></label>
+                        </div>
+                    </div>
+                    <div class="col no-padding">
+                        <select id="sort-select" class="form-select" aria-label="Default select example">
+                            <option value="score"><f:translate key="filter.score" default="Score"/></option>
+                            <option value="title"><f:translate key="filter.title" default="Title"/></option>
+                            <option value="publisher"><f:translate key="filter.publisher" default="Publisher"/></option>
+                            <option value="apcs"><f:translate key="filter.apcs" default="APCs"/> ↑</option>
+                            <option value="publication_time"><f:translate key="filter.publicationTime" default="Publication time"/> ↑</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <f:render partial="Recommender/Filter" arguments="{_all}"/>
+        <div class="alert alert-info alert-dismissible mt-1" role="alert">
+            <span class="pe-1">According to your input, we automatically set the language filter to "English". You can change it along with the other filters.</span>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </div>
+        <f:render partial="Recommender/ResultList" arguments="{_all}"/>
+        <f:render partial="Recommender/ResultTable" arguments="{_all}"/>
+    </div>
+</div>
+
+</html>

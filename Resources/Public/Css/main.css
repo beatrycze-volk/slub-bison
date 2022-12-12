@@ -1,0 +1,10 @@
+#bison-logo {
+    height: 30px;
+    vertical-align: top;
+}
+
+.logo-img {
+    max-height: 70px;
+    display: block;
+    margin: 0 auto;
+}

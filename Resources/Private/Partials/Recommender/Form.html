@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:form action="/" controller="Recommender" name="filterParameter" method="get" class="mt-5">
+    <div>
+        <label for="id_title" class=""><f:translate key="label.title" default="Title"/></label>
+        <div>
+            <input type="text" name="tx_bison[title]" placeholder="{f:translate(key: 'placeholder.title')}" value="{title}" maxlength="500" class="form-control" id="id_title">
+        </div>
+    </div>
+    <div class="mt-1">
+        <label for="id_abstract" class=""><f:translate key="label.abstract" default="Abstract"/></label>
+        <div>
+            <textarea name="tx_bison[abstract]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.abstract')}" value="{abstract}" maxlength="5000" class="form-control" id="id_abstract"></textarea>
+        </div>
+    </div>
+    <div class="mt-1">
+        <label for="id_references" class=""><f:translate key="label.references" default="References"/></label>
+        <a href="#" data-bs-toggle="tooltip" data-bs-original-title="The DOIs are extracted from the input. Other references are discarded.">?</a>
+        <div>
+            <textarea name="tx_bison[references]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.references')}" maxlength="50000" class="form-control" id="id_references"></textarea>
+        </div>
+    </div>
+    <f:form.submit class="btn btn-primary mb-2 mt-2" value="{f:translate(key: 'button.search')}" />
+    <button class="btn btn-danger m-2"><f:translate key="button.clear" default="Clear"/></button>
+</f:form>
+
+</html>

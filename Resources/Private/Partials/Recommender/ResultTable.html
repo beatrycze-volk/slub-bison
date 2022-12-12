@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div id="result-table" class="table-responsive" style="display: none;">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col"><f:translate key="result.journal" default="Journal"/></th>
+                <th scope="col"><f:translate key="result.score" default="Score"/></th>
+                <th scope="col"><f:translate key="result.alternativeTitle" default="Alternative title"/></th>
+                <th scope="col"><f:translate key="result.publisher" default="Publisher"/></th>
+                <th scope="col" class="table-cell-min"><f:translate key="result.apcs" default="Maximum publication fees (APCs)"/></th>
+                <th scope="col" class="table-cell-min"><f:translate key="result.language" default="Language(s)"/></th>
+                <th scope="col"><f:translate key="result.authorRights" default="Author retains unrestricted rights"/></th>
+                <th scope="col"><f:translate key="result.articleDoi" default="Article receives DOI"/></th>
+                <th scope="col" class="table-cell-min"><f:translate key="result.review" default="Peer review method"/></th>
+                <th scope="col"><f:translate key="result.publicationTime" default="Average publication time (weeks)"/></th>
+                <th scope="col"><f:translate key="result.plan" default="Plan S compliance"/></th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:render partial="Recommender/ResultTableRow" arguments="{_all}"/>
+        </tbody>
+    </table>
+</div>
+      
+</html>
