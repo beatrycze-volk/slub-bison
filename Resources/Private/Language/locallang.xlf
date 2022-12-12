@@ -1,175 +1,130 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="EXT:bison/Resources/Private/Language/locallang.xlf" date="2022-12-09T18:41:08Z" product-name="bison">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-12-09T18:41:08Z" product-name="bison">
 		<header/>
 		<body>
-			<trans-unit id="tx_bison_domain_model_apcmax" resname="tx_bison_domain_model_apcmax">
-				<source>Apc Max</source>
+			<trans-unit id="button.back" xml:space="preserve">
+				<source>Back</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_apcmax.euro" resname="tx_bison_domain_model_apcmax.euro">
-				<source>Euro</source>
+			<trans-unit id="button.clear" xml:space="preserve">
+				<source>Clear</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_apcmax.price" resname="tx_bison_domain_model_apcmax.price">
-				<source>Price</source>
+			<trans-unit id="button.export" xml:space="preserve">
+				<source>Export</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_apcmax.currency" resname="tx_bison_domain_model_apcmax.currency">
-				<source>Currency</source>
+			<trans-unit id="button.filter" xml:space="preserve">
+				<source>Filter</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_article" resname="tx_bison_domain_model_article">
-				<source>Article</source>
+			<trans-unit id="button.list" xml:space="preserve">
+				<source>List</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_article.title" resname="tx_bison_domain_model_article.title">
-				<source>Title</source>
+			<trans-unit id="button.search" xml:space="preserve">
+				<source>Search</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_article.doi" resname="tx_bison_domain_model_article.doi">
-				<source>Doi</source>
+			<trans-unit id="button.table" xml:space="preserve">
+				<source>Table</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_datasetstate" resname="tx_bison_domain_model_datasetstate">
-				<source>Dataset State</source>
+			<trans-unit id="filter.all" xml:space="preserve">
+				<source>All</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_datasetstate.dataset" resname="tx_bison_domain_model_datasetstate.dataset">
-				<source>Dataset</source>
+			<trans-unit id="filter.apcs" xml:space="preserve">
+				<source>APCs</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_datasetstate.date" resname="tx_bison_domain_model_datasetstate.date">
-				<source>Date</source>
+			<trans-unit id="filter.authorRights" xml:space="preserve">
+				<source>Author retains unrestricted copyrights and publishing rights</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_editorialprocessreview" resname="tx_bison_domain_model_editorialprocessreview">
-				<source>Editorial Process Review</source>
+			<trans-unit id="filter.averagePublicationTime" xml:space="preserve">
+				<source>Average publication time</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_editorialprocessreview.process" resname="tx_bison_domain_model_editorialprocessreview.process">
-				<source>Process</source>
+			<trans-unit id="filter.maxApcs" xml:space="preserve">
+				<source>Maximum publication fees (APCs)</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_isreplacedby" resname="tx_bison_domain_model_isreplacedby">
-				<source>Is Replaced By</source>
+			<trans-unit id="filter.publicationTime" xml:space="preserve">
+				<source>Publication time</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_isreplacedby.replacement" resname="tx_bison_domain_model_isreplacedby.replacement">
-				<source>Replacement</source>
+			<trans-unit id="filter.publisher" xml:space="preserve">
+				<source>Publisher</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal" resname="tx_bison_domain_model_journal">
-				<source>Journal</source>
+			<trans-unit id="filter.reset" xml:space="preserve">
+				<source>Reset filters</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.idx" resname="tx_bison_domain_model_journal.idx">
-				<source>Idx</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.retains_copyright_author" resname="tx_bison_domain_model_journal.retains_copyright_author">
-				<source>Retains Copyright Author</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.discontinued_date" resname="tx_bison_domain_model_journal.discontinued_date">
-				<source>Discontinued Date</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.editorial_board_date" resname="tx_bison_domain_model_journal.editorial_board_date">
-				<source>Editorial Board Date</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.eissn" resname="tx_bison_domain_model_journal.eissn">
-				<source>Eissn</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.pissn" resname="tx_bison_domain_model_journal.pissn">
-				<source>Pissn</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.publication_time_weeks" resname="tx_bison_domain_model_journal.publication_time_weeks">
-				<source>Publication Time Weeks</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.publisher_country" resname="tx_bison_domain_model_journal.publisher_country">
-				<source>Publisher Country</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.publisher_name" resname="tx_bison_domain_model_journal.publisher_name">
-				<source>Publisher Name</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.has_preservation" resname="tx_bison_domain_model_journal.has_preservation">
-				<source>Has Preservation</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.ref_journal" resname="tx_bison_domain_model_journal.ref_journal">
-				<source>Ref Journal</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.ref_author_instructions" resname="tx_bison_domain_model_journal.ref_author_instructions">
-				<source>Ref Author Instructions</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.title" resname="tx_bison_domain_model_journal.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.has_apc" resname="tx_bison_domain_model_journal.has_apc">
-				<source>Has Apc</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.has_other_charges" resname="tx_bison_domain_model_journal.has_other_charges">
-				<source>Has Other Charges</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.has_pid_scheme" resname="tx_bison_domain_model_journal.has_pid_scheme">
-				<source>Has Pid Scheme</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.last_updated" resname="tx_bison_domain_model_journal.last_updated">
-				<source>Last Updated</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.doi_pid_scheme" resname="tx_bison_domain_model_journal.doi_pid_scheme">
-				<source>Doi Pid Scheme</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.created_date" resname="tx_bison_domain_model_journal.created_date">
-				<source>Created Date</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.aims_scope" resname="tx_bison_domain_model_journal.aims_scope">
-				<source>Aims Scope</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.alternative_title" resname="tx_bison_domain_model_journal.alternative_title">
-				<source>Alternative Title</source>
-			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.score" resname="tx_bison_domain_model_journal.score">
+			<trans-unit id="filter.score" xml:space="preserve">
 				<source>Score</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.plan_s_compliance" resname="tx_bison_domain_model_journal.plan_s_compliance">
-				<source>Plan S Compliance</source>
+			<trans-unit id="filter.selectFilter" xml:space="preserve">
+				<source>Select filter</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_apc_max_m_m" resname="tx_bison_domain_model_journal.journal_apc_max_m_m">
-				<source>Journal Apc Max M M</source>
+			<trans-unit id="filter.selectKeywords" xml:space="preserve">
+				<source>Select keywords</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_article_m_m" resname="tx_bison_domain_model_journal.journal_article_m_m">
-				<source>Journal Article M M</source>
+			<trans-unit id="filter.selectLanguage" xml:space="preserve">
+				<source>Select language</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_editorial_review_process_m_m" resname="tx_bison_domain_model_journal.journal_editorial_review_process_m_m">
-				<source>Journal Editorial Review Process M M</source>
+			<trans-unit id="filter.selectSubject" xml:space="preserve">
+				<source>Select subject</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_is_replaced_by_m_m" resname="tx_bison_domain_model_journal.journal_is_replaced_by_m_m">
-				<source>Journal Is Replaced By M M</source>
+			<trans-unit id="filter.title" xml:space="preserve">
+				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_keyword_m_m" resname="tx_bison_domain_model_journal.journal_keyword_m_m">
-				<source>Journal Keyword M M</source>
+			<trans-unit id="filter.tooltipSubject" xml:space="preserve">
+				<source>The subject areas correspond to the Library of Congress Classification (LLC) used by DOAJ for the journals listed there.</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_language_m_m" resname="tx_bison_domain_model_journal.journal_language_m_m">
-				<source>Journal Language M M</source>
+			<trans-unit id="label.abstract" xml:space="preserve">
+				<source>Abstract</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_license_m_m" resname="tx_bison_domain_model_journal.journal_license_m_m">
-				<source>Journal License M M</source>
+			<trans-unit id="label.references" xml:space="preserve">
+				<source>References</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_journal.journal_subject_m_m" resname="tx_bison_domain_model_journal.journal_subject_m_m">
-				<source>Journal Subject M M</source>
+			<trans-unit id="label.title" xml:space="preserve">
+				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_keyword" resname="tx_bison_domain_model_keyword">
-				<source>Keyword</source>
+			<trans-unit id="placeholder.abstract" xml:space="preserve">
+				<source>Abstract of your paper...</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_keyword.keyword" resname="tx_bison_domain_model_keyword.keyword">
-				<source>Keyword</source>
+			<trans-unit id="placeholder.references" xml:space="preserve">
+				<source>References</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_language" resname="tx_bison_domain_model_language">
-				<source>Language</source>
+			<trans-unit id="placeholder.title" xml:space="preserve">
+				<source>Title of your paper...</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_language.lang" resname="tx_bison_domain_model_language.lang">
-				<source>Lang</source>
+			<trans-unit id="result.alternativeTitle" xml:space="preserve">
+				<source>Alternative title</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_license" resname="tx_bison_domain_model_license">
-				<source>License</source>
+			<trans-unit id="result.apcs" xml:space="preserve">
+				<source>Maximum publication fees (APCs)</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_license.non_commercial" resname="tx_bison_domain_model_license.non_commercial">
-				<source>Non Commercial</source>
+			<trans-unit id="result.articleDoi" xml:space="preserve">
+				<source>Article receives DOI</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_license.no_derivative" resname="tx_bison_domain_model_license.no_derivative">
-				<source>No Derivative</source>
+			<trans-unit id="result.authorRights" xml:space="preserve">
+				<source>Author retains unrestricted rights</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_license.attribution" resname="tx_bison_domain_model_license.attribution">
-				<source>Attribution</source>
+			<trans-unit id="result.count" xml:space="preserve">
+				<source>%d Results</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_subject" resname="tx_bison_domain_model_subject">
-				<source>Subject</source>
+			<trans-unit id="result.journal" xml:space="preserve">
+				<source>Journal</source>
 			</trans-unit>
-			<trans-unit id="tx_bison_domain_model_subject.term" resname="tx_bison_domain_model_subject.term">
-				<source>Term</source>
+			<trans-unit id="result.keywords" xml:space="preserve">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="result.language" xml:space="preserve">
+				<source>Language(s)</source>
+			</trans-unit>
+			<trans-unit id="result.plan" xml:space="preserve">
+				<source>Plan S compliance</source>
+			</trans-unit>
+			<trans-unit id="result.publisher" xml:space="preserve">
+				<source>Publisher</source>
+			</trans-unit>
+			<trans-unit id="result.publicationTime" xml:space="preserve">
+				<source>Average publication time (weeks)</source>
+			</trans-unit>
+			<trans-unit id="result.review" xml:space="preserve">
+				<source>Peer review method</source>
+			</trans-unit>
+			<trans-unit id="result.score" xml:space="preserve">
+				<source>Score</source>
 			</trans-unit>
 		</body>
 	</file>

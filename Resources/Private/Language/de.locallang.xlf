@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2022-12-09T18:41:08Z" product-name="bison">
+		<header/>
+		<body>
+			<trans-unit id="button.back" xml:space="preserve" approved="yes">
+				<source>Back</source>
+				<target>Zurück</target>
+			</trans-unit>
+			<trans-unit id="button.clear" xml:space="preserve" approved="yes">
+				<source>Clear</source>
+				<target>Leeren</target>
+			</trans-unit>
+			<trans-unit id="button.export" xml:space="preserve" approved="yes">
+				<source>Export</source>
+				<target>Exportieren</target>
+			</trans-unit>
+			<trans-unit id="button.filter" xml:space="preserve" approved="yes">
+				<source>Filter</source>
+				<target>Filtern</target>
+			</trans-unit>
+			<trans-unit id="button.list" xml:space="preserve" approved="yes">
+				<source>List</source>
+				<target>Liste</target>
+			</trans-unit>
+			<trans-unit id="button.search" xml:space="preserve" approved="yes">
+				<source>Search</source>
+				<target>Suchen</target>
+			</trans-unit>
+			<trans-unit id="button.table" xml:space="preserve" approved="yes">
+				<source>Table</source>
+				<target>Tabelle</target>
+			</trans-unit>
+			<trans-unit id="filter.all" xml:space="preserve" approved="yes">
+				<source>All</source>
+				<target>Alles</target>
+			</trans-unit>
+			<trans-unit id="filter.apcs" xml:space="preserve" approved="yes">
+				<source>APCs</source>
+				<target>APCs</target>
+			</trans-unit>
+			<trans-unit id="filter.authorRights" xml:space="preserve" approved="yes">
+				<source>Author retains unrestricted copyrights and publishing rights</source>
+				<target>...</target>
+			</trans-unit>
+			<trans-unit id="filter.averagePublicationTime" xml:space="preserve" approved="yes">
+				<source>Average publication time</source>
+				<target>...</target>
+			</trans-unit>
+			<trans-unit id="filter.maxApcs" xml:space="preserve" approved="yes">
+				<source>Maximum publication fees (APCs)</source>
+				<target>...</target>
+			</trans-unit>
+			<trans-unit id="filter.publicationTime" xml:space="preserve" approved="yes">
+				<source>Publication time</source>
+				<target>Veröffentlichungszeit</target>
+			</trans-unit>
+			<trans-unit id="filter.publisher" xml:space="preserve" approved="yes">
+				<source>Publisher</source>
+				<target>Herausgeber</target>
+			</trans-unit>
+			<trans-unit id="filter.reset" xml:space="preserve" approved="yes">
+				<source>Reset filters</source>
+				<target>Filter zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="filter.score" xml:space="preserve" approved="yes">
+				<source>Score</source>
+				<target>Punktzahl</target>
+			</trans-unit>
+			<trans-unit id="filter.selectFilter" xml:space="preserve" approved="yes">
+				<source>Select filter</source>
+				<target>Filter auswählen</target>
+			</trans-unit>
+			<trans-unit id="filter.selectKeywords" xml:space="preserve" approved="yes">
+				<source>Select keywords</source>
+				<target>Schlüsselwörter auswählen</target>
+			</trans-unit>
+			<trans-unit id="filter.selectLanguage" xml:space="preserve" approved="yes">
+				<source>Select language</source>
+				<target>Sprache auswählen</target>
+			</trans-unit>
+			<trans-unit id="filter.selectSubject" xml:space="preserve" approved="yes">
+				<source>Select subject</source>
+				<target>Thema auswählen</target>
+			</trans-unit>
+			<trans-unit id="filter.title" xml:space="preserve" approved="yes">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="label.abstract" xml:space="preserve" approved="yes">
+				<source>Abstract</source>
+				<target>Abstrakt</target>
+			</trans-unit>
+			<trans-unit id="label.references" xml:space="preserve" approved="yes">
+				<source>References</source>
+				<target>Referenzen</target>
+			</trans-unit>
+			<trans-unit id="label.title" xml:space="preserve" approved="yes">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="filter.tooltipSubject" xml:space="preserve">
+				<source>The subject areas correspond to the Library of Congress Classification (LLC) used by DOAJ for the journals listed there.</source>
+				<target>...</target>
+			</trans-unit>
+			<trans-unit id="placeholder.abstract" xml:space="preserve" approved="yes">
+				<source>Abstract of your paper...</source>
+				<target>Abstrakt Ihrer Arbeit...</target>
+			</trans-unit>
+			<trans-unit id="placeholder.references" xml:space="preserve" approved="yes">
+				<source>References of your paper...</source>
+				<target>Referenzen Ihrer Arbeit...</target>
+			</trans-unit>
+			<trans-unit id="placeholder.title" xml:space="preserve" approved="yes">
+				<source>Title of your paper...</source>
+				<target>Titel Ihrer Arbeit...</target>
+			</trans-unit>
+			<trans-unit id="result.alternativeTitle" xml:space="preserve" approved="yes">
+				<source>Alternative title</source>
+				<target>Alternativer Titel</target>
+			</trans-unit>
+			<trans-unit id="result.apcs" xml:space="preserve" approved="yes">
+				<source>Maximum publication fees (APCs)</source>
+				<target>Maximale Veröffentlichungsgebühren (APCs)</target>
+			</trans-unit>
+			<trans-unit id="result.articleDoi" xml:space="preserve" approved="yes">
+				<source>Article receives DOI</source>
+				<target>Artikel erhält DOI</target>
+			</trans-unit>
+			<trans-unit id="result.authorRights" xml:space="preserve" approved="yes">
+				<source>Author retains unrestricted rights</source>
+				<target>Der Autor behält die uneingeschränkten Rechte</target>
+			</trans-unit>
+			<trans-unit id="result.count" xml:space="preserve" approved="yes">
+				<source>%d Results</source>
+				<target>%d Ergebnisse</target>
+			</trans-unit>
+			<trans-unit id="result.journal" xml:space="preserve" approved="yes">
+				<source>Journal</source>
+				<target>Journal</target>
+			</trans-unit>
+			<trans-unit id="result.keywords" xml:space="preserve" approved="yes">
+				<source>Keywords</source>
+				<target>Schlüsselwörter</target>
+			</trans-unit>
+			<trans-unit id="result.language" xml:space="preserve" approved="yes">
+				<source>Language(s)</source>
+				<target>Sprache(n)</target>
+			</trans-unit>
+			<trans-unit id="result.plan" xml:space="preserve" approved="yes">
+				<source>Plan S compliance</source>
+				<target>Plan-S-Konformität</target>
+			</trans-unit>
+			<trans-unit id="result.publisher" xml:space="preserve" approved="yes">
+				<source>Publisher</source>
+				<target>Herausgeber</target>
+			</trans-unit>
+			<trans-unit id="result.publicationTime" xml:space="preserve" approved="yes">
+				<source>Average publication time (weeks)</source>
+				<target>Durchschnittliche Veröffentlichungszeit (Wochen)</target>
+			</trans-unit>
+			<trans-unit id="result.review" xml:space="preserve" approved="yes">
+				<source>Peer review method</source>
+				<target>Peer-Review-Methode</target>
+			</trans-unit>
+			<trans-unit id="result.score" xml:space="preserve" approved="yes">
+				<source>Score</source>
+				<target>Punktzahl</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
