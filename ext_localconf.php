@@ -6,7 +6,7 @@ defined('TYPO3') || die();
         'Bison',
         'Recommender',
         [
-            \Slub\Bison\Controller\JournalController::class => 'fetch'
+            \Slub\Bison\Controller\JournalController::class => 'main, fetch'
         ],
         // non-cacheable actions
         [

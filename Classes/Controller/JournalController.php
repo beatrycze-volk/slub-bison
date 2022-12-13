@@ -36,12 +36,18 @@ class JournalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
-     * action fetch
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * action main
      */
-    public function fetchAction(): \Psr\Http\Message\ResponseInterface
+    public function mainAction()
     {
-        return $this->htmlResponse();
+        $this->view->assign('test', 'test content');
+    }
+
+    /**
+     * action fetch
+     */
+    public function fetchAction()
+    {
+        $this->view->assign('test', 'test content');
     }
 }
