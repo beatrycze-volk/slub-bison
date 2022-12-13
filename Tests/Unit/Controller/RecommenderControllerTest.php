@@ -14,17 +14,17 @@ use TYPO3Fluid\Fluid\View\ViewInterface;
  *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  */
-class JournalControllerTest extends UnitTestCase
+class RecommenderControllerTest extends UnitTestCase
 {
     /**
-     * @var \Slub\Bison\Controller\JournalController|MockObject|AccessibleObjectInterface
+     * @var \Slub\Bison\Controller\RecommenderController|MockObject|AccessibleObjectInterface
      */
     protected $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder($this->buildAccessibleProxy(\Slub\Bison\Controller\JournalController::class))
+        $this->subject = $this->getMockBuilder($this->buildAccessibleProxy(\Slub\Bison\Controller\RecommenderController::class))
             ->onlyMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();

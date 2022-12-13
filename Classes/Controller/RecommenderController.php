@@ -17,7 +17,7 @@ namespace Slub\Bison\Controller;
 /**
  * JournalController
  */
-class JournalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class RecommenderController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
