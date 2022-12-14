@@ -25,6 +25,8 @@ namespace Slub\Bison\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use GuzzleHttp\Client;
+use Elastic\Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -36,17 +38,33 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Abstract base controller for the extension
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
  */
 abstract class AbstractController extends ActionController implements LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
     /**
+     * @var 
+     * @access protected
+     */
+    protected $client;   
+
+    /**
      * @var array
      * @access protected
      */
-    protected $extConf;
+    protected $extConfig;
 
+    /**
+     * @var array
+     * @access protected
+     */
+    protected $esConfig;
 
     /**
      * This holds the request parameter
@@ -71,12 +89,25 @@ abstract class AbstractController extends ActionController implements LoggerAwar
      * @return void
      */
     protected function initialize()
-    {
-        $this->requestData = GeneralUtility::_GPmerged('tx_bison');
-
+    {   
         // Get extension configuration.
-        //$this->extConf = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
+        $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
+        $this->loadElasticSearchConnectionInfo();
+
+        //$this->client = ClientBuilder::create()
+        //    ->setHosts(['https://service.tib.eu/bison/api/public/v1/search'])
+        //    ->build();
+
+        $this->client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
+            // You can set any number of default request options.
+            'timeout'  => 10.0,
+        ]);
+        
+        $this->requestData = GeneralUtility::_GPmerged('tx_bison');
+        
         $this->viewData = [
             'pageUid' => $GLOBALS['TSFE']->id,
             'uniqueId'=> uniqid(),
@@ -127,6 +158,36 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             $message = $defaultMessage;
         }
         return $message;
+    }
+
+     /**
+     * Sets the connection information for Elastic Search
+     *
+     * @access protected
+     *
+     * @return void
+     */
+    protected function loadElasticSearchConnectionInfo()
+    {
+        if (empty($this->esConfig)) {
+            $config = [];
+            $config['scheme'] = empty($conf['esHttps']) ? 'http' : 'https';
+            $config['host'] = ($conf['esHost'] ? $conf['esHost'] : '127.0.0.1');
+            $config['username'] = $conf['esUser'];
+            $config['password'] = $conf['esPass'];
+            $config['port'] = MathUtility::forceIntegerInRange($conf['esPort'], 1, 65535, 8983);
+            
+            // Trim path of slashes and (re-)add trailing slash if path not empty.
+            $config['path'] = trim($conf['esPath'], '/');
+            if (!empty($config['path'])) {
+                $config['path'] .= '/';
+            }
+
+            // Set connection timeout lower than PHP's max_execution_time.
+            $maxExecutionTime = intval(ini_get('max_execution_time')) ? : 30;
+            $config['timeout'] = MathUtility::forceIntegerInRange($conf['esTimeout'], 1, $maxExecutionTime, 10);
+            $this->config = $config;
+        }
     }
 
     /**
