@@ -1,24 +1,34 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<tr>
-    <th scope="row">
-        <a href="/bison/journal/e57dd0b919d142f9b194587584ec9e13" class="">Research Ideas and Outcomes</a>
-    </th>
-    <th scope="row" class="score-cell">
-        <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Similarities in title: <ul><li><a href=&quot;https://doi.org/10.3897/rio.8.e94931&quot;>Collaborative Metadata Definition using Controlled Vocabularies, and Ontologies</a></li></ul>" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
-            <div class="score-text">11%</div>
-        </a>
-    </th>
-    <td>{test}</td>
-    <td>Pensoft Publishers</td>
-    <td>299 EUR<span><br> (approx. 299€)</span></td>
-    <td>EN</td>
-    <td>✓</td>
-    <td>✓</td>
-    <td>Open peer review</td>
-    <td>2</td>
-    <td>✓</td>
-</tr>
+<f:for each="{results}" as="result">
+    <tr>
+        <th scope="row">
+            <a href="/bison/journal/{result.id}" class="">{result.title}</a>
+        </th>
+        <th scope="row" class="score-cell">
+            <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Similarities in title: <ul><li><a href=&quot;https://doi.org/10.3897/rio.8.e94931&quot;>Collaborative Metadata Definition using Controlled Vocabularies, and Ontologies</a></li></ul>" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
+                <div class="score-text">11%</div>
+            </a>
+        </th>
+        <td>{result.alternativeTitle}</td>
+        <td>{result.publisher.name}</td>
+        <td>{result.apc.price} {result.apc.currency}
+            <f:if condition="{result.apc.price}">
+                <span><br>(approx. {result.apc.euro}€)</span>
+            </f:if>
+        </td>
+        <td>EN</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>
+            <f:for each="{result.editorialReviewProcesses}" as="process">
+                {process.process}
+            </f:for>
+        </td>
+        <td>{result.publicationTimeWeeks}</td>
+        <td>✓</td>
+    </tr>
+</f:for>
       
 </html>
