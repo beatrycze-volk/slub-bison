@@ -69,13 +69,10 @@ class RecommenderController extends AbstractController
      * The recommender function returning journals based on title etc.
      */
     public function mainAction() {
-        $results = $this->searchJournals();
+        $this->searchJournals();
 
         $this->view->assign('viewData', $this->viewData);
-        $this->view->assign('title', $this->requestData['title']);
-        $this->view->assign('abstract', $this->requestData['abstract']);
-        $this->view->assign('references', $this->requestData['references']);
-        $this->view->assign('results', $results);
+        $this->view->assign('results', $this->results);
     }
 
     private function searchJournals() {
