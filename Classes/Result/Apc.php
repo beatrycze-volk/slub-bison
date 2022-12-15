@@ -15,7 +15,7 @@ namespace Slub\Bison\Result;
  */
 
 /**
- * APC DTO
+ * Average Publication Cost DTO
  */
 class Apc
 {
@@ -43,11 +43,11 @@ class Apc
     /**
      * __construct
      */
-    public function __construct($euro, $price, $currency)
+    public function __construct($apcMax)
     {
-        $this->$euro = $euro;
-        $this->$price = $price;
-        $this->$currency = $currency;
+        $this->euro = $apcMax->euro;
+        $this->price = $apcMax->price;
+        $this->currency = $apcMax->currency;
     }
 
     /**

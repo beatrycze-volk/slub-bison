@@ -2,20 +2,20 @@
       data-namespace-typo3-fluid="true">
 
 <f:for each="{results}" as="result">
-    <tr>
+    <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.price}" data-publication-time="{result.publicationTimeWeeks}">
         <th scope="row">
             <a href="/bison/journal/{result.id}" class="">{result.title}</a>
         </th>
         <th scope="row" class="score-cell">
             <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Similarities in title: <ul><li><a href=&quot;https://doi.org/10.3897/rio.8.e94931&quot;>Collaborative Metadata Definition using Controlled Vocabularies, and Ontologies</a></li></ul>" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
-                <div class="score-text">11%</div>
+                <div class="score-text">{result.score.percentage}%</div>
             </a>
         </th>
         <td>{result.alternativeTitle}</td>
         <td>{result.publisher.name}</td>
-        <td>{result.apc.price} {result.apc.currency}
-            <f:if condition="{result.apc.price}">
-                <span><br>(approx. {result.apc.euro}€)</span>
+        <td>{result.apcMax.price} {result.apcMax.currency}
+            <f:if condition="{result.apcMax.price} && {result.apcMax.currency} != 'EUR'">
+                <span><br>(approx. {result.apcMax.euro}€)</span>
             </f:if>
         </td>
         <td>EN</td>

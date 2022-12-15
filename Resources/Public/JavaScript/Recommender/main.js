@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    var retainsAuthorCopyright = false;
+    var language = false;
+    var subject = false;
+
     $('#btnlist').trigger('click');
 
     $('#btnlist').click(function() {
@@ -8,26 +12,59 @@ $(document).ready(function() {
     $('#btntable').click(function() {
         changeResultView('#result-list', '#result-table');
     });
+    $('#flexCheckDefault').bind('change', function () {
+        if ($(this).is(':checked')) {
+            retainsAuthorCopyright = true;
+        }
+        else {
+            retainsAuthorCopyright = false;
+        }
+        filter();
+    });
+
+    $('#filter-languages').change(function () { 
+        if ($(this).val() === '') {
+            language = false;
+        } else {
+            language = $(this).val();
+        }
+        filter();
+    });
+
+    $('#filter-subjects').change(function () { 
+        if ($(this).val() === '') {
+            subject = false;
+        } else {
+            subject = $(this).val();
+        }
+        filter();
+    });
 
     $('#sort-select').change(function () { 
-        if ($(this).val() === 'score'){
-            sortList('score');
-            sortTable(1, 'th');
+        if ($(this).val() === 'score') {
+            sortList('data-score');
+            sortTable('data-score');
         }
-        if ($(this).val() === 'title'){
-            sortList('title');
-            sortTable(0, 'th');
+        if ($(this).val() === 'title') {
+            sortList('data-title');
+            sortTable('data-title');
         }
-        if ($(this).val() === 'publisher'){
-            sortList('publisher');
-            sortTable(1, 'td');
+        if ($(this).val() === 'publisher') {
+            sortList('data-publisher');
+            sortTable('data-publisher');
         }
-        if ($(this).val() === 'apc'){
-            sortTable(2, 'td');
+        if ($(this).val() === 'apcs') {
+            sortList('data-apc');
+            sortTable('data-apc');
         }
-        if ($(this).val() === 'publication_time'){
-            sortTable(7, 'td');
+        if ($(this).val() === 'publication_time') {
+            sortList('data-publication-time');
+            sortTable('data-publication-time');
         }
+    });
+
+    $('#reset-filters').click(function() {
+        resetFilters();
     });
 
     function changeResultView(hide, show) {
@@ -35,37 +72,99 @@ $(document).ready(function() {
         $(show).show();
     }
 
-    function sortList(sort) {
-        var list, rows, sorting, c, rowA, rowB, listSort;
-        list = document.getElementById("result-list");
+    function filter() {
+        //TODO check current state of all variables
+        var listRows, tableRows;
+        listRows = getListRows();
+        tableRows = getTableRows();
+
+        for (let i=0; i < listRows.length; i++) {
+            if (matchFilters(listRows[i])) {
+                listRows[i].style.display = "list-item";
+            } else {
+                listRows[i].style.display = "none";              
+            }
+        }
+
+        for (let i=0; i < tableRows.length; i++) {
+            if (matchFilters(tableRows[i])) {
+                tableRows[i].style.display = "table-row";
+            } else {
+                tableRows[i].style.display = "none";
+            }
+        }
+
+    }
+
+    function resetFilters() {
+        var listRows, tableRows;
+        listRows = getListRows();
+        tableRows = getTableRows();
+
+        for (let i=0; i < listRows.length; i++) {
+            listRows[i].style.display = "list-item";
+        }
+
+        for (let i=0; i < tableRows.length; i++) {
+            tableRows[i].style.display = "table-row";
+        }
+    }
+
+    function matchFilters(row) {
+        return matchRetainsAuthorCopyright(row) && matchKeyword(row) && matchLanguage(row) && matchSubject(row);
+    }
+
+    function matchRetainsAuthorCopyright(row) {
+        var match = true;
+
+        row
+
+        return match;
+    }
+
+    function matchKeyword(row) {
+        var match = true;
+        
+        return match;
+    }
+
+    function matchLanguage(row) {
+        var match = true;
+        
+        return match;
+    }
+
+    function matchSubject(row) {
+        var match = true;
+        
+        return match;
+    }
+
+    function sortList(data) {
+        var rows, sorting, c, rowA, rowB, listSort;
         sorting = true;
         while (sorting) {
             sorting = false;
-            rows = list.querySelectorAll("li");
-            console.log(rows);
+            rows = getListRows();
             for (c = 0; c < (rows.length - 1); c++) {
                 listSort = false;
-                rowA = rows[c].getElementsByTagName('div')[2];
-                rowB = rows[c + 1].getElementsByTagName('div')[2];
-                if (sort == 'score') {
-                    rowAContent = rowA.children[0].getElementsByTagName('a')[0].getElementsByTagName('div')[0];
-                    rowBContent = rowB.children[0].getElementsByTagName('a')[0].getElementsByTagName('div')[0];
-                } else {
-                    rowAContent = rowA.children[1];
-                    rowBContent = rowB.children[1];
-                    if(sort == 'title') {
-                        rowAContent = rowAContent.getElementsByTagName('h5')[0].getElementsByTagName('a')[0];
-                        rowBContent = rowBContent.getElementsByTagName('h5')[0].getElementsByTagName('a')[0];
-                    } else if (sort == 'publisher') {
-                        rowAContent = rowAContent.getElementsByTagName('p')[0];
-                        rowBContent = rowBContent.getElementsByTagName('p')[0];
+                rowA = rows[c].getAttribute(data);
+                rowB = rows[c + 1].getAttribute(data);
+                if (data === 'data-score') {
+                    if (parseFloat(rowA) < parseFloat(rowB)) {
+                        listSort = true;
+                        break;
                     }
-                }
-                if (rowAContent.innerHTML.toLowerCase() > rowBContent.innerHTML.toLowerCase()) {
-                    listSort = true;
-                    console.log(rowAContent.innerHTML);
-                    console.log(rowBContent.innerHTML);
-                    break;
+                } else if(data === 'data-apc' || data === 'data-publication-time') {
+                    if ((parseInt(rowA) || 0) > (parseInt(rowB) || 0)) {
+                        listSort = true;
+                        break;
+                    }
+                } else {
+                    if (rowA > rowB) {
+                        listSort = true;
+                        break;
+                    }
                 }
             }
             if (listSort) {
@@ -75,30 +174,34 @@ $(document).ready(function() {
         }
     }
 
-    function sortTable(column, tag) {
-        var table, rows, sorting, c, rowA, rowB, tableSort;
-        table = document.getElementById("result-table");
+    function sortTable(data) {
+        var rows, sorting, c, rowA, rowB, tableSort;
         sorting = true;
         while (sorting) {
             sorting = false;
-            rows = table.rows;
+            rows = getTableRows();
             for (c = 1; c < (rows.length - 1); c++) {
                 tableSort = false;
-                rowA = rows[c].getElementsByTagName(tag)[column];
-                rowB = rows[c + 1].getElementsByTagName(tag)[column];
-                if (tag == 'th') {
-                    rowAContent = rowA.getElementsByTagName('a')[0];
-                    rowBContent = rowB.getElementsByTagName('a')[0];
-                    if (rowAContent.innerHTML.toLowerCase() > rowBContent.innerHTML.toLowerCase()) {
+                rowA = rows[c].getAttribute(data);
+                rowB = rows[c + 1].getAttribute(data);
+                if (data === 'data-score') {
+                    if (parseFloat(rowA) < parseFloat(rowB)) {
                         tableSort = true;
-                        console.log(rowAContent.innerHTML);
-                        console.log(rowBContent.innerHTML);
+                        break;
+                    }
+                } else if(data === 'data-apc' || data === 'data-publication-time') {
+                    console.log(data);
+                    console.log(rowA);
+                    console.log(rowB);
+                    if ((parseInt(rowA) || 0) > (parseInt(rowB) || 0)) {
+                        tableSort = true;
+                        console.log(tableSort);
                         break;
                     }
                 } else {
-                    if (rowA.innerHTML.toLowerCase() > rowB.innerHTML.toLowerCase()) {
+                    if (rowA > rowB) {
                         tableSort = true;
-                    break;
+                        break;
                     }
                 }
             }
@@ -107,5 +210,13 @@ $(document).ready(function() {
                 sorting = true;
             }
         }
+    }
+
+    function getListRows() {
+        return document.getElementById("result-list").querySelectorAll("li");
+    }
+
+    function getTableRows() {
+        return document.getElementById("result-table").rows;
     }
 });

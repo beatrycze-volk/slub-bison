@@ -71,8 +71,13 @@ class RecommenderController extends AbstractController
     public function mainAction() {
         $this->searchJournals();
 
-        $this->view->assign('viewData', $this->viewData);
+        $this->view->assign('maxApc', $this->getMaxApc());
+        $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
+        $this->view->assign('keywords', $this->getKeywords());
+        $this->view->assign('languages', $this->getLanguages());
+        $this->view->assign('subjects', $this->getSubjects());
         $this->view->assign('results', $this->results);
+        $this->view->assign('viewData', $this->viewData);
     }
 
     private function searchJournals() {
@@ -116,11 +121,67 @@ class RecommenderController extends AbstractController
         }
     }
 
-    private function sortJournals() {
-        
+    private function getMaxApc() {
+        $apc = 0;
+        foreach ($this->results as $result) {
+            $euro = $result->getApcMax()->getEuro();
+            if ($euro != NULL && $apc < $euro) {
+                $apc =  $euro;
+            }
+        }
+        return ceil($apc / 100) * 100;
     }
 
-    private function filterJournals() {
-        
+    private function getMaxPublicationTime() {
+        $weeks = 0;
+        foreach ($this->results as $result) {
+            if ($weeks < $result->getPublicationTimeWeeks()) {
+                $weeks = $result->getPublicationTimeWeeks();
+            }
+        }
+        return $weeks;
+    }
+
+    private function getKeywords() {
+        $keywords = [];
+        foreach ($this->results as $result) {
+            $resultKeywords = $result->getKeywords();
+            foreach ($resultKeywords as $keyword) {
+                if (!in_array($keyword, $keywords)) {
+                    $keywords[] = $keyword;
+                }
+            }
+        }
+        sort($keywords);
+        return $keywords;
+    }
+
+    private function getLanguages() {
+        $languages = [];
+        foreach ($this->results as $result) {
+            $resultLanguages = $result->getLanguages();
+            foreach ($resultLanguages as $language) {
+                if (!in_array($language, $languages)) {
+                    $languages[] = $language;
+                }
+            }
+        }
+        sort($languages);
+        return $languages;
+    }
+
+    private function getSubjects() {
+        $subjects = [];
+        //TODO: group them according to https://www.librarything.com/lcc/A#
+        foreach ($this->results as $result) {
+            $resultSubjects = $result->getSubjects();
+            foreach ($resultSubjects as $subject) {
+                if (!in_array($subject, $subjects)) {
+                    $subjects[] = $subject;
+                }
+            }
+        }
+        sort($subjects);
+        return $subjects;
     }
 }

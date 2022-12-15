@@ -20,27 +20,96 @@ namespace Slub\Bison\Result;
 class Language
 {
     /**
-     * lang
+     * code
      *
      * @var string
      */
-    protected $lang;
+    protected $code;
+
+    /**
+     * name
+     *
+     * @var string
+     */
+    protected $name;
+
 
     /**
      * __construct
      */
     public function __construct($lang)
     {
-        $this->lang = $lang;
+        $this->code = $lang;
+        $this->convertCodeToName();
     }
 
     /**
-     * Returns the lang
+     * Returns the code
      *
      * @return string
      */
-    public function getLang()
+    public function getCode()
     {
-        return $this->lang;
+        return $this->code;
+    }
+
+    /**
+     * Returns the name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Convert ISO 639 code to the language name
+     */
+    private function convertCodeToName() {
+        //TODO: use here translated names of languages
+        switch ($this->code) {
+            case 'AR':
+                $this->name = 'Arabic';
+                break;
+            case 'CA':
+                $this->name = 'Catalan';
+                break;
+            case 'EN':
+                $this->name = 'English';
+                break;
+            case 'ES':
+                $this->name = 'Spanish';
+                break;
+            case 'FA':
+                $this->name = 'Persian';
+                break;
+            case 'FR':
+                $this->name = 'French';
+                break;
+            case 'ID':
+                $this->name = 'Indonesian';
+                break;
+            case 'IT':
+                $this->name = 'Italian';
+                break;
+            case 'PL':
+                $this->name = 'Polish';
+                break;
+            case 'PT':
+                $this->name = 'Portuguese';
+                break;
+            case 'RU':
+                $this->name = 'Russian';
+                break;
+            case 'SL':
+                $this->name = 'Slovenian';
+                break;
+            case 'TR':
+                $this->name = 'Turkish';
+                break;
+            default:
+                $this->name = 'Unknown';
+        }
     }
 }

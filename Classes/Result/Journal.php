@@ -209,11 +209,13 @@ class Journal
         $this->idx = $journal->idx;
         $this->id = $journal->id;
         $this->score = new Score($journal->score);
+        $this->apcMax = new Apc($journal->apc_max);
         $this->title = $journal->title;
         $this->alternativeTitle = $journal->alternative_title;
         $this->hasApc = $journal->has_apc;
         $this->hasOtherCharges = $journal->has_other_charges;
         $this->publisher = new Publisher($journal->publisher_name, $journal->publisher_country);
+        $this->publicationTimeWeeks = $journal->publication_time_weeks;
         foreach ($journal->keywords as $keyword) {
             $this->keywords[] = new Keyword($keyword);
         }
@@ -260,6 +262,16 @@ class Journal
    {
        return $this->score;
    }
+
+   /**
+    * Returns the max APC
+    *
+    * @return Apc
+    */
+    public function getApcMax()
+    {
+        return $this->apcMax;
+    }
 
     /**
      * Returns the title

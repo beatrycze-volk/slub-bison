@@ -28,11 +28,19 @@ class Keyword
     protected $keyword;
 
     /**
+     * label
+     *
+     * @var string
+     */
+    protected $label;
+
+    /**
      * __construct
      */
     public function __construct($keyword)
     {
         $this->keyword = $keyword;
+        $this->label = str_replace(' ', '', $keyword);
     }
 
     /**
@@ -43,5 +51,15 @@ class Keyword
     public function getKeyword()
     {
         return $this->keyword;
+    }
+
+    /**
+     * Returns the label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
     }
 }

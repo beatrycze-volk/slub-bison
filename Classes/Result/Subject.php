@@ -28,7 +28,7 @@ class Subject
     protected $term;
 
     /**
-     * id
+     * code
      *
      * @var string
      */

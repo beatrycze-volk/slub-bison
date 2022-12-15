@@ -41,12 +41,20 @@ class Score
     protected $value;
 
     /**
+     * percentage
+     *
+     * @var int
+     */
+    protected $percentage;
+
+    /**
      * __construct
      */
     public function __construct($score)
     {
         $this->semanticScore = $score->semanticScore;
         $this->value = $score->value;
+        $this->percentage = intval($score->value * 100);
     }
 
     /**
@@ -67,5 +75,15 @@ class Score
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Returns the percentage
+     *
+     * @return int
+     */
+    public function getPercentage()
+    {
+        return $this->percentage;
     }
 }
