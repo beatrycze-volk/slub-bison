@@ -2,7 +2,10 @@
       data-namespace-typo3-fluid="true">
 
 <f:for each="{results}" as="result">
-    <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.price}" data-publication-time="{result.publicationTimeWeeks}">
+    <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
+    <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
+    <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+    <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.price}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
         <th scope="row">
             <a href="/bison/journal/{result.id}" class="">{result.title}</a>
         </th>
@@ -18,16 +21,34 @@
                 <span><br>(approx. {result.apcMax.euro}€)</span>
             </f:if>
         </td>
-        <td>EN</td>
-        <td>✓</td>
-        <td>✓</td>
+        <td>
+            <f:for each="{result.languages}" as="language">
+                {language.code}
+            </f:for>
+        </td>
+        <td>
+            <f:if condition="{result.retainsCopyrightAuthor}">
+                <f:then>✓</f:then>
+                <f:else>
+                    ✗
+                </f:else>
+            </f:if>
+        </td>
+        <td></td>
         <td>
             <f:for each="{result.editorialReviewProcesses}" as="process">
                 {process.process}
             </f:for>
         </td>
         <td>{result.publicationTimeWeeks}</td>
-        <td>✓</td>
+        <td>
+            <f:if condition="{result.planSCompliance}">
+                <f:then>✓</f:then>
+                <f:else>
+                    ✗
+                </f:else>
+            </f:if>
+        </td>
     </tr>
 </f:for>
       

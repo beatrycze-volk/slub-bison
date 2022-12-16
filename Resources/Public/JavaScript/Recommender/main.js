@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var retainsAuthorCopyright = false;
+    var publicationTimeMax = false;
+    var apcMax = false;
     var language = false;
     var subject = false;
 
@@ -19,6 +21,30 @@ $(document).ready(function() {
         else {
             retainsAuthorCopyright = false;
         }
+        filter();
+    });
+
+    $(document).on('input change', '#publication_time_max', function() {
+        publicationTimeMax = $(this).val();
+        var labelParts = $("#publication_time_max_label").text().split(' ');
+        $("#publication_time_max_label").empty();
+        $("#publication_time_max_label").append(
+            '<b>'.concat(
+                labelParts[0], ' ', labelParts[1], ' ', labelParts[2], '</b> ', publicationTimeMax, ' ', labelParts[4]
+            )
+        );
+        filter();
+    });
+
+    $(document).on('input change', '#apcs_max', function() {
+        apcMax = $(this).val();
+        var labelParts = $("#apcs_max_label").text().split(' ');
+        $("#apcs_max_label").empty();
+        $("#apcs_max_label").append(
+            '<b>'.concat(
+                labelParts[0], ' ', labelParts[1], ' ', labelParts[2], ' ', labelParts[3], '</b> ', apcMax, ' ', labelParts[5]
+            )
+        );
         filter();
     });
 
@@ -78,7 +104,7 @@ $(document).ready(function() {
         listRows = getListRows();
         tableRows = getTableRows();
 
-        for (let i=0; i < listRows.length; i++) {
+        for (let i = 0; i < listRows.length; i++) {
             if (matchFilters(listRows[i])) {
                 listRows[i].style.display = "list-item";
             } else {
@@ -86,7 +112,7 @@ $(document).ready(function() {
             }
         }
 
-        for (let i=0; i < tableRows.length; i++) {
+        for (let i = 1; i < tableRows.length; i++) {
             if (matchFilters(tableRows[i])) {
                 tableRows[i].style.display = "table-row";
             } else {
@@ -101,43 +127,66 @@ $(document).ready(function() {
         listRows = getListRows();
         tableRows = getTableRows();
 
-        for (let i=0; i < listRows.length; i++) {
+        for (let i = 0; i < listRows.length; i++) {
             listRows[i].style.display = "list-item";
         }
 
-        for (let i=0; i < tableRows.length; i++) {
+        for (let i = 1; i < tableRows.length; i++) {
             tableRows[i].style.display = "table-row";
         }
     }
 
     function matchFilters(row) {
-        return matchRetainsAuthorCopyright(row) && matchKeyword(row) && matchLanguage(row) && matchSubject(row);
+        return matchRetainsAuthorCopyright(row)
+            && matchPublicationTime(row)
+            && matchApc(row)
+            && matchKeyword(row)
+            && matchLanguage(row)
+            && matchSubject(row);
     }
 
     function matchRetainsAuthorCopyright(row) {
-        var match = true;
+        if (retainsAuthorCopyright) {
+            return row.getAttribute('data-copyright');
+        }
+        return true;
+    }
 
-        row
+    function matchPublicationTime(row) {
+        if (publicationTimeMax) {
+            return (parseInt(row.getAttribute('data-publication-time')) || 0) < publicationTimeMax;
+        }
+        return true;
+    }
 
-        return match;
+    function matchApc(row) {
+        if (apcMax) {
+            return (parseInt(row.getAttribute('data-apc')) || 0) < apcMax;
+        }
+        return true;
     }
 
     function matchKeyword(row) {
         var match = true;
-        
+
         return match;
     }
 
     function matchLanguage(row) {
-        var match = true;
-        
-        return match;
+        if (language) {
+            console.log(row);
+            console.log(row.getAttribute('data-languages'));
+            console.log(language);
+            return row.getAttribute('data-languages').includes(language);
+        }
+        return true;
     }
 
     function matchSubject(row) {
-        var match = true;
-        
-        return match;
+        if (subject) {
+            return row.getAttribute('data-subjects').includes(subject);
+        }
+        return true;
     }
 
     function sortList(data) {

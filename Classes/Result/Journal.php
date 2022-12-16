@@ -212,6 +212,8 @@ class Journal
         $this->apcMax = new Apc($journal->apc_max);
         $this->title = $journal->title;
         $this->alternativeTitle = $journal->alternative_title;
+        $this->planSCompliance = $journal->plan_s_compliance;
+        $this->retainsCopyrightAuthor = $journal->copyright_author_retains;
         $this->hasApc = $journal->has_apc;
         $this->hasOtherCharges = $journal->has_other_charges;
         $this->publisher = new Publisher($journal->publisher_name, $journal->publisher_country);
@@ -291,6 +293,26 @@ class Journal
     public function getAlternativeTitle()
     {
         return $this->alternativeTitle;
+    }
+
+    /**
+     * Returns the information if plan S compliant
+     *
+     * @return boolean
+     */
+    public function getPlanSCompliance()
+    {
+        return $this->planSCompliance;
+    }
+
+    /**
+     * Returns the information if author retains copyright
+     *
+     * @return boolean
+     */
+    public function getRetainsCopyrightAuthor()
+    {
+        return $this->retainsCopyrightAuthor;
     }
 
     /**

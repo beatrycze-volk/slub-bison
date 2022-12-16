@@ -166,7 +166,9 @@ class RecommenderController extends AbstractController
                 }
             }
         }
-        sort($languages);
+        usort($languages, function($a, $b) {
+            return strcmp($a->getName(), $b->getName());
+        });
         return $languages;
     }
 

@@ -11,12 +11,12 @@
                         <label class="form-check-label" for="flexCheckDefault"><f:translate key="filter.authorRights" default="Author retains unrestricted copyrights and publishing rights"/></label>
                     </div>
                     <div class="mt-4 mb-3">
-                        <label for="publication_time_max" class="form-label"><b><f:translate key="filter.averagePublicationTime" default="Average publication time"/></b>: 15 weeks</label>
-                        <input type="range" class="form-range" min="1" step="1" max="{maxPublicationTime}" id="publication_time_max">
+                        <label id="publication_time_max_label" for="publication_time_max" class="form-label"><b><f:translate key="filter.averagePublicationTime" default="Average publication time"/></b>: {maxPublicationTime} weeks</label>
+                        <input type="range" class="form-range" min="1" step="1" max="{maxPublicationTime}" value="{maxPublicationTime}" id="publication_time_max">
                     </div>
                     <div class="mt-4 mb-3">
-                        <label for="apcs_max" class="form-label"><b><f:translate key="filter.maxApcs" default="Maximum publication fees (APCs)"/></b>: 500 €</label>
-                        <input type="range" class="form-range" min="0" step="100" max="{maxApc}" id="apcs_max">
+                        <label id="apcs_max_label" for="apcs_max" class="form-label"><b><f:translate key="filter.maxApcs" default="Maximum publication fees (APCs)"/></b>: {maxApc} €</label>
+                        <input type="range" class="form-range" min="0" step="100" max="{maxApc}" value="{maxApc}" id="apcs_max">
                     </div>
                     <div class="mt-4 mb-3">
                         <b><f:translate key="filter.selectSubject" default="Select subject"/></b><a href="#" data-bs-toggle="tooltip" data-bs-original-title="{f:translate(key: 'filter.tooltipSubject"')}">?</a>
