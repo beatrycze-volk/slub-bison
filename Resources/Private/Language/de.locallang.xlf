@@ -115,6 +115,10 @@
 				<source>Title of your paper...</source>
 				<target>Titel Ihrer Arbeit...</target>
 			</trans-unit>
+			<trans-unit id="result.aimsScope" xml:space="preserve" approved="yes">
+				<source>Aims &amp; scope</source>
+				<target>Ziele &amp; Umfang</target>
+			</trans-unit>
 			<trans-unit id="result.alternativeTitle" xml:space="preserve" approved="yes">
 				<source>Alternative title</source>
 				<target>Alternativer Titel</target>
@@ -127,6 +131,10 @@
 				<source>Article receives DOI</source>
 				<target>Artikel erhält DOI</target>
 			</trans-unit>
+			<trans-unit id="result.authorInstructions" xml:space="preserve" approved="yes">
+				<source>Author instructions</source>
+				<target>Autorenanweisungen</target>
+			</trans-unit>
 			<trans-unit id="result.authorRights" xml:space="preserve" approved="yes">
 				<source>Author retains unrestricted rights</source>
 				<target>Der Autor behält die uneingeschränkten Rechte</target>
@@ -134,6 +142,10 @@
 			<trans-unit id="result.count" xml:space="preserve" approved="yes">
 				<source>%d Results</source>
 				<target>%d Ergebnisse</target>
+			</trans-unit>
+			<trans-unit id="result.editorialBoard" xml:space="preserve" approved="yes">
+				<source>Editorial Board</source>
+				<target>Redaktion</target>
 			</trans-unit>
 			<trans-unit id="result.journal" xml:space="preserve" approved="yes">
 				<source>Journal</source>
@@ -147,6 +159,10 @@
 				<source>Language(s)</source>
 				<target>Sprache(n)</target>
 			</trans-unit>
+			<trans-unit id="result.license" xml:space="preserve" approved="yes">
+				<source>License(s)</source>
+				<target>Lizenze(n)</target>
+			</trans-unit>
 			<trans-unit id="result.plan" xml:space="preserve" approved="yes">
 				<source>Plan S compliance</source>
 				<target>Plan-S-Konformität</target>
@@ -156,8 +172,12 @@
 				<target>Herausgeber</target>
 			</trans-unit>
 			<trans-unit id="result.publicationTime" xml:space="preserve" approved="yes">
+				<source>Average publication time</source>
+				<target>Durchschnittliche Veröffentlichungszeit</target>
+			</trans-unit>
+			<trans-unit id="result.publicationTimeWeeks" xml:space="preserve">
 				<source>Average publication time (weeks)</source>
-				<target>Durchschnittliche Veröffentlichungszeit (Wochen)</target>
+				<target>Durchschnittliche Veröffentlichungszeit (Wochen)</target>>
 			</trans-unit>
 			<trans-unit id="result.review" xml:space="preserve" approved="yes">
 				<source>Peer review method</source>
@@ -166,6 +186,18 @@
 			<trans-unit id="result.score" xml:space="preserve" approved="yes">
 				<source>Score</source>
 				<target>Punktzahl</target>
+			</trans-unit>
+			<trans-unit id="result.subjects" xml:space="preserve" approved="yes">
+				<source>Subjects</source>
+				<target>Themen</target>
+			</trans-unit>
+			<trans-unit id="result.website" xml:space="preserve" approved="yes">
+				<source>Website</source>
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="result.weeks" xml:space="preserve" approved="yes">
+				<source>%d weeks</source>
+				<target>%d Wochen</target>
 			</trans-unit>
 		</body>
 	</file>

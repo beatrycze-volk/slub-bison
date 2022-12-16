@@ -62,13 +62,6 @@ class Journal
     protected $pissn;
 
     /**
-     * aims scope
-     *
-     * @var string
-     */
-    protected $aimsScope;
-
-    /**
      * title
      *
      * @var string
@@ -125,18 +118,11 @@ class Journal
     protected $publicationTimeWeeks;
 
     /**
-     * ref journal
+     * access data
      *
-     * @var string
+     * @var array<AccessData>
      */
-    protected $refJournal;
-
-    /**
-     * ref author instructions
-     *
-     * @var string
-     */
-    protected $refAuthorInstructions;
+    protected $accessData = [];
 
     /**
      * keywords
@@ -210,6 +196,8 @@ class Journal
         $this->id = $journal->id;
         $this->score = new Score($journal->score);
         $this->apcMax = new Apc($journal->apc_max);
+        $this->eissn = $journal->eissn;
+        $this->pissn = $journal->pissn;
         $this->title = $journal->title;
         $this->alternativeTitle = $journal->alternative_title;
         $this->planSCompliance = $journal->plan_s_compliance;
@@ -218,6 +206,7 @@ class Journal
         $this->hasOtherCharges = $journal->has_other_charges;
         $this->publisher = new Publisher($journal->publisher_name, $journal->publisher_country);
         $this->publicationTimeWeeks = $journal->publication_time_weeks;
+        $this->accessData = new AccessData($journal);
         foreach ($journal->keywords as $keyword) {
             $this->keywords[] = new Keyword($keyword);
         }
@@ -273,6 +262,22 @@ class Journal
     public function getApcMax()
     {
         return $this->apcMax;
+    }
+
+    /**
+     * Returns the ISSNs
+     *
+     * @return string
+     */
+    public function getIssns()
+    {
+        if (!empty($this->eissn) && !empty($this->pissn)) {
+            return $this->eissn . ', ' . $this->pissn;
+        } else if (!empty($this->eissn)) {
+            return $this->eissn;
+        } else {
+            return $this->pissn;
+        }
     }
 
     /**
@@ -343,6 +348,16 @@ class Journal
     public function getPublisher()
     {
         return $this->publisher;
+    }
+
+    /**
+     * Returns the access data
+     *
+     * @return AccessData
+     */
+    public function getAccessData()
+    {
+        return $this->accessData;
     }
 
     /**

@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 #bison-logo {
     height: 30px;
     vertical-align: top;
@@ -13,4 +17,29 @@
     overflow-y: scroll;
     max-height: 300px;
     list-style-type: none;
+}
+
+.hidden-link {
+    color: #000;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #6c757d !important;
+}
+
+.link-button {
+    display: block;
+}
+
+.bubble {
+    border-radius: 20px;
+}
+
+.keyword {
+    background-color: #f1f6f1;
+}
+
+.subject {
+    background-color: #f1f6f6;
 }

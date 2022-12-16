@@ -1,0 +1,113 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:variable name="languages"><f:for each="{journal.languages}" as="language">{language.name}, </f:for></f:variable>
+<div id="content-view" class="container mt-4 mb-4">
+    <div>
+        <h2>
+            <a href="{journal.accessData.url}" class="hidden-link">{journal.title}</a>
+        </h2>
+        <f:if condition="{journal.alternativeTitle}">
+            <p class="text-muted">{journal.alternativeTitle}</p>
+        </f:if>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.publisher"/>: </td>
+                                <td>{journal.publisher.name}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"> ISSNs: </td>
+                                <td>{journal.issns}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.publicationTime"/>: </td>
+                                <td><f:translate key="result.weeks" arguments="{count: '{journal.publicationTimeWeeks}'}"/></td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.language"/>: </td>
+                                <td>{languages}</td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.authorRights"/>: </td>
+                                <td>
+                                    <f:if condition="{journal.retainsCopyrightAuthor}">
+                                        <f:then>✓</f:then>
+                                        <f:else>
+                                            ✗
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned">Article receives DOI: </td>
+                                <td>✓</td>
+                            </tr>
+                            <tr><td class="right-aligned"><f:translate key="result.review"/>: </td>
+                                <td>Blind peer review</td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned">License(s): </td>
+                                <td>CC BY</td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.apcs"/>: </td>
+                                <td><span>{journal.apcMax.price} {journal.apcMax.currency}
+                                    <f:if condition="{journal.apcMax.price} && {journal.apcMax.currency} != 'EUR'">
+                                        <span>(approx. {journal.apcMax.euro}€)</span>
+                                    </f:if>
+                                </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned"><f:translate key="result.plan"/>: </td>
+                                <td>
+                                    <f:if condition="{journal.planSCompliance}">
+                                        <f:then>✓</f:then>
+                                        <f:else>
+                                            ✗
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right-aligned">In DOAJ since: </td>
+                                <td>3/31/2009</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-5">
+                    <a href="{journal.accessData.url}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary">Website</a>
+                    <a href="{journal.accessData.authorInstructionsUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.authorInstructions"/></a>
+                    <a href="{journal.accessData.aimsAndScopeUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.aimsScope"/></a>
+                    <a href="{journal.accessData.editorialBoardUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.editorialBoard"/></a>
+                    <div class="mt-4">
+                        <h5><f:translate key="result.subjects"/>:</h5>
+                        <div class="d-flex flex-wrap">
+                            <f:for each="{journal.subjects}" as="subject">
+                                <p class="subject bubble py-1 px-2 mx-2 my-1">{subject.term}</p>
+                            </f:for>
+                        </div>
+                    </div>
+                    <div>
+                        <h5><f:translate key="result.keywords"/>:</h5>
+                        <div class="d-flex flex-wrap">
+                            <f:for each="{journal.keywords}" as="keyword">
+                                <p class="keyword bubble py-1 px-2 mx-2 my-1">{keyword.keyword}</p>
+                            </f:for>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul>
+
+        </ul>
+    </div>
+</div>
+
+</html>

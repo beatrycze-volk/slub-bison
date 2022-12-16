@@ -87,6 +87,9 @@
 			<trans-unit id="placeholder.title" xml:space="preserve">
 				<source>Title of your paper...</source>
 			</trans-unit>
+			<trans-unit id="result.aimsScope" xml:space="preserve">
+				<source>Aims &amp; scope</source>
+			</trans-unit>
 			<trans-unit id="result.alternativeTitle" xml:space="preserve">
 				<source>Alternative title</source>
 			</trans-unit>
@@ -96,11 +99,17 @@
 			<trans-unit id="result.articleDoi" xml:space="preserve">
 				<source>Article receives DOI</source>
 			</trans-unit>
+			<trans-unit id="result.authorInstructions" xml:space="preserve">
+				<source>Author instructions</source>
+			</trans-unit>
 			<trans-unit id="result.authorRights" xml:space="preserve">
 				<source>Author retains unrestricted rights</source>
 			</trans-unit>
 			<trans-unit id="result.count" xml:space="preserve">
 				<source>%d Results</source>
+			</trans-unit>
+			<trans-unit id="result.editorialBoard" xml:space="preserve">
+				<source>Editorial Board</source>
 			</trans-unit>
 			<trans-unit id="result.journal" xml:space="preserve">
 				<source>Journal</source>
@@ -111,6 +120,9 @@
 			<trans-unit id="result.language" xml:space="preserve">
 				<source>Language(s)</source>
 			</trans-unit>
+			<trans-unit id="result.license" xml:space="preserve">
+				<source>License(s)</source>
+			</trans-unit>
 			<trans-unit id="result.plan" xml:space="preserve">
 				<source>Plan S compliance</source>
 			</trans-unit>
@@ -118,6 +130,9 @@
 				<source>Publisher</source>
 			</trans-unit>
 			<trans-unit id="result.publicationTime" xml:space="preserve">
+				<source>Average publication time</source>
+			</trans-unit>
+			<trans-unit id="result.publicationTimeWeeks" xml:space="preserve">
 				<source>Average publication time (weeks)</source>
 			</trans-unit>
 			<trans-unit id="result.review" xml:space="preserve">
@@ -125,6 +140,15 @@
 			</trans-unit>
 			<trans-unit id="result.score" xml:space="preserve">
 				<source>Score</source>
+			</trans-unit>
+			<trans-unit id="result.subjects" xml:space="preserve">
+				<source>Subjects</source>
+			</trans-unit>
+			<trans-unit id="result.website" xml:space="preserve">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="result.weeks" xml:space="preserve">
+				<source>%d weeks</source>
 			</trans-unit>
 		</body>
 	</file>

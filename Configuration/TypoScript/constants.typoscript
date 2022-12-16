@@ -12,3 +12,18 @@ plugin.tx_bison_recommender {
         storagePid =
     }
 }
+
+plugin.tx_bison_journal {
+    view {
+        # cat=plugin.tx_bison_journal/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:bison/Resources/Private/Templates/
+        # cat=plugin.tx_bison_journal/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:bison/Resources/Private/Partials/
+        # cat=plugin.tx_bison_journal/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:bison/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_bison_journal//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

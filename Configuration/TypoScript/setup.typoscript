@@ -21,36 +21,25 @@ plugin.tx_bison_recommender {
     }
 }
 
-# these classes are only used in auto-generated templates
-plugin.tx_bison._CSS_DEFAULT_STYLE (
-    textarea.f3-form-error {
-        background-color:#FF9F9F;
-        border: 1px #FF0000 solid;
+plugin.tx_bison_journal {
+    view {
+        templateRootPaths.0 = EXT:bison/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_bison_journal.view.templateRootPath}
+        partialRootPaths.0 = EXT:bison/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_bison_journal.view.partialRootPath}
+        layoutRootPaths.0 = EXT:bison/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_bison_journal.view.layoutRootPath}
     }
-
-    input.f3-form-error {
-        background-color:#FF9F9F;
-        border: 1px #FF0000 solid;
+    persistence {
+        storagePid = {$plugin.tx_bison_journal.persistence.storagePid}
+        #recursive = 1
     }
-
-    .tx-bison table {
-        border-collapse:separate;
-        border-spacing:10px;
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
     }
-
-    .tx-bison table th {
-        font-weight:bold;
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
     }
-
-    .tx-bison table td {
-        vertical-align:top;
-    }
-
-    .typo3-messages .message-error {
-        color:red;
-    }
-
-    .typo3-messages .message-ok {
-        color:green;
-    }
-)
+}

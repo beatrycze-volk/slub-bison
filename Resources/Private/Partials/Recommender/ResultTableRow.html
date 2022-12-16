@@ -7,7 +7,7 @@
     <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
     <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.price}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
         <th scope="row">
-            <a href="/bison/journal/{result.id}" class="">{result.title}</a>
+            <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
         </th>
         <th scope="row" class="score-cell">
             <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Similarities in title: <ul><li><a href=&quot;https://doi.org/10.3897/rio.8.e94931&quot;>Collaborative Metadata Definition using Controlled Vocabularies, and Ontologies</a></li></ul>" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">

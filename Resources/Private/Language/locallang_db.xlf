@@ -177,6 +177,12 @@
 			<trans-unit id="tx_bison_recommender.description" resname="tx_bison_recommender.description">
 				<source></source>
 			</trans-unit>
+			<trans-unit id="tx_bison_journal.name" resname="tx_bison_journal.name">
+				<source>Journal</source>
+			</trans-unit>
+			<trans-unit id="tx_bison_journal.description" resname="tx_bison_journal.description">
+				<source></source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
