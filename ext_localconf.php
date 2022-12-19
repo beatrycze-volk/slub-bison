@@ -10,7 +10,7 @@ defined('TYPO3') || die();
         ],
         // non-cacheable actions
         [
-            \Slub\Bison\Controller\RecommenderController::class => ''
+            \Slub\Bison\Controller\RecommenderController::class => 'main'
         ]
     );
 
@@ -22,7 +22,7 @@ defined('TYPO3') || die();
         ],
         // non-cacheable actions
         [
-            \Slub\Bison\Controller\JournalController::class => ''
+            \Slub\Bison\Controller\JournalController::class =>'main'
         ]
     );
 

@@ -69,53 +69,42 @@ class RecommenderController extends AbstractController
      * The recommender function returning journals based on title etc.
      */
     public function mainAction() {
-        $this->searchJournals();
+        $this->results = [];
 
-        $this->view->assign('maxApc', $this->getMaxApc());
-        $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
-        $this->view->assign('keywords', $this->getKeywords());
-        $this->view->assign('languages', $this->getLanguages());
-        $this->view->assign('subjects', $this->getSubjects());
-        $this->view->assign('results', $this->results);
-        $this->view->assign('viewData', $this->viewData);
-    }
-
-    private function searchJournals() {
-        $results = [];
-
-        // run search only if some parameters are changed
-        if ($this->title != $this->requestData['title'] || $this->abstract != $this->requestData['abstract'] || $this->references != $this->requestData['references']) {
-            $results = [];
-
-            $this->title == $this->requestData['title'];
-            $this->abstract == $this->requestData['$abstract'];
-            $this->references == $this->requestData['references'];
-
+        if (!empty($this->requestData['title']) || !empty($this->requestData['abstract']) || $this->requestData['references']) {
             try {
                 $response = $this->client->request(
                     'POST',
                     'search',
                     ['json' => [
-                        'title' => $title,
-                        'abstract' => $abstract,
-                        'references' => $references,
+                        'title' => $this->requestData['title'],
+                        'abstract' => $this->requestData['abstract'],
+                        'references' => $this->requestData['references'],
                         ]
                     ]
                 );
-    
+        
                 if ($response->getStatusCode() == 200) {
                     $content = $response->getBody()->getContents();
                     $journals = json_decode($content);
                     foreach ($journals->journals as $journal) {
-                        $results[] = new Journal($journal);
+                        $this->results[] = new Journal($journal);
                     }
+    
+                    $this->view->assign('maxApc', $this->getMaxApc());
+                    $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
+                    $this->view->assign('keywords', $this->getKeywords());
+                    $this->view->assign('languages', $this->getLanguages());
+                    $this->view->assign('subjects', $this->getSubjects());
+                    $this->view->assign('results', $this->results);
                 }
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 $this->logger->error('Request error: ' + $e->getMessage());
                 $this->view->assign('error', $e->getMessage());
             }
-            $this->results = $results;
         }
+        
+        $this->view->assign('viewData', $this->viewData);
     }
 
     private function getMaxApc() {
