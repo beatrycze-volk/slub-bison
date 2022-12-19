@@ -78,6 +78,18 @@
 			<trans-unit id="label.title" xml:space="preserve">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="message.error.header" xml:space="preserve">
+				<source>Error :(</source>
+			</trans-unit>
+			<trans-unit id="message.error.content" xml:space="preserve">
+				<source>Error message: %d</source>
+			</trans-unit>
+			<trans-unit id="message.notFound.header" xml:space="preserve">
+				<source>No results :(</source>
+			</trans-unit>
+			<trans-unit id="message.notFound.content" xml:space="preserve">
+				<source>Try changing your input.</source>
+			</trans-unit>
 			<trans-unit id="placeholder.abstract" xml:space="preserve">
 				<source>Abstract of your paper...</source>
 			</trans-unit>

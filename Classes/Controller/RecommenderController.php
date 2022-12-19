@@ -82,18 +82,14 @@ class RecommenderController extends AbstractController
 
     private function searchJournals() {
         $results = [];
-        //TODO: replace it with real data
-        $title = 'Pushing the button: Why do learners pause online…';
-        $abstract = 'With the recent surge in digitalization across…';
-        $references = 'Ayres and Paas, 2007 10.1002/acp.1343 …';
 
         // run search only if some parameters are changed
-        if ($this->title != $title || $this->abstract != $abstract || $this->references != $references) {
+        if ($this->title != $this->requestData['title'] || $this->abstract != $this->requestData['abstract'] || $this->references != $this->requestData['references']) {
             $results = [];
 
-            $this->title == $title;
-            $this->abstract == $abstract;
-            $this->references == $references;
+            $this->title == $this->requestData['title'];
+            $this->abstract == $this->requestData['$abstract'];
+            $this->references == $this->requestData['references'];
 
             try {
                 $response = $this->client->request(
@@ -116,6 +112,7 @@ class RecommenderController extends AbstractController
                 }
             } catch(Exception $e) {
                 $this->logger->error('Request error: ' + $e->getMessage());
+                $this->view->assign('error', $e->getMessage());
             }
             $this->results = $results;
         }

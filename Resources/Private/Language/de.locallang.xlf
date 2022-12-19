@@ -87,6 +87,10 @@
 				<source>Title</source>
 				<target>Titel</target>
 			</trans-unit>
+			<trans-unit id="filter.tooltipSubject" xml:space="preserve">
+				<source>The subject areas correspond to the Library of Congress Classification (LLC) used by DOAJ for the journals listed there.</source>
+				<target>...</target>
+			</trans-unit>
 			<trans-unit id="label.abstract" xml:space="preserve" approved="yes">
 				<source>Abstract</source>
 				<target>Abstrakt</target>
@@ -99,9 +103,21 @@
 				<source>Title</source>
 				<target>Titel</target>
 			</trans-unit>
-			<trans-unit id="filter.tooltipSubject" xml:space="preserve">
-				<source>The subject areas correspond to the Library of Congress Classification (LLC) used by DOAJ for the journals listed there.</source>
-				<target>...</target>
+			<trans-unit id="message.error.header" xml:space="preserve" approved="yes">
+				<source>Error :(</source>
+				<target>Fehler :(</target>
+			</trans-unit>
+			<trans-unit id="message.error.content" xml:space="preserve" approved="yes">
+				<source>Error message: %d</source>
+				<target>Fehler Nachricht: %d</target>
+			</trans-unit>
+			<trans-unit id="message.notFound.header" xml:space="preserve" approved="yes">
+				<source>No results :(</source>
+				<target>Keine Ergebnisse :(</target>
+			</trans-unit>
+			<trans-unit id="message.notFound.content" xml:space="preserve" approved="yes">
+				<source>Try changing your input.</source>
+				<target>Versuchen Sie, Ihre Eingabe zu ändern</target>
 			</trans-unit>
 			<trans-unit id="placeholder.abstract" xml:space="preserve" approved="yes">
 				<source>Abstract of your paper...</source>

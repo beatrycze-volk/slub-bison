@@ -7,7 +7,25 @@
         <p>B!SON helps you to find a suitable Open Access journal for your publication by leveraging semantic and bibliometric methods. Simply enter the details of your manuscript below or <a class="link" type="button" data-bs-toggle="modal" data-bs-target="#doiModal">fetch the details of a paper via its DOI or arXiv ID</a>. It is not necessary to provide all fields. <br>The journal information is provided by the DOAJ. We cannot guarantee the correctness and details (like costs) should be checked on the journal homepage before submitting.</p>
         <f:render partial="Recommender/Form" arguments="{_all}"/>
         <f:if condition="{results}">
-            <f:render partial="Recommender/Result" arguments="{_all}"/>
+            <f:then>
+                <f:render partial="Recommender/Result" arguments="{_all}"/>
+            </f:then>
+            <f:else>
+                <div class="mt-3">
+                    <div class="result-msg">
+                        <f:if condition="{error}">
+                            <f:then>
+                                <h2><f:translate key="message.error.header"/></h2>
+                                <p><f:translate key="message.error.content" arguments="{count: '{error'}"/></p>
+                            </f:then>
+                            <f:else>
+                                <h2><f:translate key="message.notFound.header"/></h2>
+                                <p><f:translate key="message.notFound.content"/>.</p>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </div>
+            </f:else>
         </f:if>
     </div>
 </div>
