@@ -2,6 +2,18 @@
       data-namespace-typo3-fluid="true">
 
 <f:for each="{results}" as="result">
+    <f:variable name="dataPopover">Similarities in title:
+        <ul>
+            <f:for each="{result.score.articles}" as="article">
+                <li>
+                    <f:if condition="{article.doi}">
+                        <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
+                        <f:else>{article.title}</f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </f:variable>
     <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
     <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
     <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
@@ -10,7 +22,7 @@
             <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
         </th>
         <th scope="row" class="score-cell">
-            <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="Similarities in title: <ul><li><a href=&quot;https://doi.org/10.3897/rio.8.e94931&quot;>Collaborative Metadata Definition using Controlled Vocabularies, and Ontologies</a></li></ul>" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
+            <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
                 <div class="score-text">{result.score.percentage}%</div>
             </a>
         </th>
@@ -29,9 +41,7 @@
         <td>
             <f:if condition="{result.retainsCopyrightAuthor}">
                 <f:then>✓</f:then>
-                <f:else>
-                    ✗
-                </f:else>
+                <f:else>✗</f:else>
             </f:if>
         </td>
         <td></td>
@@ -44,9 +54,7 @@
         <td>
             <f:if condition="{result.planSCompliance}">
                 <f:then>✓</f:then>
-                <f:else>
-                    ✗
-                </f:else>
+                <f:else>✗</f:else>
             </f:if>
         </td>
     </tr>

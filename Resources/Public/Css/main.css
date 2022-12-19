@@ -13,10 +13,26 @@ a {
     margin: 0 auto;
 }
 
+.footer {
+    height: 100px;
+}
+
 .scrollable {
     overflow-y: scroll;
     max-height: 300px;
     list-style-type: none;
+}
+
+.score {
+    width: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.popover {
+    max-width: 600pt !important;
 }
 
 .hidden-link {

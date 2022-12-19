@@ -21,47 +21,64 @@ class Article
 {
 
     /**
-     * idx
+     * title
      *
      * @var string
      */
-    protected $idx;
+    protected $tile;
 
     /**
-     * id
+     * DOI
      *
      * @var string
      */
-    protected $id;
+    protected $doi;
+
+    /**
+     * type
+     *
+     * @var string
+     */
+    //TODO: probably Enum would be better here
+    protected $type;
 
     /**
      * __construct
      */
-    public function __construct($journal)
+    public function __construct($article, $type)
     {
-
+        $this->title = $article->title;
+        $this->doi = $article->doi;
+        $this->type = $type;
     }
 
     /**
-     * Returns the idx
+     * Returns the title
      *
      * @return string
      */
-    public function getIdx()
+    public function getTitle()
     {
-        return $this->idx;
+        return $this->title;
     }
 
     /**
-     * Sets the idx
+     * Returns the doi
      *
-     * @param string $idx
-     * @return void
+     * @return string
      */
-    public function setIdx(string $idx)
+    public function getDoi()
     {
-        $this->idx = $idx;
+        return $this->doi;
     }
 
-
+    /**
+     * Returns the type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 }

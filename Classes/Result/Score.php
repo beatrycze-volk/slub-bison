@@ -24,7 +24,7 @@ class Score
      *
      * @var array<Article>
      */
-    protected $articles;
+    protected $articles = [];
 
     /**
      * semantic score
@@ -52,9 +52,28 @@ class Score
      */
     public function __construct($score)
     {
-        $this->semanticScore = $score->semanticScore;
+        foreach ($score->title as $title) {
+            $this->articles[] = new Article($title, 'title');
+        }
+        foreach ($score->abstract as $abstract) {
+            $this->articles[] = new Article($abstract, 'abstract');
+        }
+        foreach ($score->dois as $doi) {
+            $this->articles[] = new Article($doi, 'doi');
+        }
+        $this->semanticScore = $score->semantic_score;
         $this->value = $score->value;
         $this->percentage = intval($score->value * 100);
+    }
+
+    /**
+     * Returns the articles
+     *
+     * @return array<Article>
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 
     /**
