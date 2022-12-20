@@ -4,10 +4,10 @@
 		<header/>
 		<body>
 			<trans-unit id="alert.language" xml:space="preserve">
-				<source>According to your input, we automatically set the language filter to "{suggestLanguage.name}". You can change it along with the other filters.</source>
+				<source>According to your input, we automatically set the language filter to "%1". You can change it along with the other filters.</source>
 			</trans-unit>
 			<trans-unit id="alert.subject" xml:space="preserve">
-				<source>Setting the subject filter to "%d" will likely result in more specific results.</source>
+				<source>Setting the subject filter to "%1" will likely result in more specific results.</source>
 			</trans-unit>
 			<trans-unit id="button.back" xml:space="preserve">
 				<source>Back</source>
