@@ -35,12 +35,39 @@ class Subject
     protected $code;
 
     /**
+     * parent subject
+     *
+     * @var Subject
+     */
+    protected $parent;
+
+    /**
      * __construct
      */
-    public function __construct($subject)
+    public function __construct()
     {
-        $this->term = $subject->term;
-        $this->code = $subject->code;
+    }
+
+    /**
+     * __construct
+     */
+    public static function withSubject($subject)
+    {
+        $instance = new self();
+        $instance->code = $subject->code;
+        $instance->term = $subject->term;
+        return $instance;
+    }
+
+    /**
+     * __construct
+     */
+    public static function withCodeAndTerm($code, $term)
+    {
+        $instance = new self();
+        $instance->code = $code;
+        $instance->term = $term;
+        return $instance;
     }
 
     /**
@@ -61,5 +88,33 @@ class Subject
     public function getCode()
     {
         return $this->code;
+    }
+
+    private function getParentClassification() {
+        $classification = array(
+            "A" => "General Works",
+            "B" => "Philosophy, Psychology and Religion",
+            "C" => "Auxiliary Sciences of History",
+            "D" => "History of Europe, Asia, Africa and Oceania",
+            "E" => "History of the United States",
+            "F" => "Local History of the United States, Canada and Latin America",
+            "G" => "Geography, Anthropology and Recreation",
+            "H" => "Social sciences",
+            "J" => "Political Science",
+            "K" => "Law",
+            "L" => "Education",
+            "M" => "Music",
+            "N" => "Fine Arts",
+            "P" => "Language and Literature",
+            "Q" => "Science",
+            "R" => "Medicine",
+            "S" => "Agriculture",
+            "T" => "Technology",
+            "U" => "Military Science",
+            "V" => "Naval Science",
+            "Z" => "Bibliography, Library Science and Information Resources"
+        );
+        $code = substr($this->code, 0, 1);
+        $this->parent = self::withCodeAndTerm($code, $classification[$code]);
     }
 }

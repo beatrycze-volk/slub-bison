@@ -33,6 +33,9 @@
         <f:if condition="{suggestLanguage}">
             <f:render partial="Recommender/SuggestLanguage" arguments="{_all}"/>
         </f:if>
+        <f:if condition="{suggestSubject}">
+            <f:render partial="Recommender/SuggestSubject" arguments="{_all}"/>
+        </f:if>
         <f:render partial="Recommender/ResultList" arguments="{_all}"/>
         <f:render partial="Recommender/ResultTable" arguments="{_all}"/>
     </div>

@@ -217,7 +217,7 @@ class Journal
             $this->licenses[] = new License($license);
         }
         foreach ($journal->subjects as $subject) {
-            $this->subjects[] = new Subject($subject);
+            $this->subjects[] = Subject::withSubject($subject);
         }
         foreach ($journal->editorial_review_process as $process) {
             $this->editorialReviewProcesses[] = new EditorialReviewProcess($process);

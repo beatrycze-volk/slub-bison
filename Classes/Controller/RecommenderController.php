@@ -31,6 +31,7 @@ use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Result\Journal;
 use Slub\Bison\Result\Language;
+use Slub\Bison\Result\Subject;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -87,8 +88,8 @@ class RecommenderController extends AbstractController
         
                 if ($response->getStatusCode() == 200) {
                     $content = $response->getBody()->getContents();
-                    $recommendations = json_decode($content);
-                    foreach ($recommendations->journals as $journal) {
+                    $result = json_decode($content);
+                    foreach ($result->journals as $journal) {
                         $this->results[] = new Journal($journal);
                     }
 
@@ -97,7 +98,8 @@ class RecommenderController extends AbstractController
                     $this->view->assign('keywords', $this->getKeywords());
                     $this->view->assign('languages', $this->getLanguages());
                     $this->view->assign('subjects', $this->getSubjects());
-                    $this->view->assign('suggestLanguage', new Language($recommendations->language));
+                    $this->view->assign('suggestLanguage', getSuggestLanguage($result));
+                    $this->view->assign('suggestSubject', getSuggestSubject($result));
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
@@ -107,6 +109,18 @@ class RecommenderController extends AbstractController
         }
         
         $this->view->assign('viewData', $this->viewData);
+    }
+
+    private function getSuggestLanguage($result) {
+        if ($result->language != NULL) {
+            return new Language($result->language);
+        }
+    }
+
+    private function getSuggestSubject($result) {
+        if ($result->subject->code != NULL) {
+            return Subject::withSubject($result->subject);
+        }
     }
 
     private function getMaxApc() {
