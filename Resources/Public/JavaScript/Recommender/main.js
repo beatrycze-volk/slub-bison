@@ -173,14 +173,14 @@ $(document).ready(function() {
 
     function matchPublicationTime(row) {
         if (publicationTimeMax) {
-            return (parseInt(row.getAttribute('data-publication-time')) || 0) < publicationTimeMax;
+            return (parseInt(row.getAttribute('data-publication-time')) || 0) <= parseInt(publicationTimeMax);
         }
         return true;
     }
 
     function matchApc(row) {
         if (apcMax) {
-            return (parseInt(row.getAttribute('data-apc')) || 0) < apcMax;
+            return (parseFloat(row.getAttribute('data-apc')) || 0) <= parseFloat(apcMax);
         }
         return true;
     }
