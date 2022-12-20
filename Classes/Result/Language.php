@@ -68,48 +68,26 @@ class Language
      */
     private function convertCodeToName() {
         //TODO: use here translated names of languages
-        switch ($this->code) {
-            case 'AR':
-                $this->name = 'Arabic';
-                break;
-            case 'CA':
-                $this->name = 'Catalan';
-                break;
-            case 'EN':
-                $this->name = 'English';
-                break;
-            case 'ES':
-                $this->name = 'Spanish';
-                break;
-            case 'FA':
-                $this->name = 'Persian';
-                break;
-            case 'FR':
-                $this->name = 'French';
-                break;
-            case 'ID':
-                $this->name = 'Indonesian';
-                break;
-            case 'IT':
-                $this->name = 'Italian';
-                break;
-            case 'PL':
-                $this->name = 'Polish';
-                break;
-            case 'PT':
-                $this->name = 'Portuguese';
-                break;
-            case 'RU':
-                $this->name = 'Russian';
-                break;
-            case 'SL':
-                $this->name = 'Slovenian';
-                break;
-            case 'TR':
-                $this->name = 'Turkish';
-                break;
-            default:
-                $this->name = 'Unknown';
+        $languages = array(
+            "AR" => "Arabic",
+            "CA" => "Catalan",
+            "DE" => "German",
+            "EN" => "English",
+            "ES" => "Spanish",
+            "FA" => "Persian",
+            "FR" => "French",
+            "ID" => "Indonesian",
+            "IT" => "Italian",
+            "PL" => "Polish",
+            "PT" => "Portuguese",
+            "RU" => "Russian",
+            "SL" => "Slovenian",
+            "TR" => "Turkish"
+        );
+        
+        $this->name = $languages[$this->code];
+        if (empty($this->name)) {
+            $this->name = 'Unknown';
         }
     }
 }

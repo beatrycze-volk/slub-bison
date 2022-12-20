@@ -15,6 +15,12 @@ $(document).ready(function() {
     var language = false;
     var subject = false;
 
+    if ($('#suggest_language').length) {
+        language = $('#suggest_language').val();
+        $("#filter-languages").val(language);
+        filter();
+    }
+
     $('#btnlist').trigger('click');
 
     $('#btnlist').click(function() {
@@ -153,6 +159,11 @@ $(document).ready(function() {
         for (let i = 1; i < tableRows.length; i++) {
             tableRows[i].style.display = "table-row";
         }
+
+        $("#filter-languages").val('');
+        $("#filter-subjects").val('');
+        language = false
+        subject = false
     }
 
     function matchFilters(row) {

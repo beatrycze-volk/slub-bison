@@ -30,10 +30,9 @@
             </div>
         </div>
         <f:render partial="Recommender/Filter" arguments="{_all}"/>
-        <div class="alert alert-info alert-dismissible mt-1" role="alert">
-            <span class="pe-1">According to your input, we automatically set the language filter to "English". You can change it along with the other filters.</span>
-            <button type="button" class="btn-close" aria-label="Close"></button>
-        </div>
+        <f:if condition="{suggestLanguage}">
+            <f:render partial="Recommender/SuggestLanguage" arguments="{_all}"/>
+        </f:if>
         <f:render partial="Recommender/ResultList" arguments="{_all}"/>
         <f:render partial="Recommender/ResultTable" arguments="{_all}"/>
     </div>

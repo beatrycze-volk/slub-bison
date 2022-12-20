@@ -30,6 +30,7 @@ namespace Slub\Bison\Controller;
 use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Result\Journal;
+use Slub\Bison\Result\Language;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -86,16 +87,17 @@ class RecommenderController extends AbstractController
         
                 if ($response->getStatusCode() == 200) {
                     $content = $response->getBody()->getContents();
-                    $journals = json_decode($content);
-                    foreach ($journals->journals as $journal) {
+                    $recommendations = json_decode($content);
+                    foreach ($recommendations->journals as $journal) {
                         $this->results[] = new Journal($journal);
                     }
-    
+
                     $this->view->assign('maxApc', $this->getMaxApc());
                     $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
                     $this->view->assign('keywords', $this->getKeywords());
                     $this->view->assign('languages', $this->getLanguages());
                     $this->view->assign('subjects', $this->getSubjects());
+                    $this->view->assign('suggestLanguage', new Language($recommendations->language));
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
