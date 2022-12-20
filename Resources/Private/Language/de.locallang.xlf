@@ -3,6 +3,14 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2022-12-09T18:41:08Z" product-name="bison">
 		<header/>
 		<body>
+		<trans-unit id="alert.language" xml:space="preserve">
+				<source>According to your input, we automatically set the language filter to "{suggestLanguage.name}". You can change it along with the other filters.</source>
+				<target>...</target>
+			</trans-unit>
+			<trans-unit id="alert.subject" xml:space="preserve">
+				<source>Setting the subject filter to "%d" will likely result in more specific results.</source>
+				<target>...</target>
+			</trans-unit>
 			<trans-unit id="button.back" xml:space="preserve" approved="yes">
 				<source>Back</source>
 				<target>Zurück</target>
@@ -10,6 +18,10 @@
 			<trans-unit id="button.clear" xml:space="preserve" approved="yes">
 				<source>Clear</source>
 				<target>Leeren</target>
+			</trans-unit>
+			<trans-unit id="button.close" xml:space="preserve">
+				<source>Close</source>
+				<target>Schliessen</target>
 			</trans-unit>
 			<trans-unit id="button.export" xml:space="preserve" approved="yes">
 				<source>Export</source>
