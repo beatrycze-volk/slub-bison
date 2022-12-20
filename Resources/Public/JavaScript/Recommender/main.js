@@ -24,6 +24,15 @@ $(document).ready(function() {
     $('#btntable').click(function() {
         changeResultView('#result-list', '#result-table');
     });
+
+    $('#btn_clear').click(function(e) {
+        e.preventDefault();
+        $('#results').hide();
+        $('#id_title').val('');
+        $('#id_abstract').val('');
+        $('#id_references').val('');
+    });
+
     $('#flexCheckDefault').bind('change', function () {
         if ($(this).is(':checked')) {
             retainsAuthorCopyright = true;
