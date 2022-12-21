@@ -159,7 +159,6 @@ $(document).ready(function() {
                 tableRows[i].style.display = "none";
             }
         }
-
     }
 
     function resetFilters() {

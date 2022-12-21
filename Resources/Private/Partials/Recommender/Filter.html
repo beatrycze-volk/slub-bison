@@ -19,7 +19,7 @@
                         <input type="range" class="form-range" min="0" step="100" max="{maxApc}" value="{maxApc}" id="apcs_max">
                     </div>
                     <div class="mt-4 mb-3">
-                        <b><f:translate key="filter.selectSubject" default="Select subject"/></b><a href="#" data-bs-toggle="tooltip" data-bs-original-title="{f:translate(key: 'filter.tooltipSubject"')}">?</a>
+                        <b><f:translate key="filter.selectSubject" default="Select subject"/></b> <a href="#" data-bs-toggle="tooltip" data-bs-original-title="{f:translate(key: 'filter.tooltipSubject')}">?</a>
                         <select id="filter-subjects" class="form-select" aria-label="{f:translate(key: 'filter.selectFilter')}">
                             <option value=""><f:translate key="filter.all"/></option>
                             <f:for each="{subjects}" as="subject">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-4 mb-3">
-                        <b><f:translate key="filter.selectKeywords" default="Select keywords"/></b><a href="#" data-bs-toggle="tooltip" data-bs-original-title="Journal-level keywords assigned by the publisher">?</a>
+                        <b><f:translate key="filter.selectKeywords" default="Select keywords"/></b> <a href="#" data-bs-toggle="tooltip" data-bs-offset="-50%" data-bs-original-title="Journal-level keywords assigned by the publisher">?</a>
                         <div class="input-group m-1">
                             <input aria-label="Search for keywords" id="filter-keywords" type="text" placeholder="Search keywords" maxlength="100" class="form-control">
                             <button aria-label="Reset keyword search" class="btn btn-outline-secondary" type="button" id="button-addon2">✗</button>
