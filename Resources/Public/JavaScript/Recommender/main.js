@@ -17,7 +17,7 @@ $(document).ready(function() {
     var apcMax = false;
     var language = false;
     var subject = false;
-    var keyword = false;
+    var checkedKeywords = [];
 
     if ($('#suggest_language').length) {
         language = $('#suggest_language').val();
@@ -53,6 +53,19 @@ $(document).ready(function() {
         filter();
     });
 
+    $('.form-check-input').bind('change', function () {
+        if ($(this).is(':checked') && $(this).id != '#flexCheckDefault') {
+            checkedKeywords.push($(this).val());
+        }
+        else {
+            var index = array.indexOf($(this).val());
+            if (index !== -1) {
+                array.splice(index, 1);
+            }
+        }
+        filter();
+    });
+
     $(document).on('input change', '#publication_time_max', function() {
         publicationTimeMax = $(this).val();
         var labelParts = $("#publication_time_max_label").text().split(' ');
@@ -77,6 +90,18 @@ $(document).ready(function() {
         filter();
     });
 
+    $(document).on('input change', '#filter-keywords', function() { 
+        if ($(this).val() !== '') {
+            for (let i = 0; i < keywords.length; i++) {
+                if (keywords[i].value.indexOf($(this).val()) >= 0) {
+                    keywordsList[i].style.display = "list-item";
+                } else {
+                    keywordsList[i].style.display = "none";
+                }
+            }
+        }
+    });
+
     $('#filter-languages').change(function () { 
         if ($(this).val() === '') {
             language = false;
@@ -93,18 +118,6 @@ $(document).ready(function() {
             subject = $(this).val();
         }
         filter();
-    });
-
-    $(document).on('input change', '#filter-keywords', function() { 
-        if ($(this).val() !== '') {
-            for (let i = 0; i < keywords.length; i++) {
-                if (keywords[i].value.indexOf($(this).val()) >= 0) {
-                    keywordsList[i].style.display = "list-item";
-                } else {
-                    keywordsList[i].style.display = "none";
-                }
-            }
-        }
     });
 
     $('#sort-select').change(function () { 
@@ -184,7 +197,7 @@ $(document).ready(function() {
         return matchRetainsAuthorCopyright(row)
             && matchPublicationTime(row)
             && matchApc(row)
-            && matchKeyword(row)
+            && matchKeywords(row)
             && matchLanguage(row)
             && matchSubject(row);
     }
@@ -210,10 +223,21 @@ $(document).ready(function() {
         return true;
     }
 
-    function matchKeyword(row) {
-        var match = true;
+    function matchKeywords(row) {  
+        if (checkedKeywords.length > 0) {
+            for (let i = 0; i < checkedKeywords.length; i++) {
+                console.log(i);
+                console.log(row.getAttribute('data-keywords'));
+                console.log(checkedKeywords[i]);
+                console.log(row.getAttribute('data-keywords').includes(checkedKeywords[i]));
+                if(row.getAttribute('data-keywords').includes(checkedKeywords[i])) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        return match;
+        return true;
     }
 
     function matchLanguage(row) {
@@ -229,7 +253,7 @@ $(document).ready(function() {
             return dataSubject.includes(subject);
         } else if (subject && subject.length == 1) {
             var subjects = dataSubject.split(";");
-            for (let i = 0; i < (subjects.length - 1); i++) {
+            for (let i = 0; i < subjects.length; i++) {
                 if (subjects[i].substring(0, 1).includes(subject)) {
                     return true;
                 }
