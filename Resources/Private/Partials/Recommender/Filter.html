@@ -23,8 +23,10 @@
                         <select id="filter-subjects" class="form-select" aria-label="{f:translate(key: 'filter.selectFilter')}">
                             <option value=""><f:translate key="filter.all"/></option>
                             <f:for each="{subjects}" as="subject">
-                                <option value="{subject.code}">{subject.term}</option>
-                                <!-- add check for children of subject -->
+                                <f:if condition="{subject.code} == {subject.code -> f:format.crop(maxCharacters: 1, append:'')}">
+                                    <f:then><option value="{subject.code}">{subject.term}</option></f:then>
+                                    <f:else><option value="{subject.code}">&nbsp;&nbsp;&nbsp;&nbsp;{subject.term}</option></f:else>
+                                </f:if>
                             </f:for>
                         </select>
                     </div>

@@ -67,6 +67,7 @@ class Subject
         $instance = new self();
         $instance->code = $code;
         $instance->term = $term;
+
         return $instance;
     }
 
@@ -90,7 +91,18 @@ class Subject
         return $this->code;
     }
 
-    private function getParentClassification() {
+    /**
+     * Returns the parent
+     *
+     * @return string
+     */
+    public function getParent()
+    {
+        $this->setParentClassification();
+        return $this->parent;
+    }
+
+    private function setParentClassification() {
         $classification = array(
             "A" => "General Works",
             "B" => "Philosophy, Psychology and Religion",

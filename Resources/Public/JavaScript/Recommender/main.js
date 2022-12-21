@@ -204,17 +204,23 @@ $(document).ready(function() {
 
     function matchLanguage(row) {
         if (language) {
-            console.log(row);
-            console.log(row.getAttribute('data-languages'));
-            console.log(language);
             return row.getAttribute('data-languages').includes(language);
         }
         return true;
     }
 
     function matchSubject(row) {
-        if (subject) {
-            return row.getAttribute('data-subjects').includes(subject);
+        var dataSubject = row.getAttribute('data-subjects');
+        if (subject && subject.length != 1) {
+            return dataSubject.includes(subject);
+        } else if (subject && subject.length == 1) {
+            var subjects = dataSubject.split(";");
+            for (var i = 0; i < (subjects.length - 1); i++) {
+                if (subjects[i].substring(0, 1).includes(subject)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return true;
     }

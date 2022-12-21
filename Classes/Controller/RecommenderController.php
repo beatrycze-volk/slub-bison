@@ -98,8 +98,8 @@ class RecommenderController extends AbstractController
                     $this->view->assign('keywords', $this->getKeywords());
                     $this->view->assign('languages', $this->getLanguages());
                     $this->view->assign('subjects', $this->getSubjects());
-                    $this->view->assign('suggestLanguage', getSuggestLanguage($result));
-                    $this->view->assign('suggestSubject', getSuggestSubject($result));
+                    $this->view->assign('suggestLanguage', $this->getSuggestLanguage($result));
+                    $this->view->assign('suggestSubject', $this->getSuggestSubject($result));
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
@@ -176,16 +176,21 @@ class RecommenderController extends AbstractController
 
     private function getSubjects() {
         $subjects = [];
-        //TODO: group them according to https://www.librarything.com/lcc/A#
         foreach ($this->results as $result) {
             $resultSubjects = $result->getSubjects();
             foreach ($resultSubjects as $subject) {
                 if (!in_array($subject, $subjects)) {
                     $subjects[] = $subject;
                 }
+
+                if (!in_array($subject->getParent(), $subjects)) {
+                    $subjects[] = $subject->getParent();
+                }
             }
         }
-        sort($subjects);
+        usort($subjects, function($a, $b) {
+            return strcmp($a->getCode(), $b->getCode());
+        });
         return $subjects;
     }
 }
