@@ -44,10 +44,10 @@
                     <div class="mt-4 mb-3">
                         <b><f:translate key="filter.selectKeywords" default="Select keywords"/></b><a href="#" data-bs-toggle="tooltip" data-bs-original-title="Journal-level keywords assigned by the publisher">?</a>
                         <div class="input-group m-1">
-                            <input aria-label="Search for keywords" type="text" placeholder="Search keywords" maxlength="100" class="form-control">
+                            <input aria-label="Search for keywords" id="filter-keywords" type="text" placeholder="Search keywords" maxlength="100" class="form-control">
                             <button aria-label="Reset keyword search" class="btn btn-outline-secondary" type="button" id="button-addon2">✗</button>
                         </div>
-                        <ul class="scrollable">
+                        <ul class="scrollable" id="list-keywords">
                             <f:for each="{keywords}" as="keyword">
                                 <f:render partial="Recommender/FilterKeyword" arguments="{keyword: keyword}"/>
                             </f:for>

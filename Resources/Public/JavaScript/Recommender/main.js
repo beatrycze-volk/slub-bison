@@ -9,11 +9,15 @@ $(document).ready(function() {
         tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
     )
 
+    const keywordsList = document.getElementById("list-keywords").querySelectorAll("li"); 
+    const keywords = $("#list-keywords :input");
+
     var retainsAuthorCopyright = false;
     var publicationTimeMax = false;
     var apcMax = false;
     var language = false;
     var subject = false;
+    var keyword = false;
 
     if ($('#suggest_language').length) {
         language = $('#suggest_language').val();
@@ -91,6 +95,18 @@ $(document).ready(function() {
         filter();
     });
 
+    $(document).on('input change', '#filter-keywords', function() { 
+        if ($(this).val() !== '') {
+            for (let i = 0; i < keywords.length; i++) {
+                if (keywords[i].value.indexOf($(this).val()) >= 0) {
+                    keywordsList[i].style.display = "list-item";
+                } else {
+                    keywordsList[i].style.display = "none";
+                }
+            }
+        }
+    });
+
     $('#sort-select').change(function () { 
         if ($(this).val() === 'score') {
             sortList('data-score');
@@ -124,7 +140,6 @@ $(document).ready(function() {
     }
 
     function filter() {
-        //TODO check current state of all variables
         var listRows, tableRows;
         listRows = getListRows();
         tableRows = getTableRows();
@@ -215,7 +230,7 @@ $(document).ready(function() {
             return dataSubject.includes(subject);
         } else if (subject && subject.length == 1) {
             var subjects = dataSubject.split(";");
-            for (var i = 0; i < (subjects.length - 1); i++) {
+            for (let i = 0; i < (subjects.length - 1); i++) {
                 if (subjects[i].substring(0, 1).includes(subject)) {
                     return true;
                 }
