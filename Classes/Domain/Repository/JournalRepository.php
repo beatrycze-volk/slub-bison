@@ -19,16 +19,5 @@ namespace Slub\Bison\Domain\Repository;
  */
 class JournalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    public function filter($journals) {
-        $filtered = [];
-        foreach ($journals as $journal) {
-            //TODO: implement filtering of results according to filter criterions
-            if (1 == 1) {
-                $filtered[] = new Journal();
-            }
-            var_dump($journal);
-            
-        }
-        return $filtered;
-    }
+
 }

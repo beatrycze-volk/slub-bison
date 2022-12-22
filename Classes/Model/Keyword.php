@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**
@@ -15,53 +15,51 @@ namespace Slub\Bison\Result;
  */
 
 /**
- * Journal DTO
+ * Keyword DTO
  */
-class License
+class Keyword
 {
 
     /**
-     * idx
+     * keyword
      *
      * @var string
      */
-    protected $idx;
+    protected $keyword;
 
     /**
-     * id
+     * label
      *
      * @var string
      */
-    protected $id;
+    protected $label;
 
     /**
      * __construct
      */
-    public function __construct($journal)
+    public function __construct($keyword)
     {
-
+        $this->keyword = $keyword;
+        $this->label = str_replace(' ', '', $keyword);
     }
 
     /**
-     * Returns the idx
+     * Returns the keyword
      *
      * @return string
      */
-    public function getIdx()
+    public function getKeyword()
     {
-        return $this->idx;
+        return $this->keyword;
     }
 
     /**
-     * Sets the idx
+     * Returns the label
      *
-     * @param string $idx
-     * @return void
+     * @return string
      */
-    public function setIdx(string $idx)
+    public function getLabel()
     {
-        $this->idx = $idx;
+        return $this->label;
     }
-
-
 }

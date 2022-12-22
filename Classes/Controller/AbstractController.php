@@ -93,12 +93,6 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         // Get extension configuration.
         $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
-        $this->loadElasticSearchConnectionInfo();
-
-        //$this->client = ClientBuilder::create()
-        //    ->setHosts(['https://service.tib.eu/bison/api/public/v1/search'])
-        //    ->build();
-
         $this->client = new Client([
             // Base URI is used with relative requests
             'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
@@ -158,36 +152,6 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             $message = $defaultMessage;
         }
         return $message;
-    }
-
-     /**
-     * Sets the connection information for Elastic Search
-     *
-     * @access protected
-     *
-     * @return void
-     */
-    protected function loadElasticSearchConnectionInfo()
-    {
-        if (empty($this->esConfig)) {
-            $config = [];
-            $config['scheme'] = empty($conf['esHttps']) ? 'http' : 'https';
-            $config['host'] = ($conf['esHost'] ? $conf['esHost'] : '127.0.0.1');
-            $config['username'] = $conf['esUser'];
-            $config['password'] = $conf['esPass'];
-            $config['port'] = MathUtility::forceIntegerInRange($conf['esPort'], 1, 65535, 8983);
-            
-            // Trim path of slashes and (re-)add trailing slash if path not empty.
-            $config['path'] = trim($conf['esPath'], '/');
-            if (!empty($config['path'])) {
-                $config['path'] .= '/';
-            }
-
-            // Set connection timeout lower than PHP's max_execution_time.
-            $maxExecutionTime = intval(ini_get('max_execution_time')) ? : 30;
-            $config['timeout'] = MathUtility::forceIntegerInRange($conf['esTimeout'], 1, $maxExecutionTime, 10);
-            $this->config = $config;
-        }
     }
 
     /**

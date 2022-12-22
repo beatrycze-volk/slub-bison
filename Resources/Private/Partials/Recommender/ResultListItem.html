@@ -1,48 +1,52 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:for each="{results}" as="result">
-    <f:variable name="dataPopover">Similarities in title:
-        <ul>
-            <f:for each="{result.score.articles}" as="article">
-                <li>
-                    <f:if condition="{article.doi}">
-                        <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
-                        <f:else>{article.title}</f:else>
-                    </f:if>
-                </li>
-            </f:for>
-        </ul>
-    </f:variable>
-    <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
-    <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
-    <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
-    <li class="mt-2 mb-2" data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
-        <div class="card">
-            <div class="card-body container">
-                <div class="row">
-                    <div class="col-md-auto">
-                        <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="btn btn-outline-primary mb-2 score" data-bs-original-title="Recommendation based on these similar articles">
-                            <div><f:translate key="result.score" default="Score"/>:<br>{result.score.percentage}%</div>
-                            <svg width="15" height="15" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg"><path transform="matrix(.45743 0 0 .45743 -15.582 -42.067)" d="m63.018 141.95-24.043-41.644h24.043 24.043l-12.022 20.822z" fill="#0d6efd" stroke-width=".26458"></path>
-                                </svg>
-                        </a>
-                    </div>
-                    <div class="col relative">
-                        <h5 class="card-title">
-                            <a href="/journal?tx_bison[id]={result.id}" class="stretched-link">{result.title}</a>
-                        </h5>
-                        <p class="card-text"><f:translate key="result.publisher" default="Publisher"/>: {result.publisher.name}</p>
-                        <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>:
-                            <f:for each="{result.keywords}" as="keyword">
-                                {keyword.keyword}, 
-                            </f:for>
-                        </p>
-                    </div>
+<f:variable name="whiteListLabel">
+    <f:if condition="{hideResults} == false && {result.filter}">
+        <f:then>style=background:#E1FAE1</f:then>
+        <f:else></f:else>
+    </f:if>
+</f:variable>
+<f:variable name="dataPopover">Similarities in title:
+    <ul>
+        <f:for each="{result.score.articles}" as="article">
+            <li>
+                <f:if condition="{article.doi}">
+                    <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
+                    <f:else>{article.title}</f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:variable>
+<f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
+<f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
+<f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+<li class="mt-2 mb-2" data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
+    <div class="card" {whiteListLabel}>
+        <div class="card-body container">
+            <div class="row">
+                <div class="col-md-auto">
+                    <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="btn btn-outline-primary mb-2 score" data-bs-original-title="Recommendation based on these similar articles">
+                        <div><f:translate key="result.score" default="Score"/>:<br>{result.score.percentage}%</div>
+                        <svg width="15" height="15" version="1.1" viewBox="0 0 26.458 26.458" xmlns="http://www.w3.org/2000/svg"><path transform="matrix(.45743 0 0 .45743 -15.582 -42.067)" d="m63.018 141.95-24.043-41.644h24.043 24.043l-12.022 20.822z" fill="#0d6efd" stroke-width=".26458"></path>
+                            </svg>
+                    </a>
+                </div>
+                <div class="col relative">
+                    <h5 class="card-title">
+                        <a href="/journal?tx_bison[id]={result.id}" class="stretched-link">{result.title}</a>
+                    </h5>
+                    <p class="card-text"><f:translate key="result.publisher" default="Publisher"/>: {result.publisher.name}</p>
+                    <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>:
+                        <f:for each="{result.keywords}" as="keyword">
+                            {keyword.keyword}, 
+                        </f:for>
+                    </p>
                 </div>
             </div>
         </div>
-    </li>
-</f:for>
+    </div>
+</li>
 
 </html>

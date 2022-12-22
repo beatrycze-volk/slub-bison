@@ -1,63 +1,79 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:for each="{results}" as="result">
-    <f:variable name="dataPopover">Similarities in title:
-        <ul>
-            <f:for each="{result.score.articles}" as="article">
-                <li>
-                    <f:if condition="{article.doi}">
-                        <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
-                        <f:else>{article.title}</f:else>
-                    </f:if>
-                </li>
-            </f:for>
-        </ul>
-    </f:variable>
-    <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
-    <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
-    <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
-    <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
-        <th scope="row">
-            <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
-        </th>
-        <th scope="row" class="score-cell">
-            <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
-                <div class="score-text">{result.score.percentage}%</div>
-            </a>
-        </th>
-        <td>{result.alternativeTitle}</td>
-        <td>{result.publisher.name}</td>
-        <td>{result.apcMax.price} {result.apcMax.currency}
-            <f:if condition="{result.apcMax.price} && {result.apcMax.currency} != 'EUR'">
-                <span><br>(approx. {result.apcMax.euro}€)</span>
-            </f:if>
-        </td>
-        <td>
-            <f:for each="{result.languages}" as="language">
-                {language.code}
-            </f:for>
-        </td>
-        <td>
-            <f:if condition="{result.retainsCopyrightAuthor}">
-                <f:then>✓</f:then>
-                <f:else>✗</f:else>
-            </f:if>
-        </td>
-        <td></td>
-        <td>
-            <f:for each="{result.editorialReviewProcesses}" as="process">
-                {process.process}
-            </f:for>
-        </td>
-        <td>{result.publicationTimeWeeks}</td>
-        <td>
-            <f:if condition="{result.planSCompliance}">
-                <f:then>✓</f:then>
-                <f:else>✗</f:else>
-            </f:if>
-        </td>
-    </tr>
-</f:for>
+<f:variable name="whiteListLabel">
+    <f:if condition="{hideResults} == false && {result.filter}">
+        <f:then>style=background:#E1FAE1;</f:then>
+        <f:else></f:else>
+    </f:if>
+</f:variable>
+<f:variable name="dataPopover">Similarities in title:
+    <ul>
+        <f:for each="{result.score.articles}" as="article">
+            <li>
+                <f:if condition="{article.doi}">
+                    <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
+                    <f:else>{article.title}</f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:variable>
+<f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
+<f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
+<f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+<tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}" {whiteListLabel}>
+    <th scope="row">
+        <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
+    </th>
+    <th scope="row" class="score-cell">
+        <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
+            <div class="score-text">{result.score.percentage}%</div>
+        </a>
+    </th>
+    <td>{result.alternativeTitle}</td>
+    <td>{result.publisher.name}</td>
+    <f:if condition="{result.filter}">
+        <f:then>
+            <td>{result.filter.price.price} {result.filter.price.currency}
+                <f:if condition="{result.filter.price.price} && {result.filter.price.currency} != 'EUR'">
+                    <span><br>(approx. {result.filter.price.euro}€)</span>
+                </f:if>
+                <span><br>({result.filter.financing})</span>
+            </td>
+        </f:then>
+        <f:else>
+            <td>{result.apcMax.price} {result.apcMax.currency}
+                <f:if condition="{result.apcMax.price} && {result.apcMax.currency} != 'EUR'">
+                    <span><br>(approx. {result.apcMax.euro}€)</span>
+                </f:if>
+            </td>
+        </f:else>
+    </f:if>
+    <td>
+        <f:for each="{result.languages}" as="language">
+            {language.code}
+        </f:for>
+    </td>
+    <td>
+        <f:if condition="{result.retainsCopyrightAuthor}">
+            <f:then>✓</f:then>
+            <f:else>✗</f:else>
+        </f:if>
+    </td>
+    <td></td>
+    <td>
+        <f:for each="{result.editorialReviewProcesses}" as="process">
+            {process.process}
+        </f:for>
+    </td>
+    <td>{result.publicationTimeWeeks}</td>
+    <td>
+        <f:if condition="{result.planSCompliance}">
+            <f:then>✓</f:then>
+            <f:else>✗</f:else>
+        </f:if>
+    </td>
+</tr>
       
 </html>

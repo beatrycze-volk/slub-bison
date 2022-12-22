@@ -55,12 +55,25 @@
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.apcs"/>: </td>
-                                <td><span>{journal.apcMax.price} {journal.apcMax.currency}
-                                    <f:if condition="{journal.apcMax.price} && {journal.apcMax.currency} != 'EUR'">
-                                        <span>(approx. {journal.apcMax.euro}€)</span>
-                                    </f:if>
-                                </span>
-                                </td>
+                                <f:if condition="{journal.filter}">
+                                    <f:then>
+                                        <td><span>{journal.filter.price.price} {journal.filter.price.currency}
+                                            <f:if condition="{journal.filter.price} && {journal.filter.price.currency} != 'EUR'">
+                                                <span>(approx. {journal.filter.price.euro}€)</span>
+                                            </f:if>
+                                        </span>
+                                        <span><br>({journal.filter.financing})</span>
+                                        </td>
+                                    </f:then>
+                                    <f:else>
+                                        <td><span>{journal.apcMax.price} {journal.apcMax.currency}
+                                            <f:if condition="{journal.apcMax.price} && {journal.apcMax.currency} != 'EUR'">
+                                                <span>(approx. {journal.apcMax.euro}€)</span>
+                                            </f:if>
+                                        </span>
+                                        </td>
+                                    </f:else>
+                                </f:if>
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.plan"/>: </td>
@@ -85,6 +98,8 @@
                     <a href="{journal.accessData.authorInstructionsUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.authorInstructions"/></a>
                     <a href="{journal.accessData.aimsAndScopeUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.aimsScope"/></a>
                     <a href="{journal.accessData.editorialBoardUrl}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.editorialBoard"/></a>
+                    <a href="{journal.filter.source}" target="_blank" rel="noopener noreferrer" class="m-2 link-button btn btn-outline-primary"><f:translate key="result.priceSource"/></a>
+
                     <div class="mt-4">
                         <h5><f:translate key="result.subjects"/>:</h5>
                         <div class="d-flex flex-wrap">

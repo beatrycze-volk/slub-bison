@@ -5,7 +5,8 @@
     <div>
         <div class="container mb-2">
             <div class="row">
-                <h2 class="col no-padding"><f:translate key="result.count" arguments="{count: '{results -> f:count()}'}"/></h2>
+                <h2 class="col no-padding"><f:translate key="result.countAll" arguments="{count: '{results -> f:count()}'}"/></h2>
+                <h4 class="col no-padding"><f:translate key="result.countMatching" arguments="{count: '{countResults}'}"/></h4>
                 <div id="result-action-wrapper" class="col row col-md-auto align-self-center">
                     <div id="button-action-wrapper">
                         <button id="filterCollapseButton" class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><f:translate key="button.filter" default="Filter"/></button>

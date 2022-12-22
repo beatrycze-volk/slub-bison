@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**
@@ -52,14 +52,14 @@ class Journal
      *
      * @var string
      */
-    protected $eissn;
+    protected $eIssn;
 
     /**
      * P-ISSN
      *
      * @var string
      */
-    protected $pissn;
+    protected $pIssn;
 
     /**
      * title
@@ -188,6 +188,13 @@ class Journal
     protected $hasPreservation;
 
     /**
+     * false if doesn't match filter, else filter data
+     *
+     * @var boolean|Filter
+     */
+    protected $filter;
+
+    /**
      * __construct
      */
     public function __construct($journal)
@@ -195,9 +202,9 @@ class Journal
         $this->idx = $journal->idx;
         $this->id = $journal->id;
         $this->score = new Score($journal->score);
-        $this->apcMax = new Apc($journal->apc_max);
-        $this->eissn = $journal->eissn;
-        $this->pissn = $journal->pissn;
+        $this->apcMax = Price::fromAPC($journal->apc_max);
+        $this->eIssn = $journal->eissn;
+        $this->pIssn = $journal->pissn;
         $this->title = $journal->title;
         $this->alternativeTitle = $journal->alternative_title;
         $this->planSCompliance = $journal->plan_s_compliance;
@@ -217,7 +224,7 @@ class Journal
             $this->licenses[] = new License($license);
         }
         foreach ($journal->subjects as $subject) {
-            $this->subjects[] = Subject::withSubject($subject);
+            $this->subjects[] = Subject::fromSubject($subject);
         }
         foreach ($journal->editorial_review_process as $process) {
             $this->editorialReviewProcesses[] = new EditorialReviewProcess($process);
@@ -265,18 +272,38 @@ class Journal
     }
 
     /**
+     * Returns the E-ISSN
+     *
+     * @return string
+     */
+    public function getEIssn()
+    {
+        return $this->eIssn;
+    }
+
+    /**
+     * Returns the P-ISSN
+     *
+     * @return string
+     */
+    public function getPIssn()
+    {
+        return $this->pIssn;
+    }
+
+    /**
      * Returns the ISSNs
      *
      * @return string
      */
     public function getIssns()
     {
-        if (!empty($this->eissn) && !empty($this->pissn)) {
-            return $this->eissn . ', ' . $this->pissn;
-        } else if (!empty($this->eissn)) {
-            return $this->eissn;
+        if (!empty($this->eIssn) && !empty($this->pIssn)) {
+            return $this->eIssn . ', ' . $this->pIssn;
+        } else if (!empty($this->eIssn)) {
+            return $this->eIssn;
         } else {
-            return $this->pissn;
+            return $this->pIssn;
         }
     }
 
@@ -418,5 +445,25 @@ class Journal
     public function getEditorialReviewProcesses()
     {
         return $this->editorialReviewProcesses;
+    }
+
+    /**
+     * Returns the information if the journal matches filter results
+     *
+     * @return boolean|Filter
+     */
+    public function getFilter()
+    {
+        return $this->filter;
+    }
+
+    /**
+     * Sets the information if the journal matches filter results
+     *
+     * @var boolean|Filter
+     */
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
     }
 }

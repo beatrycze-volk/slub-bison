@@ -12,6 +12,10 @@
             <f:else>
                 <div class="mt-3">
                     <div class="result-msg">
+                        <f:if condition="{isFilterTooStrict}">
+                            <h2><f:translate key="message.filterTooStrict.header"/></h2>
+                            <p><f:translate key="message.filterTooStrict.content"/></p>
+                        </f:if>
                         <f:if condition="{error}">
                             <f:then>
                                 <h2><f:translate key="message.error.header"/></h2>

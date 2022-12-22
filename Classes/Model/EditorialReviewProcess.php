@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**

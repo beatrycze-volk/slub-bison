@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**
@@ -17,7 +17,7 @@ namespace Slub\Bison\Result;
 /**
  * Journal DTO
  */
-class Replacement
+class License
 {
 
     /**

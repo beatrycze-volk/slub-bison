@@ -11,7 +11,8 @@
     "license": "GPL-2.0-or-later",
     "require": {
         "typo3/cms-core": "^11.5",
-        "elasticsearch/elasticsearch": "^8.5"
+        "elasticsearch/elasticsearch": "^8.5",
+        "phpoffice/phpspreadsheet": "^1.23"
     },
     "require-dev": {
         "typo3/testing-framework": "^6.9.0"

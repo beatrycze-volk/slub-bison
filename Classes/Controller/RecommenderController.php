@@ -29,9 +29,10 @@ namespace Slub\Bison\Controller;
 
 use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Exception\IdNotFoundException;
-use Slub\Bison\Result\Journal;
-use Slub\Bison\Result\Language;
-use Slub\Bison\Result\Subject;
+use Slub\Bison\Model\Journal;
+use Slub\Bison\Model\Language;
+use Slub\Bison\Model\Subject;
+use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -41,22 +42,25 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 /**
  * The recommender controller for the Bison extension
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
  */
 class RecommenderController extends AbstractController
 {
-
     /**
     * @var JournalRepository
     */
-   protected $journalRepository;
+    protected $journalRepository;
 
-   protected $title;
-
-   protected $abstract;
-
-   protected $references;
-
-   protected $results;
+    /**
+    * @var LocalConditionsFilter
+    */
+    protected $localConditionsFilter;
+    
+    protected $results;
 
     /**
      * @param JournalRepository $journalRepository
@@ -66,6 +70,13 @@ class RecommenderController extends AbstractController
         $this->journalRepository = $journalRepository;
     }
 
+    /**
+     * @param LocalConditionsFilter $localConditionsFilter
+     */
+    public function injectLocalConditionsFilter(LocalConditionsFilter $localConditionsFilter)
+    {
+        $this->localConditionsFilter = $localConditionsFilter;
+    }
 
     /**
      * The recommender function returning journals based on title etc.
@@ -93,6 +104,8 @@ class RecommenderController extends AbstractController
                         $this->results[] = new Journal($journal);
                     }
 
+                    $this->localConditionsFilter->filter($this->results);
+
                     $this->view->assign('maxApc', $this->getMaxApc());
                     $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
                     $this->view->assign('keywords', $this->getKeywords());
@@ -100,6 +113,9 @@ class RecommenderController extends AbstractController
                     $this->view->assign('subjects', $this->getSubjects());
                     $this->view->assign('suggestLanguage', $this->getSuggestLanguage($result));
                     $this->view->assign('suggestSubject', $this->getSuggestSubject($result));
+                    $this->view->assign('hideResults', filter_var($this->extConfig['hideResults'], FILTER_VALIDATE_BOOLEAN));
+                    $this->view->assign('isFilterTooStrict', $this->isFilterTooStrict());
+                    $this->view->assign('countResults', $this->countResultsAfterFilter());
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
@@ -111,6 +127,20 @@ class RecommenderController extends AbstractController
         $this->view->assign('viewData', $this->viewData);
     }
 
+    private function isFilterTooStrict() {
+        return $this->countResultsAfterFilter() == 0 && count($this->results) > 0;
+    }
+
+    private function countResultsAfterFilter() {
+        $count = 0;
+        foreach ($this->results as $result) {
+            if ($result->getFilter() != false) {
+                $count++;
+            }
+        }
+        return $count;
+    }
+
     private function getSuggestLanguage($result) {
         if ($result->language != NULL) {
             return new Language($result->language);
@@ -119,7 +149,7 @@ class RecommenderController extends AbstractController
 
     private function getSuggestSubject($result) {
         if ($result->subject->code != NULL) {
-            return Subject::withSubject($result->subject);
+            return Subject::fromSubject($result->subject);
         }
     }
 

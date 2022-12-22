@@ -2,6 +2,17 @@
 defined('TYPO3') || die();
 
 (static function() {
+    // Use Caching Framework for currency converter
+    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency'] = [];
+    }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['backend'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['backend'] = 'TYPO3\\CMS\\Core\\Cache\\Backend\\SimpleFileBackend';
+    }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['options']['defaultLifeTime'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['options']['defaultLifeTime'] = 87600; // 87600 seconds = 1 day
+    }
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Bison',
         'Recommender',

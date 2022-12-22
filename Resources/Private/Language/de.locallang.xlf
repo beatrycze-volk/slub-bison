@@ -123,6 +123,14 @@
 				<source>Error message: %d</source>
 				<target>Fehler Nachricht: %d</target>
 			</trans-unit>
+			<trans-unit id="message.filterTooStrict.header" xml:space="preserve" approved="yes">
+				<source>No matching results :(</source>
+				<target>Keine passende Ergebnisse :(</target>
+			</trans-unit>
+			<trans-unit id="message.filterTooStrict.content" xml:space="preserve" approved="yes">
+				<source>There are actual results but they are not matching local filter conditions.</source>
+				<target>Es gibt tatsächliche Ergebnisse, aber sie stimmen nicht mit den lokalen Filterbedingungen überein.</target>
+			</trans-unit>
 			<trans-unit id="message.notFound.header" xml:space="preserve" approved="yes">
 				<source>No results :(</source>
 				<target>Keine Ergebnisse :(</target>
@@ -167,9 +175,13 @@
 				<source>Author retains unrestricted rights</source>
 				<target>Der Autor behält die uneingeschränkten Rechte</target>
 			</trans-unit>
-			<trans-unit id="result.count" xml:space="preserve" approved="yes">
+			<trans-unit id="result.countAll" xml:space="preserve" approved="yes">
 				<source>%d Results</source>
 				<target>%d Ergebnisse</target>
+			</trans-unit>
+			<trans-unit id="result.countMatching" xml:space="preserve">
+				<source>%d Filter Matching Results</source>
+				<target>%d Filter passende Ergebnisse</target>
 			</trans-unit>
 			<trans-unit id="result.editorialBoard" xml:space="preserve" approved="yes">
 				<source>Editorial Board</source>
@@ -194,6 +206,10 @@
 			<trans-unit id="result.plan" xml:space="preserve" approved="yes">
 				<source>Plan S compliance</source>
 				<target>Plan-S-Konformität</target>
+			</trans-unit>
+			<trans-unit id="result.priceSource" xml:space="preserve" approved="yes">
+				<source>Amount and currency</source>
+				<target>Betrag und Währung</target>
 			</trans-unit>
 			<trans-unit id="result.publisher" xml:space="preserve" approved="yes">
 				<source>Publisher</source>

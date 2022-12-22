@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**
@@ -14,10 +14,13 @@ namespace Slub\Bison\Result;
  * (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>, SLUB
  */
 
+use Slub\Bison\Utility\CurrencyConverter;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Average Publication Cost DTO
  */
-class Apc
+class Price
 {
     /**
      * euro
@@ -43,11 +46,32 @@ class Apc
     /**
      * __construct
      */
-    public function __construct($apcMax)
+    public function __construct()
     {
-        $this->euro = $apcMax->euro;
-        $this->price = $apcMax->price;
-        $this->currency = $apcMax->currency;
+    }
+
+    /**
+     * __construct
+     */
+    public static function fromAPC($apcMax)
+    {
+        $instance = new self();
+        $instance->euro = $apcMax->euro;
+        $instance->price = $apcMax->price;
+        $instance->currency = $apcMax->currency;
+        return $instance;
+    }
+
+    /**
+     * __construct
+     */
+    public static function fromAmountAndCurrency($amount, $currency)
+    {
+        $instance = new self();
+        $instance->price = $amount;
+        $instance->currency = $currency;
+        $instance->euro = GeneralUtility::makeInstance(CurrencyConverter::class)->convert($amount, $currency);
+        return $instance;
     }
 
     /**

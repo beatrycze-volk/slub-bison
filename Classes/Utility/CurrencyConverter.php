@@ -1,6 +1,6 @@
 <?php
 
-namespace Slub\Bison\Utility;
+namespace SLUB\Bison\Utility;
 
 /***************************************************************
  *  Copyright notice
@@ -31,11 +31,11 @@ use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * The currency converter for APC (article processing charge).
+ * The currency converter for prices.
  * 
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
- * @subpackage slubbison
+ * @subpackage bison
  * @access public
  */
 class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
@@ -65,9 +65,9 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
      */
     private $requestFactory;
 
-    private function __construct()
+    public function __construct()
     {
-        $this->cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_slubbison_currency');
+        $this->cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_bison_currency');
         $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(get_class($this));
         $this->requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
     }
@@ -85,13 +85,14 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
         if (!$rates) {
             $configuration = ['timeout' => 60];
             try {
-                $response = $this->requestFactory->request(API_URL, 'GET', $configuration);
+                $response = $this->requestFactory->request(self::API_URL, 'GET', $configuration);
             } catch (\Exception $e) {
-                $this->logger->warning('Updating exchange rates from "' . API_URL . '" failed. Error: ' . $e->getMessage() . '.');
+                $this->logger->warning('Updating exchange rates from "' . self::API_URL . '" failed. Error: ' . $e->getMessage() . '.');
                 return false;
             }
             $content = $response->getBody()->getContents();
-            var_dump($content);
+            $result = json_decode($content, true);
+            $rates = $result['rates'];
             //convert content into array key - currency, value - rate
             $this->cache->set('exchange_rates', $rates);
         }

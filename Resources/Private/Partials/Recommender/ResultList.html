@@ -2,7 +2,21 @@
       data-namespace-typo3-fluid="true">
 
 <ul id="result-list" class="list-unstyled">
-    <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
+    <f:for each="{results}" as="result">
+        <f:if condition="{hideResults} && {result.filter}">
+            <f:then>
+                <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
+            </f:then>
+            <f:else>
+                <f:if condition="{hideResults} == false && {result.filter}">
+                    <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
+                </f:if>
+                <f:if condition="{hideResults} == false && {result.filter} == false">
+                    <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:for>
 </ul>
 
 </html>

@@ -93,6 +93,12 @@
 			<trans-unit id="message.error.content" xml:space="preserve">
 				<source>Error message: %d</source>
 			</trans-unit>
+			<trans-unit id="message.filterTooStrict.header" xml:space="preserve">
+				<source>No matching results :(</source>
+			</trans-unit>
+			<trans-unit id="message.filterTooStrict.content" xml:space="preserve">
+				<source>There are actual results but they are not matching local filter conditions.</source>
+			</trans-unit>
 			<trans-unit id="message.notFound.header" xml:space="preserve">
 				<source>No results :(</source>
 			</trans-unit>
@@ -126,8 +132,11 @@
 			<trans-unit id="result.authorRights" xml:space="preserve">
 				<source>Author retains unrestricted rights</source>
 			</trans-unit>
-			<trans-unit id="result.count" xml:space="preserve">
+			<trans-unit id="result.countAll" xml:space="preserve">
 				<source>%d Results</source>
+			</trans-unit>
+			<trans-unit id="result.countMatching" xml:space="preserve">
+				<source>%d Filter Matching Results</source>
 			</trans-unit>
 			<trans-unit id="result.editorialBoard" xml:space="preserve">
 				<source>Editorial Board</source>
@@ -146,6 +155,9 @@
 			</trans-unit>
 			<trans-unit id="result.plan" xml:space="preserve">
 				<source>Plan S compliance</source>
+			</trans-unit>
+			<trans-unit id="result.priceSource" xml:space="preserve">
+				<source>Amount and currency</source>
 			</trans-unit>
 			<trans-unit id="result.publisher" xml:space="preserve">
 				<source>Publisher</source>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Slub\Bison\Result;
+namespace Slub\Bison\Model;
 
 
 /**
@@ -51,7 +51,7 @@ class Subject
     /**
      * __construct
      */
-    public static function withSubject($subject)
+    public static function fromSubject($subject)
     {
         $instance = new self();
         $instance->code = $subject->code;
@@ -62,12 +62,11 @@ class Subject
     /**
      * __construct
      */
-    public static function withCodeAndTerm($code, $term)
+    public static function fromCodeAndTerm($code, $term)
     {
         $instance = new self();
         $instance->code = $code;
         $instance->term = $term;
-
         return $instance;
     }
 
@@ -127,6 +126,6 @@ class Subject
             "Z" => "Bibliography, Library Science and Information Resources"
         );
         $code = substr($this->code, 0, 1);
-        $this->parent = self::withCodeAndTerm($code, $classification[$code]);
+        $this->parent = self::fromCodeAndTerm($code, $classification[$code]);
     }
 }
