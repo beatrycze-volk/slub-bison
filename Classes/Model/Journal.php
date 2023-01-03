@@ -90,6 +90,13 @@ class Journal
     protected $retainsCopyrightAuthor;
 
     /**
+     * information if the article receives DOI
+     *
+     * @var bool
+     */
+    protected $doiPidScheme;
+
+    /**
      * has APC
      *
      * @var bool
@@ -209,6 +216,7 @@ class Journal
         $this->alternativeTitle = $journal->alternative_title;
         $this->planSCompliance = $journal->plan_s_compliance;
         $this->retainsCopyrightAuthor = $journal->copyright_author_retains;
+        $this->doiPidScheme = $journal->doi_pid_scheme;
         $this->hasApc = $journal->has_apc;
         $this->hasOtherCharges = $journal->has_other_charges;
         $this->publisher = new Publisher($journal->publisher_name, $journal->publisher_country);
@@ -229,6 +237,7 @@ class Journal
         foreach ($journal->editorial_review_process as $process) {
             $this->editorialReviewProcesses[] = new EditorialReviewProcess($process);
         }
+        $this->createdDate = $journal->created_date;
     }
 
     /**
@@ -348,6 +357,16 @@ class Journal
     }
 
     /**
+     * Returns the information if article receives DOI
+     *
+     * @return boolean
+     */
+    public function getDoiPidScheme()
+    {
+        return $this->doiPidScheme;
+    }
+
+    /**
      * Returns the information if there is APC
      *
      * @return bool
@@ -445,6 +464,16 @@ class Journal
     public function getEditorialReviewProcesses()
     {
         return $this->editorialReviewProcesses;
+    }
+
+    /**
+     * Date of creation
+     *
+     * @return \DateTime
+     */
+    public function getCreatedDate()
+    {
+        return $this->createdDate;
     }
 
     /**

@@ -66,12 +66,13 @@ class Price
      * __construct
      */
     public static function fromAmountAndCurrency($amount, $currency)
-    {
-        $instance = new self();
-        $instance->price = $amount;
-        $instance->currency = $currency;
-        $instance->euro = GeneralUtility::makeInstance(CurrencyConverter::class)->convert($amount, $currency);
-        return $instance;
+    {   if(!empty($amount)) {
+            $instance = new self();
+            $instance->price = $amount;
+            $instance->currency = $currency;
+            $instance->euro = GeneralUtility::makeInstance(CurrencyConverter::class)->convert($amount, $currency);
+            return $instance;
+        }
     }
 
     /**

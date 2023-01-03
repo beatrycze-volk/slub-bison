@@ -19,49 +19,100 @@ namespace Slub\Bison\Model;
  */
 class License
 {
+    /**
+     * non-commercial
+     *
+     * @var bool
+     */
+    protected $nonCommercial;
 
     /**
-     * idx
+     * no derivative
+     *
+     * @var bool
+     */
+    protected $noDerivative;
+
+    /**
+     * attribution
+     *
+     * @var bool
+     */
+    protected $attribution;
+
+    /**
+     * share alike
+     *
+     * @var bool
+     */
+    protected $shareAlike;
+
+    /**
+     * type
      *
      * @var string
      */
-    protected $idx;
-
-    /**
-     * id
-     *
-     * @var string
-     */
-    protected $id;
+    protected $type;
 
     /**
      * __construct
      */
-    public function __construct($journal)
+    public function __construct($license)
     {
-
+        $this->nonCommercial = $license->nc;
+        $this->noDerivative = $license->nd;
+        $this->attribution = $license->by;
+        $this->shareAlike = $license->sa;
+        $this->type = $license->typex;
     }
 
     /**
-     * Returns the idx
+     * Returns the information about non-commercial attribute of CC license
+     *
+     * @return bool
+     */
+    public function getNonCommercial()
+    {
+        return $this->nonCommercial;
+    }
+
+    /**
+     * Returns the information about no derivative attribute of CC license
+     *
+     * @return bool
+     */
+    public function getNoDerivative()
+    {
+        return $this->noDerivative;
+    }
+
+    /**
+     * Returns the information about attribution attribute of CC license
+     *
+     * @return bool
+     */
+    public function getAttribution()
+    {
+        return $this->attribution;
+    }
+
+    /**
+     * Returns the information about share alike attribute of CC license
+     *
+     * @return bool
+     */
+    public function getShareAlike()
+    {
+        return $this->shareAlike;
+    }
+
+    /**
+     * Returns the license type
      *
      * @return string
      */
-    public function getIdx()
+    public function getType()
     {
-        return $this->idx;
+        return $this->type;
     }
-
-    /**
-     * Sets the idx
-     *
-     * @param string $idx
-     * @return void
-     */
-    public function setIdx(string $idx)
-    {
-        $this->idx = $idx;
-    }
-
-
 }

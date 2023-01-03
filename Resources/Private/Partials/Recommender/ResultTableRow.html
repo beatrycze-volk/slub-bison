@@ -33,7 +33,7 @@
     </th>
     <td>{result.alternativeTitle}</td>
     <td>{result.publisher.name}</td>
-    <f:if condition="{result.filter}">
+    <f:if condition="{result.filter.price}">
         <f:then>
             <td>{result.filter.price.price} {result.filter.price.currency}
                 <f:if condition="{result.filter.price.price} && {result.filter.price.currency} != 'EUR'">

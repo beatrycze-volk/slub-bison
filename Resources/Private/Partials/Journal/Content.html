@@ -2,6 +2,8 @@
       data-namespace-typo3-fluid="true">
 
 <f:variable name="languages"><f:for each="{journal.languages}" as="language">{language.name}, </f:for></f:variable>
+<f:variable name="licenses"><f:for each="{journal.licenses}" as="license">{license.type}, </f:for></f:variable>
+<f:variable name="reviews"><f:for each="{journal.editorialReviewProcesses}" as="review">{review.process}, </f:for></f:variable>
 <div id="content-view" class="container mt-4 mb-4">
     <div>
         <h2>
@@ -29,6 +31,8 @@
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.language"/>: </td>
+                                <!-- format.trim is first available in TYPO3 12.x -->
+                                <!-- <td><f: format. trim characters="," side="right">{languages}</f: format. trim></td> -->
                                 <td>{languages}</td>
                             </tr>
                             <tr>
@@ -44,18 +48,29 @@
                             </tr>
                             <tr>
                                 <td class="right-aligned">Article receives DOI: </td>
-                                <td>✓</td>
+                                <td>
+                                    <f:if condition="{journal.doiPidScheme}">
+                                        <f:then>✓</f:then>
+                                        <f:else>
+                                            ✗
+                                        </f:else>
+                                    </f:if>
+                                </td>
                             </tr>
                             <tr><td class="right-aligned"><f:translate key="result.review"/>: </td>
-                                <td>Blind peer review</td>
+                                <!-- format.trim is first available in TYPO3 12.x -->
+                                <!-- <td><f: format. trim characters="," side="right">{reviews}</f: format. trim></td> -->
+                                <td>{reviews}</td>
                             </tr>
                             <tr>
-                                <td class="right-aligned">License(s): </td>
-                                <td>CC BY</td>
+                                <td class="right-aligned"><f:translate key="result.license"/>: </td>
+                                <!-- format.trim is first available in TYPO3 12.x -->
+                                <!-- <td><f: format. trim characters="," side="right">{licenses}</f: format. trim></td> -->
+                                <td>{licenses}</td>
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.apcs"/>: </td>
-                                <f:if condition="{journal.filter}">
+                                <f:if condition="{journal.filter.price}">
                                     <f:then>
                                         <td><span>{journal.filter.price.price} {journal.filter.price.currency}
                                             <f:if condition="{journal.filter.price} && {journal.filter.price.currency} != 'EUR'">
@@ -87,8 +102,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="right-aligned">In DOAJ since: </td>
-                                <td>3/31/2009</td>
+                                <td class="right-aligned"><f:translate key="result.createdDate"/>: </td>
+                                <td><f:format.date format="m/d/Y">{journal.createdDate}</f:format.date>
                             </tr>
                         </tbody>
                     </table>

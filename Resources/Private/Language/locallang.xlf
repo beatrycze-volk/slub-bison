@@ -141,6 +141,9 @@
 			<trans-unit id="result.countMatching" xml:space="preserve">
 				<source>%d Filter Matching Results</source>
 			</trans-unit>
+			<trans-unit id="result.createdDate" xml:space="preserve">
+				<source>In DOAJ since</source>
+			</trans-unit>
 			<trans-unit id="result.editorialBoard" xml:space="preserve">
 				<source>Editorial Board</source>
 			</trans-unit>

@@ -183,9 +183,13 @@
 				<source>%d Results</source>
 				<target>%d Ergebnisse</target>
 			</trans-unit>
-			<trans-unit id="result.countMatching" xml:space="preserve">
+			<trans-unit id="result.countMatching" xml:space="preserve"  approved="yes">
 				<source>%d Filter Matching Results</source>
 				<target>%d Filter passende Ergebnisse</target>
+			</trans-unit>
+			<trans-unit id="result.createdDate" xml:space="preserve"  approved="yes">
+				<source>In DOAJ since</source>
+				<target>Seitdem im DOAJ</target>
 			</trans-unit>
 			<trans-unit id="result.editorialBoard" xml:space="preserve" approved="yes">
 				<source>Editorial Board</source>
