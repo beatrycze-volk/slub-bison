@@ -108,6 +108,14 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             'requestData' => $this->requestData
         ];
     }
+    
+    protected function getContactPerson() { 
+        return [
+            'name' => $this->extConfig['contactName'],
+            'email'=> $this->extConfig['contactEmail'],
+            'url' => $this->extConfig['contactUrl']
+        ];
+    }
 
     /**
      * Override getErrorFlashMessage to present

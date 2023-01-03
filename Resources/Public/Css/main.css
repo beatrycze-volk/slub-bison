@@ -17,6 +17,12 @@ a {
     height: 100px;
 }
 
+.space {
+    margin:0;
+    padding:0;
+    height:50px;
+}
+
 .scrollable {
     overflow-y: scroll;
     max-height: 300px;

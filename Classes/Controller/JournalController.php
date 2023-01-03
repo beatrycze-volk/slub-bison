@@ -81,6 +81,7 @@ class JournalController extends AbstractController
         $this->getJournal();
 
         $this->view->assign('journal', $this->journal);
+        $this->view->assign('contact', $this->getContactPerson());
         $this->view->assign('viewData', $this->viewData);
     }
 

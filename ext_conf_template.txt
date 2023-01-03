@@ -1,2 +1,8 @@
-# cat=Filter; type=boolean; label=Should results that violate local conditions not be displayed?
+# cat=Filter; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.hideResults
 hideResults = 1
+# cat=Contact; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.contactName
+contactName = Max Mustermann
+# cat=Contact; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.contactEmail
+contactEmail = max.mustermann@slub-dresden.de
+# cat=Contact; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.contactUrl
+contactUrl = https://slub-dresden.de

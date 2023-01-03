@@ -33,6 +33,9 @@
 			<trans-unit id="button.table" xml:space="preserve">
 				<source>Table</source>
 			</trans-unit>
+			<trans-unit id="contact" xml:space="preserve">
+				<source>Contact person</source>
+			</trans-unit>
 			<trans-unit id="filter.all" xml:space="preserve">
 				<source>All</source>
 			</trans-unit>

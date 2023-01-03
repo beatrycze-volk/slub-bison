@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="messages" date="2023-01-03T17:31:18Z" product-name="bison">
+		<header/>
+		<body>
+            <trans-unit id="config.contactEmail" xml:space="preserve">
+				<source>E-mail of the contact person</source>
+			</trans-unit>
+            <trans-unit id="config.contactName" xml:space="preserve">
+				<source>Name of the contact person</source>
+			</trans-unit>
+            <trans-unit id="config.contactUrl" xml:space="preserve">
+				<source>URL of the contact person</source>
+			</trans-unit>
+			<trans-unit id="config.hideResults" xml:space="preserve">
+				<source>Should results that violate local conditions not be displayed?</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

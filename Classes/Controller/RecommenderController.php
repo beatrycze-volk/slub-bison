@@ -113,6 +113,7 @@ class RecommenderController extends AbstractController
                     $this->view->assign('subjects', $this->getSubjects());
                     $this->view->assign('suggestLanguage', $this->getSuggestLanguage($result));
                     $this->view->assign('suggestSubject', $this->getSuggestSubject($result));
+                    $this->view->assign('contact', $this->getContactPerson());
                     $this->view->assign('hideResults', filter_var($this->extConfig['hideResults'], FILTER_VALIDATE_BOOLEAN));
                     $this->view->assign('isFilterTooStrict', $this->isFilterTooStrict());
                     $this->view->assign('countResults', $this->countResultsAfterFilter());
