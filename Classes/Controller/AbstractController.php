@@ -98,6 +98,9 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
             // You can set any number of default request options.
             'timeout'  => 10.0,
+            'headers' => [
+                'User-Agent' => 'SLUB/bison-extension',
+            ],
         ]);
         
         $this->requestData = GeneralUtility::_GPmerged('tx_bison');
