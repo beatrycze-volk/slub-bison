@@ -99,7 +99,7 @@ class JournalController extends AbstractController
                     $content = $response->getBody()->getContents();
                     $journalJson = json_decode($content);
                     $this->journal = new Journal($journalJson);
-                    $this->localConditionsFilter->applyFilter($this->journal);
+                    $this->localConditionsFilter->applyIssnFilter($this->journal);
                 }
             } catch(Exception $e) {
                 $this->logger->error('Request error: ' + $e->getMessage());

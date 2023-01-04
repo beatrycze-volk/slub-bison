@@ -28,6 +28,7 @@ namespace Slub\Bison\Utility;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use TYPO3\CMS\Core\Log\LogManager;
 use Slub\Bison\Model\Filter;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -57,6 +58,14 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
      */
     private $filters;
 
+    /**
+     * This holds the licenses from extension configuration
+     *
+     * @var array
+     * @access private
+     */
+    private $licenses;
+
     public function __construct()
     {
         $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(get_class($this));
@@ -67,15 +76,16 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
         foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $results[] = $worksheet->toArray(null, false, true);
         }
-
-        // save memory
         $spreadsheet->__destruct();
         $spreadsheet = NULL;
+
         $this->filters = [];
         $data = $results[0];
         for ($i = 1; $i < count($data); $i++) {
             $this->filters[] = new Filter($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], $data[$i][4], $data[$i][5]);
         }
+
+        $this->getLicenses();
     }
 
     /**
@@ -83,11 +93,12 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function filter(&$journals) {
         for ($i = 0; $i < count($journals); $i++) {
-            $this->applyFilter($journals[$i]);
+            $this->applyIssnFilter($journals[$i]);
+            $this->applyLicenseFilter($journals[$i], $license);
         }
     }
 
-    public function applyFilter(&$journal) {
+    public function applyIssnFilter(&$journal) {
         foreach ($this->filters as $filter) {
             if (!empty($filter->getEIssn()) && !empty($journal->getEIssn())) {
                 if ($filter->getEIssn() == $journal->getEIssn()) {
@@ -101,6 +112,43 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
                 }
             }
             $journal->setFilter(false);
+        }
+    }
+
+    private function applyLicenseFilter(&$journal) {
+        $foundLicense = false;
+        foreach ($this->licenses as $license) {
+            $journalLicenses = $journal->getLicenses();
+            for ($i = 0; $i < count($journalLicenses); $i++) {
+                if ($journalLicenses[$i]->getType() == $license) {
+                    $foundLicense = true;
+                    break;
+                }
+            }
+        }
+
+        if (!$foundLicense) {
+            $journal->setFilter(false);
+        }
+    }
+
+    private function getLicenses() {
+        $configuredLicenses = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison')['licenses'];
+        $this->licenses = [];
+        $this->convertLicense($configuredLicenses, 'cc0', "CC0");
+        $this->convertLicense($configuredLicenses, 'ccby', "CC BY");
+        $this->convertLicense($configuredLicenses, 'ccbync', "CC BY-NC");
+        $this->convertLicense($configuredLicenses, 'ccbyncnd', "CC BY-NC-ND");
+        $this->convertLicense($configuredLicenses, 'ccbyncsa', "CC BY-NC-SA");
+        $this->convertLicense($configuredLicenses, 'ccbynd', "CC BY-ND");
+        $this->convertLicense($configuredLicenses, 'ccbysa', "CC BY-SA");
+        $this->convertLicense($configuredLicenses, 'publicDomain', "Public domain");
+        $this->convertLicense($configuredLicenses, 'publisher', "Publisher's own license");
+    }
+
+    private function convertLicense($licenses, $key, $value) {
+        if (intval($licenses[$key]) == 1) {
+            $this->licenses[] = $value;
         }
     }
 }
