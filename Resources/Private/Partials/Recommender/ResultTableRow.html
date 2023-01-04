@@ -61,7 +61,12 @@
             <f:else>✗</f:else>
         </f:if>
     </td>
-    <td></td>
+    <td>
+        <f:if condition="{result.doiPidScheme}">
+            <f:then>✓</f:then>
+            <f:else>✗</f:else>
+        </f:if>
+    </td>
     <td>
         <f:for each="{result.editorialReviewProcesses}" as="process">
             {process.process}
