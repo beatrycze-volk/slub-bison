@@ -12,6 +12,11 @@ defined('TYPO3') || die();
     if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['options']['defaultLifeTime'])) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_bison_currency']['options']['defaultLifeTime'] = 87600; // 87600 seconds = 1 day
     }
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['bison'])) {
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['bison'] = [
+            'Slub\Bison\ViewHelpers',
+        ];
+    }
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Bison',

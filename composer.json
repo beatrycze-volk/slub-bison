@@ -31,8 +31,8 @@
         "typo3-ter/bison": "self.version"
     },
     "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
+        "vendor-dir": "vendor",
+        "bin-dir": "vendor/bin"
     },
     "scripts": {
         "post-autoload-dump": [
@@ -41,7 +41,7 @@
     },
     "extra": {
         "typo3/cms": {
-            "web-dir": ".Build/public",
+            "web-dir": "public",
             "extension-key": "bison"
         }
     }

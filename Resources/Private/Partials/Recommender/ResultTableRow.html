@@ -22,6 +22,9 @@
 <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
 <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
 <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+<f:variable name="languages"><f:for each="{result.languages}" as="language">{language.code}, </f:for></f:variable>
+<f:variable name="reviews"><f:for each="{result.editorialReviewProcesses}" as="review">{review.process}, </f:for></f:variable>
+
 <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}" {whiteListLabel}>
     <th scope="row">
         <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
@@ -50,11 +53,7 @@
             </td>
         </f:else>
     </f:if>
-    <td>
-        <f:for each="{result.languages}" as="language">
-            {language.code}
-        </f:for>
-    </td>
+    <td><bison:trim content="{languages}"/></td>
     <td>
         <f:if condition="{result.retainsCopyrightAuthor}">
             <f:then>✓</f:then>
@@ -67,11 +66,7 @@
             <f:else>✗</f:else>
         </f:if>
     </td>
-    <td>
-        <f:for each="{result.editorialReviewProcesses}" as="process">
-            {process.process}
-        </f:for>
-    </td>
+    <td><bison:trim content="{reviews}"/></td>
     <td>{result.publicationTimeWeeks}</td>
     <td>
         <f:if condition="{result.planSCompliance}">

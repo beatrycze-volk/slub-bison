@@ -33,7 +33,7 @@
                                 <td class="right-aligned"><f:translate key="result.language"/>: </td>
                                 <!-- format.trim is first available in TYPO3 12.x -->
                                 <!-- <td><f: format. trim characters="," side="right">{languages}</f: format. trim></td> -->
-                                <td>{languages}</td>
+                                <td><bison:trim content="{languages}"/></td>
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.authorRights"/>: </td>
@@ -56,13 +56,13 @@
                             <tr><td class="right-aligned"><f:translate key="result.review"/>: </td>
                                 <!-- format.trim is first available in TYPO3 12.x -->
                                 <!-- <td><f: format. trim characters="," side="right">{reviews}</f: format. trim></td> -->
-                                <td>{reviews}</td>
+                                <td><bison:trim content="{reviews}"/></td>
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.license"/>: </td>
                                 <!-- format.trim is first available in TYPO3 12.x -->
                                 <!-- <td><f: format. trim characters="," side="right">{licenses}</f: format. trim></td> -->
-                                <td>{licenses}</td>
+                                <td><bison:trim content="{licenses}"/></td>
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.apcs"/>: </td>
