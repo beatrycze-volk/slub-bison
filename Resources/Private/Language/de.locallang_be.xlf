@@ -3,7 +3,11 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2023-01-03T17:31:18Z" product-name="bison">
 		<header/>
 		<body>
-        <trans-unit id="config.contactEmail" xml:space="preserve" approved="yes">
+			<trans-unit id="config.contact" xml:space="preserve">
+				<source>Contact Settings</source>
+				<target>Kontakteinstellungen</target>
+			</trans-unit>
+        	<trans-unit id="config.contactEmail" xml:space="preserve" approved="yes">
 				<source>E-mail of the contact person</source>
 				<target>E-Mail des Ansprechpartners</target>
 			</trans-unit>
@@ -15,9 +19,17 @@
 				<source>URL of the contact person</source>
 				<target>URL des Ansprechpartners</target>
 			</trans-unit>
+			<trans-unit id="config.filter" xml:space="preserve">
+				<source>Filter Settings</source>
+				<target>Filtereinstellungen</target>
+			</trans-unit>
             <trans-unit id="config.hideResults" xml:space="preserve" approved="yes">
 				<source>Should results that violate local conditions not be displayed?</source>
 				<target>Sollen Ergebnisse, die gegen lokale Bedingungen verstoßen, nicht angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="config.licenses" xml:space="preserve" approved="yes">
+				<source>Choose licenses for which results should be displayed</source>
+				<target>Wählen Sie Lizenzen aus, für die Ergebnisse angezeigt werden sollen</target>
 			</trans-unit>
 		</body>
 	</file>
