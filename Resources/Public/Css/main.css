@@ -65,3 +65,30 @@ a {
 .subject {
     background-color: #f1f6f6;
 }
+
+@media (max-width: 1900px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1720px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1380px;
+    }
+}
+@media (max-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1180px;
+    }
+}
+@media (max-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 970px;
+    }
+}
+@media (max-width: 768px) {
+    .container, .container-md, .container-sm {
+        max-width: 740px;
+    }
+}

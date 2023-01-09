@@ -90,6 +90,7 @@ class RecommenderController extends AbstractController
                         $this->results[] = new Journal($journal);
                     }
 
+                    $this->indexDatabaseList->assignIndexDatabases($this->results);
                     $this->mirrorJournalsFilter->assignMirrorJournals($this->results);
                     $this->mirrorJournalsFilter->markMirrorJournals($this->results);
                     $this->localConditionsFilter->filter($this->results);

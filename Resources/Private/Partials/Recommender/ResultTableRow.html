@@ -22,6 +22,14 @@
 <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
 <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
 <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+<f:variable name="databases">
+    <f:if condition="{result.indexDatabase}">
+        <f:if condition="{result.indexDatabase.pubMed}">PubMed, </f:if>
+        <f:if condition="{result.indexDatabase.openAlex}">Open Alex, </f:if>
+        <f:if condition="{result.indexDatabase.webOfScience}">Web of Science, </f:if>
+        <f:if condition="{result.indexDatabase.scopus}">Scopus  </f:if>
+    </f:if>
+</f:variable>
 <f:variable name="languages"><f:for each="{result.languages}" as="language">{language.code}, </f:for></f:variable>
 <f:variable name="reviews"><f:for each="{result.editorialReviewProcesses}" as="review">{review.process}, </f:for></f:variable>
 
@@ -90,6 +98,7 @@
             <f:else>✗</f:else>
         </f:if>
     </td>
+    <td><bison:trim content="{databases}"/></td>
 </tr>
       
 </html>

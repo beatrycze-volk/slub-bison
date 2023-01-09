@@ -216,6 +216,13 @@ class Journal
     protected $isMirrorJournal;
 
     /**
+     * index database
+     *
+     * @var IndexDatabase
+     */
+    protected $indexDatabase;
+
+    /**
      * Construct for journal instance
      * 
      * @access public
@@ -555,5 +562,25 @@ class Journal
     public function setIsMirrorJournal($isMirrorJournal)
     {
         $this->isMirrorJournal = $isMirrorJournal;
+    }
+
+    /**
+     * Returns the information about the index databases
+     *
+     * @return IndexDatabase
+     */
+    public function getIndexDatabase()
+    {
+        return $this->indexDatabase;
+    }
+
+    /**
+     * Sets the the information the index databases
+     *
+     * @var IndexDatabase
+     */
+    public function setIndexDatabase($indexDatabase)
+    {
+        $this->indexDatabase = $indexDatabase;
     }
 }

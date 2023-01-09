@@ -29,6 +29,7 @@ use GuzzleHttp\Client;
 use Elastic\Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Slub\Bison\Utility\IndexDatabaseList;
 use Slub\Bison\Utility\MirrorJournalsFilter;
 use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -63,12 +64,6 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $extConfig;
 
     /**
-     * @var array
-     * @access protected
-     */
-    protected $esConfig;
-
-    /**
      * This holds the request parameter
      *
      * @var array
@@ -83,6 +78,11 @@ abstract class AbstractController extends ActionController implements LoggerAwar
      * @access protected
      */
     protected $viewData;
+
+    /**
+    * @var IndexDatabaseList
+    */
+    protected $indexDatabaseList;
 
     /**
     * @var LocalConditionsFilter
@@ -123,6 +123,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             'requestData' => $this->requestData
         ];
 
+        $this->indexDatabaseList = new IndexDatabaseList();
         $this->localConditionsFilter = new LocalConditionsFilter();
         $this->mirrorJournalsFilter = new MirrorJournalsFilter();
     }
