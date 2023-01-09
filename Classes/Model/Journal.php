@@ -127,7 +127,7 @@ class Journal
     /**
      * access data
      *
-     * @var array<AccessData>
+     * @var AccessData
      */
     protected $accessData = [];
 
@@ -202,7 +202,27 @@ class Journal
     protected $filter;
 
     /**
-     * __construct
+     * mirror journal
+     *
+     * @var MirrorJournal
+     */
+    protected $mirrorJournal;
+
+    /**
+     * mark as mirror journal
+     *
+     * @var bool
+     */
+    protected $isMirrorJournal;
+
+    /**
+     * Construct for journal instance
+     * 
+     * @access public
+     * 
+     * @param array $journal: The journal JSON
+     * 
+     * @return void
      */
     public function __construct($journal)
     {
@@ -221,7 +241,7 @@ class Journal
         $this->hasOtherCharges = $journal->has_other_charges;
         $this->publisher = new Publisher($journal->publisher_name, $journal->publisher_country);
         $this->publicationTimeWeeks = $journal->publication_time_weeks;
-        $this->accessData = new AccessData($journal);
+        $this->accessData = AccessData::fromJournal($journal);
         foreach ($journal->keywords as $keyword) {
             $this->keywords[] = new Keyword($keyword);
         }
@@ -238,6 +258,7 @@ class Journal
             $this->editorialReviewProcesses[] = new EditorialReviewProcess($process);
         }
         $this->createdDate = $journal->created_date;
+        $this->isMirrorJournal =  false;
     }
 
     /**
@@ -494,5 +515,45 @@ class Journal
     public function setFilter($filter)
     {
         $this->filter = $filter;
+    }
+
+    /**
+     * Returns the mirror journal
+     *
+     * @return MirrorJournal
+     */
+    public function getMirrorJournal()
+    {
+        return $this->mirrorJournal;
+    }
+
+    /**
+     * Sets the the mirror journal
+     *
+     * @var MirrorJournal
+     */
+    public function setMirrorJournal($mirrorJournal)
+    {
+        $this->mirrorJournal = $mirrorJournal;
+    }
+
+    /**
+     * Returns the information if is mirror journal
+     *
+     * @return bool
+     */
+    public function getIsMirrorJournal()
+    {
+        return $this->isMirrorJournal;
+    }
+
+    /**
+     * Sets the the information if is mirror journal
+     *
+     * @var bool
+     */
+    public function setIsMirrorJournal($isMirrorJournal)
+    {
+        $this->isMirrorJournal = $isMirrorJournal;
     }
 }

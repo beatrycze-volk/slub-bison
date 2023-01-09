@@ -2,7 +2,7 @@
       data-namespace-typo3-fluid="true">
 
 <f:variable name="whiteListLabel">
-    <f:if condition="{hideResults} == false && {result.filter}">
+    <f:if condition="{showMismatchedResults} && {result.filter}">
         <f:then>style=background:#E1FAE1;</f:then>
         <f:else></f:else>
     </f:if>
@@ -27,7 +27,7 @@
 
 <tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}" {whiteListLabel}>
     <th scope="row">
-        <a href="/journal?tx_bison[id]={result.id}" class="">{result.title}</a>
+        <a href="/journal?tx_bison[id]={result.id}">{result.title}</a>
     </th>
     <th scope="row" class="score-cell">
         <a role="button" id="score-button" tabindex="0" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom" data-bs-content="{dataPopover}" class="score-popovers" data-bs-original-title="Recommendation based on these similar articles">
@@ -35,6 +35,22 @@
         </a>
     </th>
     <td>{result.alternativeTitle}</td>
+    <td>
+        <f:if condition="{result.mirrorJournal}">
+            <a href="{result.mirrorJournal.accessData.url}">{result.mirrorJournal.title}</a>
+        </f:if>
+        <f:if condition="{result.isMirrorJournal}">
+            <f:then>✓</f:then>
+            <f:else>
+                <f:if condition="{result.mirrorJournal}">
+                    <f:then>
+                        <a href="{result.mirrorJournal.accessData.url}">{result.mirrorJournal.title}</a>
+                    </f:then>
+                    <f:else>✗</f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </td>
     <td>{result.publisher.name}</td>
     <f:if condition="{result.filter.price}">
         <f:then>

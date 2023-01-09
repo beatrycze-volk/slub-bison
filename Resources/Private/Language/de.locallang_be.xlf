@@ -19,13 +19,21 @@
 				<source>URL of the contact person</source>
 				<target>URL des Ansprechpartners</target>
 			</trans-unit>
-			<trans-unit id="config.filter" xml:space="preserve">
-				<source>Filter Settings</source>
-				<target>Filtereinstellungen</target>
+			<trans-unit id="config.display" xml:space="preserve">
+				<source>Display Settings</source>
+				<target>Anzeigeeinstellungen</target>
 			</trans-unit>
-            <trans-unit id="config.hideResults" xml:space="preserve" approved="yes">
-				<source>Should results that violate local conditions not be displayed?</source>
-				<target>Sollen Ergebnisse, die gegen lokale Bedingungen verstoßen, nicht angezeigt werden?</target>
+            <trans-unit id="config.showMismatchedResults" xml:space="preserve" approved="yes">
+				<source>Should results that violate local conditions be displayed?</source>
+				<target>Sollen Ergebnisse, die gegen lokale Bedingungen verstoßen, angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="config.showMirrorJournals" xml:space="preserve" approved="yes">
+				<source>Should mirror journals be displayed?</source>
+				<target>Sollen Spiegeljournale angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="config.license" xml:space="preserve">
+				<source>License Settings</source>
+				<target>Lizenzeinstellungen</target>
 			</trans-unit>
 			<trans-unit id="config.licenses" xml:space="preserve" approved="yes">
 				<source>Choose licenses for which results should be displayed</source>

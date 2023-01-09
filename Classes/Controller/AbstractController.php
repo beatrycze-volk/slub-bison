@@ -29,6 +29,8 @@ use GuzzleHttp\Client;
 use Elastic\Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
+use Slub\Bison\Utility\MirrorJournalsFilter;
+use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -83,6 +85,16 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $viewData;
 
     /**
+    * @var LocalConditionsFilter
+    */
+    protected $localConditionsFilter;
+
+    /**
+    * @var MirrorJournalsFilter
+    */
+    protected $mirrorJournalsFilter;
+
+    /**
      * Initialize the plugin controller
      *
      * @access protected
@@ -110,6 +122,9 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             'uniqueId'=> uniqid(),
             'requestData' => $this->requestData
         ];
+
+        $this->localConditionsFilter = new LocalConditionsFilter();
+        $this->mirrorJournalsFilter = new MirrorJournalsFilter();
     }
     
     protected function getContactPerson() { 

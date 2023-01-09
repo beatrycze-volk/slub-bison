@@ -1,11 +1,11 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
-      
+
 <div id="content-view" class="container mt-4 mb-4">
     <div class="home">
         <p>B!SON helps you to find a suitable Open Access journal for your publication by leveraging semantic and bibliometric methods. Simply enter the details of your manuscript below or <a class="link" type="button" data-bs-toggle="modal" data-bs-target="#doiModal">fetch the details of a paper via its DOI or arXiv ID</a>. It is not necessary to provide all fields. <br>The journal information is provided by the DOAJ. We cannot guarantee the correctness and details (like costs) should be checked on the journal homepage before submitting.</p>
         <f:render partial="Recommender/Form" arguments="{_all}"/>
-        <f:if condition="{results} && {countResults} > 0">
+        <f:if condition="{results} && ({countResults} > 0 || {showMismatchedResults})">
             <f:then>
                 <f:render partial="Recommender/Result" arguments="{_all}"/>
             </f:then>

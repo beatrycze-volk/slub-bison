@@ -32,7 +32,6 @@ use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Model\Journal;
 use Slub\Bison\Model\Language;
 use Slub\Bison\Model\Subject;
-use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -55,11 +54,6 @@ class RecommenderController extends AbstractController
     */
     protected $journalRepository;
 
-    /**
-    * @var LocalConditionsFilter
-    */
-    protected $localConditionsFilter;
-    
     protected $results;
 
     /**
@@ -68,14 +62,6 @@ class RecommenderController extends AbstractController
     public function injectJournalRepository(JournalRepository $journalRepository)
     {
         $this->journalRepository = $journalRepository;
-    }
-
-    /**
-     * @param LocalConditionsFilter $localConditionsFilter
-     */
-    public function injectLocalConditionsFilter(LocalConditionsFilter $localConditionsFilter)
-    {
-        $this->localConditionsFilter = $localConditionsFilter;
     }
 
     /**
@@ -104,6 +90,8 @@ class RecommenderController extends AbstractController
                         $this->results[] = new Journal($journal);
                     }
 
+                    $this->mirrorJournalsFilter->assignMirrorJournals($this->results);
+                    $this->mirrorJournalsFilter->markMirrorJournals($this->results);
                     $this->localConditionsFilter->filter($this->results);
 
                     $this->view->assign('maxApc', $this->getMaxApc());
@@ -114,7 +102,8 @@ class RecommenderController extends AbstractController
                     $this->view->assign('suggestLanguage', $this->getSuggestLanguage($result));
                     $this->view->assign('suggestSubject', $this->getSuggestSubject($result));
                     $this->view->assign('contact', $this->getContactPerson());
-                    $this->view->assign('hideResults', filter_var($this->extConfig['hideResults'], FILTER_VALIDATE_BOOLEAN));
+                    $this->view->assign('showMismatchedResults', filter_var($this->extConfig['showMismatchedResults'], FILTER_VALIDATE_BOOLEAN));
+                    $this->view->assign('showMirrorJournals', filter_var($this->extConfig['showMirrorJournals'], FILTER_VALIDATE_BOOLEAN));
                     $this->view->assign('isFilterTooStrict', $this->isFilterTooStrict());
                     $this->view->assign('countResults', $this->countResultsAfterFilter());
                     $this->view->assign('results', $this->results);

@@ -3,15 +3,15 @@
 
 <ul id="result-list" class="list-unstyled">
     <f:for each="{results}" as="result">
-        <f:if condition="{hideResults} && {result.filter}">
+        <f:if condition="!{showMismatchedResults} && {result.filter}">
             <f:then>
                 <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
             </f:then>
             <f:else>
-                <f:if condition="{hideResults} == false && {result.filter}">
+                <f:if condition="{showMismatchedResults} && {result.filter}">
                     <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
                 </f:if>
-                <f:if condition="{hideResults} == false && {result.filter} == false">
+                <f:if condition="{showMismatchedResults} && {result.filter} == false">
                     <f:render partial="Recommender/ResultListItem" arguments="{_all}"/>
                 </f:if>
             </f:else>

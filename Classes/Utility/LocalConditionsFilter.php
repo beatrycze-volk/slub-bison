@@ -25,11 +25,8 @@ namespace Slub\Bison\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use PhpOffice\PhpSpreadsheet\IOFactory;
-use TYPO3\CMS\Core\Log\LogManager;
 use Slub\Bison\Model\Filter;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -40,15 +37,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @subpackage bison
  * @access public
  */
-class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
+class LocalConditionsFilter extends SpreadsheetLoader
 {
     /**
-     * This holds the logger
-     *
-     * @var LogManager
+     * @var array
      * @access private
      */
-    private $logger;
+    private $extConfig;
 
     /**
      * This holds the filters from CSV file
@@ -68,22 +63,21 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
 
     public function __construct()
     {
-        $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(get_class($this));
-        
-        $results = [];
-        $spreadsheet = IOFactory::load('./fileadmin/bison/dummy.xlsx');
-        
-        foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
-            $results[] = $worksheet->toArray(null, false, true);
-        }
-        $spreadsheet->__destruct();
-        $spreadsheet = NULL;
+        parent::__construct('./fileadmin/bison/dummy.xlsx');
 
         $this->filters = [];
-        $data = $results[0];
-        for ($i = 1; $i < count($data); $i++) {
-            $this->filters[] = new Filter($data[$i][0], $data[$i][1], $data[$i][2], $data[$i][3], $data[$i][4], $data[$i][5]);
+        for ($i = 1; $i < count($this->data); $i++) {
+            $this->filters[] = new Filter(
+                $this->data[$i][0],
+                $this->data[$i][1],
+                $this->data[$i][2],
+                $this->data[$i][3],
+                $this->data[$i][4],
+                $this->data[$i][5]
+            );
         }
+
+        $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
         $this->getLicenses();
     }
@@ -95,6 +89,7 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
         for ($i = 0; $i < count($journals); $i++) {
             $this->applyIssnFilter($journals[$i]);
             $this->applyLicenseFilter($journals[$i], $license);
+            $this->applyMirrorJournalFilter($journals[$i]);
         }
     }
 
@@ -132,8 +127,15 @@ class LocalConditionsFilter implements \TYPO3\CMS\Core\SingletonInterface
         }
     }
 
+    private function applyMirrorJournalFilter(&$journal) {
+        $showMirrorJournals = filter_var($this->extConfig['showMirrorJournals'], FILTER_VALIDATE_BOOLEAN);
+        if (!$showMirrorJournals && $journal->getIsMirrorJournal()) {
+            $journal->setFilter(false);
+        }
+    }
+
     private function getLicenses() {
-        $configuredLicenses = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison')['licenses'];
+        $configuredLicenses = $this->extConfig['licenses'];
         $this->licenses = [];
         $this->convertLicense($configuredLicenses, 'cc0', "CC0");
         $this->convertLicense($configuredLicenses, 'ccby', "CC BY");

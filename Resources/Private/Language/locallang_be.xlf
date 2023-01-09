@@ -15,11 +15,17 @@
             <trans-unit id="config.contactUrl" xml:space="preserve">
 				<source>URL of the contact person</source>
 			</trans-unit>
-			<trans-unit id="config.filter" xml:space="preserve">
-				<source>Filter Settings</source>
+			<trans-unit id="config.display" xml:space="preserve">
+				<source>Display Settings</source>
 			</trans-unit>
-			<trans-unit id="config.hideResults" xml:space="preserve">
-				<source>Should results that violate local conditions not be displayed?</source>
+			 <trans-unit id="config.showMismatchedResults" xml:space="preserve">
+				<source>Should results that violate local conditions be displayed?</source>
+			</trans-unit>
+			<trans-unit id="config.showMirrorJournals" xml:space="preserve" approved="yes">
+				<source>Should mirror journals be displayed?</source>
+			</trans-unit>
+			<trans-unit id="config.license" xml:space="preserve">
+				<source>License Settings</source>
 			</trans-unit>
 			<trans-unit id="config.licenses" xml:space="preserve">
 				<source>Choose licenses for which results should be displayed</source>

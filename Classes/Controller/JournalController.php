@@ -30,7 +30,6 @@ namespace Slub\Bison\Controller;
 use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Model\Journal;
-use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -49,11 +48,6 @@ class JournalController extends AbstractController
     */
    protected $journalRepository;
 
-   /**
-    * @var LocalConditionsFilter
-    */
-    protected $localConditionsFilter;
-
    protected $idx;
 
    protected $journal;
@@ -64,14 +58,6 @@ class JournalController extends AbstractController
     public function injectJournalRepository(JournalRepository $journalRepository)
     {
         $this->journalRepository = $journalRepository;
-    }
-
-    /**
-     * @param LocalConditionsFilter $localConditionsFilter
-     */
-    public function injectLocalConditionsFilter(LocalConditionsFilter $localConditionsFilter)
-    {
-        $this->localConditionsFilter = $localConditionsFilter;
     }
 
     /**
@@ -99,6 +85,7 @@ class JournalController extends AbstractController
                     $content = $response->getBody()->getContents();
                     $journalJson = json_decode($content);
                     $this->journal = new Journal($journalJson);
+                    $this->mirrorJournalsFilter->assignMirrorJournal($this->journal);
                     $this->localConditionsFilter->applyIssnFilter($this->journal);
                 }
             } catch(Exception $e) {

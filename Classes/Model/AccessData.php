@@ -51,12 +51,31 @@ class AccessData
     /**
      * __construct
      */
-    public function __construct($journal)
+    public function __construct()
     {
-        $this->url = $journal->ref_journal;
-        $this->authorInstructionsUrl = $journal->ref_author_instructions;
-        $this->aimsAndScopeUrl = $journal->aims_scope;
-        $this->editorialBoardUrl = $journal->editorial_board_url;
+    }
+
+    /**
+     * __construct
+     */
+    public static function fromJournal($journal)
+    {
+        $instance = new self();
+        $instance->url = $journal->ref_journal;
+        $instance->authorInstructionsUrl = $journal->ref_author_instructions;
+        $instance->aimsAndScopeUrl = $journal->aims_scope;
+        $instance->editorialBoardUrl = $journal->editorial_board_url;
+        return $instance;
+    }
+
+    /**
+     * __construct
+     */
+    public static function fromUrl($url)
+    {
+        $instance = new self();
+        $instance->url = $url;
+        return $instance;
     }
 
     /**

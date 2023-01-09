@@ -1,29 +1,34 @@
-# customcategory=Filter=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.filter
-# customsubcategory=Display=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.hideResults
+# customcategory=Display=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.display
+# customcategory=License=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.license
 # customsubcategory=Licenses=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.licenses
 # customcategory=Contact=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.contact
 
-#Filter settings
+#Display settings
 
-# cat=Filter/Display/10; type=boolean; label=Results will be hidden
-hideResults = 1
-# cat=Filter/Licenses/10; type=boolean; label=CC0
+# cat=Display/10; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.showMismatchedResults
+showMismatchedResults = 1
+# cat=Display/20; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.showMirrorJournals
+showMirrorJournals = 1
+
+#License settings
+
+# cat=License/Licenses/10; type=boolean; label=CC0
 licenses.cc0 = 0
-# cat=Filter/Licenses/20; type=boolean; label=CC BY
+# cat=License/Licenses/20; type=boolean; label=CC BY
 licenses.ccby = 0
-# cat=Filter/Licenses/30; type=boolean; label=CC BY-NC
+# cat=License/Licenses/30; type=boolean; label=CC BY-NC
 licenses.ccbync = 0
-# cat=Filter/Licenses/40; type=boolean; label=CC BY-NC-ND
+# cat=License/Licenses/40; type=boolean; label=CC BY-NC-ND
 licenses.ccbyncnd = 0
-# cat=Filter/Licenses/50; type=boolean; label=CC BY-NC-SA
+# cat=License/Licenses/50; type=boolean; label=CC BY-NC-SA
 licenses.ccbyncsa = 0
-# cat=Filter/Licenses/60; type=boolean; label=CC BY-ND
+# cat=License/Licenses/60; type=boolean; label=CC BY-ND
 licenses.ccbynd = 0
-# cat=Filter/Licenses/70; type=boolean; label=CC BY-SA
+# cat=License/Licenses/70; type=boolean; label=CC BY-SA
 licenses.ccbysa = 0
-# cat=Filter/Licenses/80; type=boolean; label=Public domain
+# cat=License/Licenses/80; type=boolean; label=Public domain
 licenses.publicDomain = 0
-# cat=Filter/Licenses/90; type=boolean; label=Publisher's own license
+# cat=License/Licenses/90; type=boolean; label=Publisher's own license
 licenses.publisher = 0
 
 #Contact person settings

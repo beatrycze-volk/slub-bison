@@ -2,7 +2,7 @@
       data-namespace-typo3-fluid="true">
 
 <f:variable name="whiteListLabel">
-    <f:if condition="{hideResults} == false && {result.filter}">
+    <f:if condition="{showMismatchedResults} && {result.filter}">
         <f:then>style=background:#E1FAE1</f:then>
         <f:else></f:else>
     </f:if>
@@ -37,6 +37,10 @@
                     <h5 class="card-title">
                         <a href="/journal?tx_bison[id]={result.id}" class="stretched-link">{result.title}</a>
                     </h5>
+                    <f:if condition="{result.isMirrorJournal}">
+                        <p class="card-text">(<f:translate key="result.mirrorJournal" default="Mirror Journal"/>)</p>
+                    </f:if>
+
                     <p class="card-text"><f:translate key="result.publisher" default="Publisher"/>: {result.publisher.name}</p>
                     <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>:
                         <f:for each="{result.keywords}" as="keyword">
