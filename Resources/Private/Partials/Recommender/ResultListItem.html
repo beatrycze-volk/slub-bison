@@ -22,6 +22,7 @@
 <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
 <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
 <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
+<f:variable name="keywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword}, </f:for></f:variable>
 <li class="mt-2 mb-2" data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}">
     <div class="card" {whiteListLabel}>
         <div class="card-body container">
@@ -42,11 +43,7 @@
                     </f:if>
 
                     <p class="card-text"><f:translate key="result.publisher" default="Publisher"/>: {result.publisher.name}</p>
-                    <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>:
-                        <f:for each="{result.keywords}" as="keyword">
-                            {keyword.keyword}, 
-                        </f:for>
-                    </p>
+                    <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>: <bison:trim content="{keywords}"/></p>
                 </div>
             </div>
         </div>
