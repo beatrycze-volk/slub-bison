@@ -102,8 +102,8 @@ class RecommenderController extends AbstractController
                     $this->view->assign('subjects', $this->getSubjects());
                     $this->view->assign('suggestLanguage', $this->getSuggestLanguage($result));
                     $this->view->assign('suggestSubject', $this->getSuggestSubject($result));
-                    $this->view->assign('showMismatchedResults', filter_var($this->extConfig['showMismatchedResults'], FILTER_VALIDATE_BOOLEAN));
-                    $this->view->assign('showMirrorJournals', filter_var($this->extConfig['showMirrorJournals'], FILTER_VALIDATE_BOOLEAN));
+                    $this->view->assign('displayMismatchedResults', filter_var($this->extConfig['displayMismatchedResults'], FILTER_VALIDATE_BOOLEAN));
+                    $this->view->assign('displayMirrorJournals', filter_var($this->extConfig['displayMirrorJournals'], FILTER_VALIDATE_BOOLEAN));
                     $this->view->assign('isFilterTooStrict', $this->isFilterTooStrict());
                     $this->view->assign('countResults', $this->countResultsAfterFilter());
                     $this->view->assign('results', $this->results);

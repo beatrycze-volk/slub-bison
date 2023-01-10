@@ -6,10 +6,10 @@
 
 #Display settings
 
-# cat=Display/10; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.showMismatchedResults
-showMismatchedResults = 1
-# cat=Display/20; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.showMirrorJournals
-showMirrorJournals = 1
+# cat=Display/10; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.displayMismatchedResults
+displayMismatchedResults = 1
+# cat=Display/20; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.displayMirrorJournals
+displayMirrorJournals = 1
 
 #File settings
 

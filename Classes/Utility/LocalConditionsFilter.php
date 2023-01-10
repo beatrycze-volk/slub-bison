@@ -119,8 +119,8 @@ class LocalConditionsFilter extends SpreadsheetLoader
     }
 
     private function applyMirrorJournalFilter(&$journal) {
-        $showMirrorJournals = filter_var($this->extConfig['showMirrorJournals'], FILTER_VALIDATE_BOOLEAN);
-        if (!$showMirrorJournals && $journal->getIsMirrorJournal()) {
+        $displayMirrorJournals = filter_var($this->extConfig['displayMirrorJournals'], FILTER_VALIDATE_BOOLEAN);
+        if (!$displayMirrorJournals && $journal->getIsMirrorJournal()) {
             $journal->setFilter(false);
         }
     }

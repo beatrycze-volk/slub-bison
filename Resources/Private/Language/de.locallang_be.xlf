@@ -23,11 +23,11 @@
 				<source>Display Settings</source>
 				<target>Anzeigeeinstellungen</target>
 			</trans-unit>
-            <trans-unit id="config.showMismatchedResults" xml:space="preserve" approved="yes">
+            <trans-unit id="config.displayMismatchedResults" xml:space="preserve" approved="yes">
 				<source>Should results that violate local conditions be displayed?</source>
 				<target>Sollen Ergebnisse, die gegen lokale Bedingungen verstoßen, angezeigt werden?</target>
 			</trans-unit>
-			<trans-unit id="config.showMirrorJournals" xml:space="preserve" approved="yes">
+			<trans-unit id="config.displayMirrorJournals" xml:space="preserve" approved="yes">
 				<source>Should mirror journals be displayed?</source>
 				<target>Sollen Spiegeljournale angezeigt werden?</target>
 			</trans-unit>

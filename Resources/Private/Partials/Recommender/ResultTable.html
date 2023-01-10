@@ -22,15 +22,15 @@
         </thead>
         <tbody>
             <f:for each="{results}" as="result">
-                <f:if condition="!{showMismatchedResults} && {result.filter}">
+                <f:if condition="!{displayMismatchedResults} && {result.filter}">
                     <f:then>
                         <f:render partial="Recommender/ResultTableRow" arguments="{_all}"/>
                     </f:then>
                     <f:else>
-                        <f:if condition="{showMismatchedResults} && {result.filter}">
+                        <f:if condition="{displayMismatchedResults} && {result.filter}">
                             <f:render partial="Recommender/ResultTableRow" arguments="{_all}"/>
                         </f:if>
-                        <f:if condition="{showMismatchedResults} && {result.filter} == false">
+                        <f:if condition="{displayMismatchedResults} && {result.filter} == false">
                             <f:render partial="Recommender/ResultTableRow" arguments="{_all}"/>
                         </f:if>
                     </f:else>
