@@ -9,8 +9,13 @@ $(document).ready(function() {
         tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl)
     )
 
-    const keywordsList = document.getElementById("list-keywords").querySelectorAll("li"); 
-    const keywords = $("#list-keywords :input");
+    var keywordsList;
+    var keywords;
+    var keywordsElement = document.getElementById("list-keywords");
+    if (keywordsElement) {
+        keywordsList = keywordsElement.querySelectorAll("li"); 
+        keywords = $("#list-keywords :input");
+    }
 
     var retainsAuthorCopyright = false;
     var publicationTimeMax = false;
@@ -25,13 +30,13 @@ $(document).ready(function() {
         filter();
     }
 
-    $('#btnlist').trigger('click');
+    $('#btn_list').trigger('click');
 
-    $('#btnlist').click(function() {
+    $('#btn_list').click(function() {
         changeResultView('#result-table', '#result-list');
     });
     
-    $('#btntable').click(function() {
+    $('#btn_table').click(function() {
         changeResultView('#result-list', '#result-table');
     });
 
@@ -41,6 +46,25 @@ $(document).ready(function() {
         $('#id_title').val('');
         $('#id_abstract').val('');
         $('#id_references').val('');
+    });
+
+    $('#btn-fetch').click(function() {
+        $.get(
+            "https://service.tib.eu/bison/api/fetchdoi",
+            {
+                doi: $('#input-doi').val(),
+                format: "json"
+            }
+        )
+        .done(function(json) {
+            $('#id_title').val(json.title);
+            $('#id_abstract').val(json.abstract);
+            $('#id_references').val(json.references);
+            $("#modal-doi .btn-close").click();
+        })
+        .fail(function() {
+            $('#validation-doi-feedback').show();
+        })
     });
 
     $('#flexCheckDefault').bind('change', function () {

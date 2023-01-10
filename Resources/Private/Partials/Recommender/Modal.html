@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+      
+<div class="modal fade" id="modal-doi" tabindex="-1" aria-labelledby="modal-doi-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-doi-label">Fetch DOI</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>To ease entering the details of an existing article, just enter the DOI or arXiv ID.<br> Occasionally information might be missing from the fetched data if e.g. the abstract is not available in Crossref.</p>
+                <div class="input-group has-validation">
+                    <input placeholder="e.g. 10.2218/ijdc.v12i2.578" type="text" id="input-doi" class="form-control">
+                    <div id="validation-doi-feedback" class="invalid-feedback" style="display: none;">
+                        This DOI could not be found.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-fetch">Fetch</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
