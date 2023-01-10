@@ -19,6 +19,7 @@
         </f:for>
     </ul>
 </f:variable>
+<f:variable name="dataApc"><f:if condition="{result.filter.price}"><f:then>{result.filter.price.euro}</f:then><f:else>{result.apcMax.euro}</f:else></f:if></f:variable>
 <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
 <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
 <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>
@@ -33,7 +34,7 @@
 <f:variable name="languages"><f:for each="{result.languages}" as="language">{language.code}, </f:for></f:variable>
 <f:variable name="reviews"><f:for each="{result.editorialReviewProcesses}" as="review">{review.process}, </f:for></f:variable>
 
-<tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{result.apcMax.euro}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}" {whiteListLabel}>
+<tr data-score="{result.score.value}" data-title="{result.title}" data-publisher="{result.publisher.name}" data-apc="{dataApc}" data-publication-time="{result.publicationTimeWeeks}" data-copyright="{result.retainsCopyrightAuthor}" data-keywords="{dataKeywords}" data-languages="{dataLanguages}" data-subjects="{dataSubjects}" {whiteListLabel}>
     <th scope="row">
         <a href="/journal?tx_bison[id]={result.id}">{result.title}</a>
     </th>

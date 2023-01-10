@@ -147,9 +147,16 @@ class RecommenderController extends AbstractController
     private function getMaxApc() {
         $apc = 0;
         foreach ($this->results as $result) {
-            $euro = $result->getApcMax()->getEuro();
-            if ($euro != NULL && $apc < $euro) {
-                $apc =  $euro;
+            if ($result->getFilter() && !empty($result->getFilter()->getPrice())) {
+                $euro = $result->getFilter()->getPrice()->getEuro();
+                if ($euro != NULL && $apc < $euro) {
+                    $apc =  $euro;
+                }
+            } else {
+                $euro = $result->getApcMax()->getEuro();
+                if ($euro != NULL && $apc < $euro) {
+                    $apc =  $euro;
+                }
             }
         }
         return ceil($apc / 100) * 100;
