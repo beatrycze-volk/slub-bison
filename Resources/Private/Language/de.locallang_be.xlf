@@ -54,6 +54,14 @@
 				<source>Choose licenses for which results should be displayed</source>
 				<target>Wählen Sie Lizenzen aus, für die Ergebnisse angezeigt werden sollen</target>
 			</trans-unit>
+			<trans-unit id="config.system" xml:space="preserve" approved="yes">
+				<source>System Settings</source>
+				<target>Systemeinstellungen</target>
+			</trans-unit>
+			<trans-unit id="config.systemUserAgent" xml:space="preserve" approved="yes">
+				<source>User-Agent</source>
+				<target>User-Agent</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

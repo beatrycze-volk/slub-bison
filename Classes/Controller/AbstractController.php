@@ -111,7 +111,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             // You can set any number of default request options.
             'timeout'  => 10.0,
             'headers' => [
-                'User-Agent' => 'SLUB/bison-extension',
+                'User-Agent' => $this->extConfig['userAgent'],
             ],
         ]);
         

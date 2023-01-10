@@ -42,6 +42,12 @@
 			<trans-unit id="config.licenses" xml:space="preserve">
 				<source>Choose licenses for which results should be displayed</source>
 			</trans-unit>
+			<trans-unit id="config.system" xml:space="preserve">
+				<source>System Settings</source>
+			</trans-unit>
+			<trans-unit id="config.systemUserAgent" xml:space="preserve">
+				<source>User-Agent:INSTITUTION/bison-extension</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
