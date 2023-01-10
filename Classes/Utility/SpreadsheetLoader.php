@@ -60,7 +60,7 @@ abstract class SpreadsheetLoader
     public function __construct($filePath)
     {
         $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(get_class($this));
-        
+
         $results = [];
         $spreadsheet = IOFactory::load($filePath);
 

@@ -51,10 +51,10 @@ class IndexDatabaseList extends SpreadsheetLoader
     public function __construct()
     {
         parent::__construct('./fileadmin/bison/index_databases.xlsx');
-    
+
         $this->indexDatabases = [];
         for ($i = 1; $i < count($this->data); $i++) {
-            $this->$indexDatabases[] = new IndexDatabase(
+            $this->indexDatabases[] = new IndexDatabase(
                 $this->data[$i][0],
                 $this->data[$i][1],
                 $this->data[$i][2],

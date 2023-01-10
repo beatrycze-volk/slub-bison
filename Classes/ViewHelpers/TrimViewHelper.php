@@ -56,6 +56,6 @@ class TrimViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
-        return substr($arguments['content'], 0, -2);
+        return substr(trim($arguments['content']), 0, -1);
     }
 }
