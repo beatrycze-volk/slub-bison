@@ -1,4 +1,5 @@
 # customcategory=Display=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.display
+# customcategory=File=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.file
 # customcategory=License=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.license
 # customsubcategory=Licenses=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.licenses
 # customcategory=Contact=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.contact
@@ -9,6 +10,15 @@
 showMismatchedResults = 1
 # cat=Display/20; type=boolean; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.showMirrorJournals
 showMirrorJournals = 1
+
+#File settings
+
+# cat=File/10; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileFilters
+fileFilters = ./fileadmin/bison/dummy.xlsx
+# cat=File/20; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileDatabases
+fileDatabases = ./fileadmin/bison/index_databases.xlsx
+# cat=File/30; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileMirrorJournals
+fileMirrorJournals = ./fileadmin/bison/mirror_journals.xlsx
 
 #License settings
 

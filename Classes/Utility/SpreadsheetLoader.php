@@ -27,7 +27,7 @@ namespace Slub\Bison\Utility;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use TYPO3\CMS\Core\Log\LogManager;
-use Slub\Bison\Model\Filter;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -45,9 +45,15 @@ abstract class SpreadsheetLoader
      * This holds the logger
      *
      * @var LogManager
-     * @access private
+     * @access protected
      */
     protected $logger;
+
+    /**
+     * @var array
+     * @access protected
+     */
+    protected $extConfig;
 
     /**
      * This holds the data from CSV file
@@ -57,12 +63,13 @@ abstract class SpreadsheetLoader
      */
     protected $data;
 
-    public function __construct($filePath)
+    public function __construct($file)
     {
+        $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
         $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(get_class($this));
 
         $results = [];
-        $spreadsheet = IOFactory::load($filePath);
+        $spreadsheet = IOFactory::load($this->extConfig[$file]);
 
         foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $results[] = $worksheet->toArray(null, false, true);

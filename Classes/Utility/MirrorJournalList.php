@@ -50,7 +50,7 @@ class MirrorJournalList extends SpreadsheetLoader
      */
     public function __construct()
     {
-        parent::__construct('./fileadmin/bison/mirror_journals.csv');
+        parent::__construct('fileMirrorJournals');
     
         $this->mirrorJournals = [];
         for ($i = 2; $i < count($this->data); $i++) {

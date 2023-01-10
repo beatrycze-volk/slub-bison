@@ -24,6 +24,18 @@
 			<trans-unit id="config.showMirrorJournals" xml:space="preserve" approved="yes">
 				<source>Should mirror journals be displayed?</source>
 			</trans-unit>
+			<trans-unit id="config.file" xml:space="preserve">
+				<source>File Settings</source>
+			</trans-unit>
+			<trans-unit id="config.fileDatabases" xml:space="preserve">
+				<source>Path to file with index databases</source>
+			</trans-unit>
+			<trans-unit id="config.fileFilters" xml:space="preserve">
+				<source>Path to file with local filters</source>
+			</trans-unit>
+			<trans-unit id="config.fileMirrorJournals" xml:space="preserve">
+				<source>Path to file with mirror journals</source>
+			</trans-unit>
 			<trans-unit id="config.license" xml:space="preserve">
 				<source>License Settings</source>
 			</trans-unit>

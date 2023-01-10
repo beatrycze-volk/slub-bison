@@ -19,7 +19,7 @@
 				<source>URL of the contact person</source>
 				<target>URL des Ansprechpartners</target>
 			</trans-unit>
-			<trans-unit id="config.display" xml:space="preserve">
+			<trans-unit id="config.display" xml:space="preserve"  approved="yes">
 				<source>Display Settings</source>
 				<target>Anzeigeeinstellungen</target>
 			</trans-unit>
@@ -30,6 +30,21 @@
 			<trans-unit id="config.showMirrorJournals" xml:space="preserve" approved="yes">
 				<source>Should mirror journals be displayed?</source>
 				<target>Sollen Spiegeljournale angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="config.file" xml:space="preserve">
+				<source>File Settings</source>
+			</trans-unit>
+			<trans-unit id="config.fileDatabases" xml:space="preserve" approved="yes">
+				<source>Path to file with index databases</source>
+				<target>Pfad zur Datei mit Indexdatenbanken</target>
+			</trans-unit>
+			<trans-unit id="config.fileFilters" xml:space="preserve" approved="yes">
+				<source>Path to file with local filters</source>
+				<target>Pfad zur Datei mit lokalen Filtern</target>
+			</trans-unit>
+			<trans-unit id="config.fileMirrorJournals" xml:space="preserve" approved="yes">
+				<source>Path to file with mirror journals</source>
+				<target>Pfad zur Datei mit Spiegeljournalen</target>
 			</trans-unit>
 			<trans-unit id="config.license" xml:space="preserve">
 				<source>License Settings</source>

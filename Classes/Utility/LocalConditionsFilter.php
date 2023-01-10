@@ -26,7 +26,6 @@ namespace Slub\Bison\Utility;
  ***************************************************************/
 
 use Slub\Bison\Model\Filter;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -39,12 +38,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LocalConditionsFilter extends SpreadsheetLoader
 {
-    /**
-     * @var array
-     * @access private
-     */
-    private $extConfig;
-
     /**
      * This holds the filters from CSV file
      *
@@ -63,7 +56,7 @@ class LocalConditionsFilter extends SpreadsheetLoader
 
     public function __construct()
     {
-        parent::__construct('./fileadmin/bison/dummy.xlsx');
+        parent::__construct('fileFilters');
 
         $this->filters = [];
         for ($i = 1; $i < count($this->data); $i++) {
@@ -76,8 +69,6 @@ class LocalConditionsFilter extends SpreadsheetLoader
                 $this->data[$i][5]
             );
         }
-
-        $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
         $this->getLicenses();
     }

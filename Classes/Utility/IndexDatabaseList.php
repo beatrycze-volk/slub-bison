@@ -28,7 +28,7 @@ namespace Slub\Bison\Utility;
 use Slub\Bison\Model\IndexDatabase;
 
 /**
- * The class for handling filtering by mirror journals stored in CSV file.
+ * The class for handling assigning index databases stored in CSV file.
  * 
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
@@ -50,7 +50,7 @@ class IndexDatabaseList extends SpreadsheetLoader
      */
     public function __construct()
     {
-        parent::__construct('./fileadmin/bison/index_databases.xlsx');
+        parent::__construct('fileDatabases');
 
         $this->indexDatabases = [];
         for ($i = 1; $i < count($this->data); $i++) {
