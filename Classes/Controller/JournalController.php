@@ -85,7 +85,7 @@ class JournalController extends AbstractController
                     $content = $response->getBody()->getContents();
                     $journalJson = json_decode($content);
                     $this->journal = new Journal($journalJson);
-                    $this->mirrorJournalsFilter->assignMirrorJournal($this->journal);
+                    $this->mirrorJournalList->assignMirrorJournal($this->journal);
                     $this->localConditionsFilter->applyIssnFilter($this->journal);
                 }
             } catch(Exception $e) {

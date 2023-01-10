@@ -35,7 +35,7 @@ use Slub\Bison\Model\MirrorJournal;
  * @subpackage bison
  * @access public
  */
-class MirrorJournalsFilter extends SpreadsheetLoader
+class MirrorJournalList extends SpreadsheetLoader
 {
     /**
      * This holds the mirror journals from CSV file

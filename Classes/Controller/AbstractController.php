@@ -30,7 +30,7 @@ use Elastic\Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Slub\Bison\Utility\IndexDatabaseList;
-use Slub\Bison\Utility\MirrorJournalsFilter;
+use Slub\Bison\Utility\MirrorJournalList;
 use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -90,9 +90,9 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $localConditionsFilter;
 
     /**
-    * @var MirrorJournalsFilter
+    * @var MirrorJournalList
     */
-    protected $mirrorJournalsFilter;
+    protected $mirrorJournalList;
 
     /**
      * Initialize the plugin controller
@@ -125,7 +125,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
 
         $this->indexDatabaseList = new IndexDatabaseList();
         $this->localConditionsFilter = new LocalConditionsFilter();
-        $this->mirrorJournalsFilter = new MirrorJournalsFilter();
+        $this->mirrorJournalList = new MirrorJournalList();
     }
     
     protected function getContactPerson() { 

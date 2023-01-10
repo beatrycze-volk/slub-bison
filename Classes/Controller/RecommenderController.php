@@ -91,8 +91,8 @@ class RecommenderController extends AbstractController
                     }
 
                     $this->indexDatabaseList->assignIndexDatabases($this->results);
-                    $this->mirrorJournalsFilter->assignMirrorJournals($this->results);
-                    $this->mirrorJournalsFilter->markMirrorJournals($this->results);
+                    $this->mirrorJournalList->assignMirrorJournals($this->results);
+                    $this->mirrorJournalList->markMirrorJournals($this->results);
                     $this->localConditionsFilter->filter($this->results);
 
                     $this->view->assign('maxApc', $this->getMaxApc());
