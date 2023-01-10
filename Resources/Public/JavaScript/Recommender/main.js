@@ -226,10 +226,6 @@ $(document).ready(function() {
     function matchKeywords(row) {  
         if (checkedKeywords.length > 0) {
             for (let i = 0; i < checkedKeywords.length; i++) {
-                console.log(i);
-                console.log(row.getAttribute('data-keywords'));
-                console.log(checkedKeywords[i]);
-                console.log(row.getAttribute('data-keywords').includes(checkedKeywords[i]));
                 if(row.getAttribute('data-keywords').includes(checkedKeywords[i])) {
                     return true;
                 }
@@ -313,12 +309,8 @@ $(document).ready(function() {
                         break;
                     }
                 } else if(data === 'data-apc' || data === 'data-publication-time') {
-                    console.log(data);
-                    console.log(rowA);
-                    console.log(rowB);
                     if ((parseInt(rowA) || 0) > (parseInt(rowB) || 0)) {
                         tableSort = true;
-                        console.log(tableSort);
                         break;
                     }
                 } else {
