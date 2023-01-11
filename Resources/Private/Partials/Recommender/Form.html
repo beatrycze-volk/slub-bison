@@ -10,14 +10,14 @@
     <div class="mt-1">
         <label for="input-abstract"><f:translate key="label.abstract" default="Abstract"/></label>
         <div>
-            <textarea name="tx_bison[abstract]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.abstract')}" value="{viewData.requestData.abstract}" maxlength="5000" class="form-control" id="input-abstract"></textarea>
+            <textarea name="tx_bison[abstract]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.abstract')}" maxlength="5000" class="form-control" id="input-abstract">{viewData.requestData.abstract}</textarea>
         </div>
     </div>
     <div class="mt-1">
         <label for="input-references"><f:translate key="label.references" default="References"/></label>
         <a href="#" data-bs-toggle="tooltip" data-bs-original-title="The DOIs are extracted from the input. Other references are discarded.">?</a>
         <div>
-            <textarea name="tx_bison[references]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.references')}" value="{viewData.requestData.references}" maxlength="50000" class="form-control" id="input-references"></textarea>
+            <textarea name="tx_bison[references]" cols="40" rows="5" placeholder="{f:translate(key: 'placeholder.references')}" maxlength="50000" class="form-control" id="input-references">{viewData.requestData.references}</textarea>
         </div>
     </div>
     <f:form.submit class="btn btn-primary mb-2 mt-2" value="{f:translate(key: 'button.search')}" />
