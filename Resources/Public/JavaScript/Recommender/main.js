@@ -24,28 +24,28 @@ $(document).ready(function() {
     var subject = false;
     var checkedKeywords = [];
 
-    if ($('#suggest_language').length) {
-        language = $('#suggest_language').val();
+    if ($('#suggest-language').length) {
+        language = $('#suggest-language').val();
         $("#filter-languages").val(language);
         filter();
     }
 
-    $('#btn_list').trigger('click');
+    $('#button-list').trigger('click');
 
-    $('#btn_list').click(function() {
+    $('#button-list').click(function() {
         changeResultView('#result-table', '#result-list');
     });
     
-    $('#btn_table').click(function() {
+    $('#button-table').click(function() {
         changeResultView('#result-list', '#result-table');
     });
 
-    $('#btn_clear').click(function(e) {
+    $('#button-clear').click(function(e) {
         e.preventDefault();
         $('#results').hide();
-        $('#id_title').val('');
-        $('#id_abstract').val('');
-        $('#id_references').val('');
+        $('#input-title').val('');
+        $('#input-abstract').val('');
+        $('#input-references').val('');
     });
 
     $('#btn-fetch').click(function() {
@@ -57,9 +57,9 @@ $(document).ready(function() {
             }
         )
         .done(function(json) {
-            $('#id_title').val(json.title);
-            $('#id_abstract').val(json.abstract);
-            $('#id_references').val(json.references);
+            $('#input-title').val(json.title);
+            $('#input-abstract').val(json.abstract);
+            $('#input-references').val(json.references);
             $("#modal-doi .btn-close").click();
         })
         .fail(function() {
@@ -67,7 +67,7 @@ $(document).ready(function() {
         })
     });
 
-    $('#flexCheckDefault').bind('change', function () {
+    $('#checkbox-author-rights').bind('change', function () {
         if ($(this).is(':checked')) {
             retainsAuthorCopyright = true;
         }
@@ -78,7 +78,7 @@ $(document).ready(function() {
     });
 
     $('.form-check-input').bind('change', function () {
-        if ($(this).is(':checked') && $(this).id != '#flexCheckDefault') {
+        if ($(this).is(':checked') && $(this).id != '#checkbox-author-rights') {
             checkedKeywords.push($(this).val());
         }
         else {
@@ -90,11 +90,11 @@ $(document).ready(function() {
         filter();
     });
 
-    $(document).on('input change', '#publication_time_max', function() {
+    $(document).on('input change', '#input-publication-time-max', function() {
         publicationTimeMax = $(this).val();
-        var labelParts = $("#publication_time_max_label").text().split(' ');
-        $("#publication_time_max_label").empty();
-        $("#publication_time_max_label").append(
+        var labelParts = $("#label-publication-time-max").text().split(' ');
+        $("#label-publication-time-max").empty();
+        $("#label-publication-time-max").append(
             '<b>'.concat(
                 labelParts[0], ' ', labelParts[1], ' ', labelParts[2], '</b> ', publicationTimeMax, ' ', labelParts[4]
             )
@@ -102,11 +102,11 @@ $(document).ready(function() {
         filter();
     });
 
-    $(document).on('input change', '#apcs_max', function() {
+    $(document).on('input change', '#input-apc-max', function() {
         apcMax = $(this).val();
-        var labelParts = $("#apcs_max_label").text().split(' ');
-        $("#apcs_max_label").empty();
-        $("#apcs_max_label").append(
+        var labelParts = $("#label-apc-max").text().split(' ');
+        $("#label-apc-max").empty();
+        $("#label-apc-max").append(
             '<b>'.concat(
                 labelParts[0], ' ', labelParts[1], ' ', labelParts[2], ' ', labelParts[3], '</b> ', apcMax, ' ', labelParts[5]
             )
