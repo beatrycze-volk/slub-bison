@@ -45,15 +45,22 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
  * @package TYPO3
  * @subpackage bison
  * @access public
+ * @property JournalRepository $journalRepository
+ * @property array<Journal> $results This holds the journals for displaying to the frontend
  */
 class RecommenderController extends AbstractController
 {
     /**
     * @var JournalRepository
+    * @access private
     */
-    protected $journalRepository;
+    private $journalRepository;
 
-    protected $results;
+    /**
+    * @var array<Journal>
+    * @access private
+    */
+    private $results;
 
     /**
      * @param JournalRepository $journalRepository
@@ -117,10 +124,17 @@ class RecommenderController extends AbstractController
         $this->view->assign('viewData', $this->viewData);
     }
 
+    /**
+     * Checks if local filters are too strict. It is a case when after
+     * filtering we have no results, but without filters there are results.
+     */
     private function isFilterTooStrict() {
         return $this->countResultsAfterFilter() == 0 && count($this->results) > 0;
     }
 
+    /**
+     * Counts all results which match to filter conditions.
+     */
     private function countResultsAfterFilter() {
         $count = 0;
         foreach ($this->results as $result) {
@@ -131,18 +145,29 @@ class RecommenderController extends AbstractController
         return $count;
     }
 
+    /**
+     * Gets the language suggested for results.
+     */
     private function getSuggestLanguage($result) {
         if ($result->language != NULL) {
             return new Language($result->language);
         }
     }
 
+    /**
+     * Gets the subject suggested for results.
+     */
     private function getSuggestSubject($result) {
         if ($result->subject->code != NULL) {
             return Subject::fromSubject($result->subject);
         }
     }
 
+    /**
+     * Gets the max APC for client side filter. APC can be stored
+     * in filter field (when overwritten by local data)
+     * or in APC max field.
+     */
     private function getMaxApc() {
         $apc = 0;
         foreach ($this->results as $result) {
@@ -161,6 +186,9 @@ class RecommenderController extends AbstractController
         return ceil($apc / 100) * 100;
     }
 
+    /**
+     * Gets the max publication time for client side filter.
+     */
     private function getMaxPublicationTime() {
         $weeks = 0;
         foreach ($this->results as $result) {
@@ -171,6 +199,9 @@ class RecommenderController extends AbstractController
         return $weeks;
     }
 
+    /**
+     * Gets the keywords for client side filter.
+     */
     private function getKeywords() {
         $keywords = [];
         foreach ($this->results as $result) {
@@ -185,6 +216,9 @@ class RecommenderController extends AbstractController
         return $keywords;
     }
 
+    /**
+     * Gets the languages for client side filter.
+     */
     private function getLanguages() {
         $languages = [];
         foreach ($this->results as $result) {
@@ -201,6 +235,9 @@ class RecommenderController extends AbstractController
         return $languages;
     }
 
+    /**
+     * Gets the subjects for client side filter.
+     */
     private function getSubjects() {
         $subjects = [];
         foreach ($this->results as $result) {

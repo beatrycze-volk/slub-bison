@@ -52,7 +52,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     use LoggerAwareTrait;
 
     /**
-     * @var 
+     * @var Client
      * @access protected
      */
     protected $client;   
@@ -64,7 +64,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $extConfig;
 
     /**
-     * This holds the request parameter
+     * This holds the request parameters
      *
      * @var array
      * @access protected
@@ -81,27 +81,31 @@ abstract class AbstractController extends ActionController implements LoggerAwar
 
     /**
     * @var IndexDatabaseList
+    * @access protected
     */
     protected $indexDatabaseList;
 
     /**
     * @var LocalConditionsFilter
+    * @access protected
     */
     protected $localConditionsFilter;
 
     /**
     * @var MirrorJournalList
+    * @access protected
     */
     protected $mirrorJournalList;
 
     /**
-     * Initialize the plugin controller
+     * This is the constructor to initialize controllers.
      *
-     * @access protected
+     * @access public
+     *
      * @return void
      */
-    protected function initialize()
-    {   
+    public function __construct()
+    {  
         // Get extension configuration.
         $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
@@ -127,24 +131,18 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         $this->localConditionsFilter = new LocalConditionsFilter();
         $this->mirrorJournalList = new MirrorJournalList();
     }
-    
+    /**
+     * Gets contact data stored in extension configuration.
+     *
+     * @access protected
+     *
+     * @return array 
+     */
     protected function getContactPerson() { 
         return [
             'name' => $this->extConfig['contactName'],
             'email'=> $this->extConfig['contactEmail'],
             'url' => $this->extConfig['contactUrl']
         ];
-    }
-
-    /**
-     * This is the constructor
-     *
-     * @access public
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->initialize();
     }
 }

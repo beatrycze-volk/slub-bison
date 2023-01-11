@@ -37,19 +37,29 @@ use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 /**
- * The journal controller for the Bison extension
+ * The journal controller for the Bison extension.
+ * 
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property JournalRepository $journalRepository
+ * @property Journal $journal This holds the journal for displaying to the frontend
  */
 class JournalController extends AbstractController
 {
 
     /**
     * @var JournalRepository
+    * @access private
     */
-   protected $journalRepository;
+   private $journalRepository;
 
-   protected $idx;
-
-   protected $journal;
+   /**
+    * @var Journal
+    * @access private
+    */
+   private $journal;
 
     /**
      * @param JournalRepository $journalRepository
@@ -60,7 +70,9 @@ class JournalController extends AbstractController
     }
 
     /**
-     * The recommender function returning journals based on title etc.
+     * The journal function returning one journal based on idx.
+     * 
+     * @access public
      */
     public function mainAction() {
         $this->getJournal();
@@ -70,26 +82,27 @@ class JournalController extends AbstractController
         $this->view->assign('viewData', $this->viewData);
     }
 
+    /**
+     * Gets journal from API.
+     * 
+     * @access private
+     */
     private function getJournal() {
-        // query journal only if it is not yet queried
-        if ($this->idx != $this->requestData['id']) {
-            $this->idx = $this->requestData['id'];
-            try {
-                $response = $this->client->request(
-                    'GET',
-                    'journal/' . $this->idx
-                );
+        try {
+            $response = $this->client->request(
+                'GET',
+                'journal/' . $this->requestData['id']
+            );
     
-                if ($response->getStatusCode() == 200) {
-                    $content = $response->getBody()->getContents();
-                    $journalJson = json_decode($content);
-                    $this->journal = new Journal($journalJson);
-                    $this->mirrorJournalList->assignMirrorJournal($this->journal);
-                    $this->localConditionsFilter->applyIssnFilter($this->journal);
-                }
-            } catch(Exception $e) {
-                $this->logger->error('Request error: ' + $e->getMessage());
+            if ($response->getStatusCode() == 200) {
+                $content = $response->getBody()->getContents();
+                $journalJson = json_decode($content);
+                $this->journal = new Journal($journalJson);
+                $this->mirrorJournalList->assignMirrorJournal($this->journal);
+                $this->localConditionsFilter->applyIssnFilter($this->journal);
             }
+        } catch(Exception $e) {
+            $this->logger->error('Request error: ' + $e->getMessage());
         }
     }
 }
