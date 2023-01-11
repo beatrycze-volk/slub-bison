@@ -28,7 +28,6 @@ namespace Slub\Bison\Controller;
  ***************************************************************/
 
 use Slub\Bison\Domain\Repository\JournalRepository;
-use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Model\Journal;
 use Slub\Bison\Model\Language;
 use Slub\Bison\Model\Subject;

@@ -28,7 +28,6 @@ namespace Slub\Bison\Controller;
  ***************************************************************/
 
 use Slub\Bison\Domain\Repository\JournalRepository;
-use Slub\Bison\Exception\IdNotFoundException;
 use Slub\Bison\Model\Journal;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
