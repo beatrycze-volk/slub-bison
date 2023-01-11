@@ -137,51 +137,6 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     }
 
     /**
-     * Override getErrorFlashMessage to present
-     * nice flash error messages.
-     *
-     * @return string
-     */
-    protected function getErrorFlashMessage(): string
-    {
-        $defaultFlashMessage = parent::getErrorFlashMessage();
-        $localLangKey = sprintf('error.%s.%s', $this->request->getControllerName(), $this->actionMethodName);
-        return $this->translate($localLangKey, $defaultFlashMessage);
-    }
-
-    /**
-     * Helper function to render localized flash messages
-     *
-     * @param string $action
-     * @param integer $severity optional severity code. One of the t3lib_FlashMessage constants
-     * @return void
-     */
-    public function addLocalizedFlashMessage(string $action, int $severity = FlashMessage::OK): void
-    {
-        $messageLocalLangKey = sprintf('flashmessage.%s.%s', $this->request->getControllerName(), $action);
-        $localizedMessage = $this->translate($messageLocalLangKey, '[' . $messageLocalLangKey . ']');
-        $titleLocalLangKey = sprintf('%s.title', $messageLocalLangKey);
-        $localizedTitle = $this->translate($titleLocalLangKey, '[' . $titleLocalLangKey . ']');
-        $this->addFlashMessage($localizedMessage, $localizedTitle, $severity);
-    }
-
-    /**
-     * Helper function to use localized strings in BlogExample controllers
-     *
-     * @param string $key local lang key
-     * @param string $defaultMessage
-     * @return string
-     */
-    protected function translate(string $key, string $defaultMessage = ''): string
-    {
-        $message = LocalizationUtility::translate($key, 'SlubBison');
-        if ($message === null) {
-            $message = $defaultMessage;
-        }
-        return $message;
-    }
-
-    /**
      * This is the constructor
      *
      * @access public
