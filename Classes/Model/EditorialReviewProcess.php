@@ -16,6 +16,12 @@ namespace Slub\Bison\Model;
 
 /**
  * EditorialReviewProcess DTO
+ * 
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $process This holds the name of editorial review process
  */
 class EditorialReviewProcess
 {
@@ -27,7 +33,11 @@ class EditorialReviewProcess
     protected $process;
 
     /**
-     * __construct
+     * Constructor for editorial review process
+     * 
+     * @access public
+     * 
+     * @param string $process: the name of the process
      */
     public function __construct($process)
     {

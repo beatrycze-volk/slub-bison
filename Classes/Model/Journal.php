@@ -16,18 +16,33 @@ namespace Slub\Bison\Model;
 
 /**
  * Journal DTO
+ * 
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $idx This holds the xid of the journal
+ * @property string $id This holds the id of the journal
+ * @property Score $id This holds the score which informs how much the searched article matches to this journal
+ * @property Price $apcMax This holds the P-ISSN of the journal
+ * @property string $pIssn This holds the P-ISSN of the journal
+ * @property string $eIssn This holds the E-ISSN of the journal
+ * @property bool $pubMed This holds the information if the journal is indexed in PubMed database
+ * @property bool $openAlex This holds the information if the journal is indexed in Open Alex database
+ * @property bool $webOfScience This holds the information if the journal is indexed in Web of Science database
+ * @property bool $scopus This holds the information if the journal is indexed in Scopus database
  */
 class Journal
 {
     /**
-     * idx
+     * idx of the journal
      *
      * @var string
      */
     protected $idx;
 
     /**
-     * id
+     * id of the journal
      *
      * @var string
      */
@@ -41,21 +56,21 @@ class Journal
     protected $score;
 
     /**
-     * APC max
+     * maximal article processing charge (APC)
      *
-     * @var Apc
+     * @var Price
      */
     protected $apcMax;
 
     /**
-     * E-ISSN
+     * E-ISSN of the journal
      *
      * @var string
      */
     protected $eIssn;
 
     /**
-     * P-ISSN
+     * P-ISSN of the journal
      *
      * @var string
      */
@@ -83,7 +98,7 @@ class Journal
     protected $planSCompliance;
 
     /**
-     * author retains copyright
+     * information if the author retains copyright
      *
      * @var bool
      */

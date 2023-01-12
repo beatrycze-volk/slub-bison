@@ -16,10 +16,17 @@ namespace Slub\Bison\Model;
 
 /**
  * Article DTO
+ * 
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $title This holds the article's title
+ * @property string $doi This holds the article's DOI
+ * @property string $type This holds the possible types of article: 'title', 'abstract' and 'doi'
  */
 class Article
 {
-
     /**
      * title
      *
@@ -43,7 +50,12 @@ class Article
     protected $type;
 
     /**
-     * __construct
+     * Constructor for article
+     * 
+     * @access public
+     * 
+     * @param array $article: JSON article
+     * @param string $type: article type
      */
     public function __construct($article, $type)
     {

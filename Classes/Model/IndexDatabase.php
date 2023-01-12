@@ -15,19 +15,31 @@ namespace Slub\Bison\Model;
  */
 
 /**
- * Journal DTO
+ * IndexDatabase DTO - this holds the information about the databases
+ * in which the journal is indexed. This information comes from the CSV file.
+ * 
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $pIssn This holds the P-ISSN of the journal
+ * @property string $eIssn This holds the E-ISSN of the journal
+ * @property bool $pubMed This holds the information if the journal is indexed in PubMed database
+ * @property bool $openAlex This holds the information if the journal is indexed in Open Alex database
+ * @property bool $webOfScience This holds the information if the journal is indexed in Web of Science database
+ * @property bool $scopus This holds the information if the journal is indexed in Scopus database
  */
 class IndexDatabase
 {
     /**
-     * P-ISSN
+     * P-ISSN of the journal
      *
      * @var string
      */
     protected $pIssn;
 
     /**
-     * E-ISSN
+     * E-ISSN of the journal
      *
      * @var string
      */
@@ -62,7 +74,16 @@ class IndexDatabase
     protected $scopus;
 
     /**
-     * __construct
+     * Constructor for index database
+     * 
+     * @access public
+     * 
+     * @param string $pIssn: the P-ISSN of the journal
+     * @param string $eIssn: the E-ISSN of the journal
+     * @param string $pubMed: format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $openAlex: format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $webOfScience: format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $scopus: format 'Y' or 'N' - if 'Y', the journal is indexed in database
      */
     public function __construct($pIssn, $eIssn, $pubMed, $openAlex, $webOfScience, $scopus)
     {
@@ -75,7 +96,7 @@ class IndexDatabase
     }
 
     /**
-     * Returns the P-ISSN
+     * Returns the P-ISSN of the journal
      *
      * @return string
      */
@@ -85,7 +106,7 @@ class IndexDatabase
     }
 
     /**
-     * Returns the E-ISSN
+     * Returns the E-ISSN of the journal
      *
      * @return string
      */
