@@ -16,7 +16,7 @@ namespace Slub\Bison\Model;
 
 /**
  * Access Data DTO
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -28,6 +28,7 @@ namespace Slub\Bison\Model;
  */
 class AccessData
 {
+
     /**
      * url of the journal's webpage
      *
@@ -65,13 +66,13 @@ class AccessData
 
     /**
      * Constructor from journal JSON
-     * 
+     *
      * @access public
-     * 
+     *
      * @static
-     * 
-     * @param array $journal: JSON journal 
-     * 
+     *
+     * @param array $journal JSON journal
+     *
      * @return AccessData instance of this class
      */
     public static function fromJournal($journal)
@@ -86,13 +87,13 @@ class AccessData
 
     /**
      * Constructor from URL
-     * 
+     *
      * @access public
-     * 
+     *
      * @static
-     * 
-     * @param string $url: URL of the webpage of the journal
-     * 
+     *
+     * @param string $url URL of the webpage of the journal
+     *
      * @return AccessData instance of this class
      */
     public static function fromUrl($url)

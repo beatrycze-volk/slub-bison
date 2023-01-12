@@ -2,28 +2,14 @@
 
 namespace Slub\Bison\Controller;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
- *  (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>, SLUB
+ */
 
 use GuzzleHttp\Client;
 use Elastic\Elasticsearch\ClientBuilder;
@@ -55,7 +41,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
      * @var Client
      * @access protected
      */
-    protected $client;   
+    protected $client;
 
     /**
      * @var array
@@ -80,21 +66,21 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $viewData;
 
     /**
-    * @var IndexDatabaseList
-    * @access protected
-    */
+     * @var IndexDatabaseList
+     * @access protected
+     */
     protected $indexDatabaseList;
 
     /**
-    * @var LocalConditionsFilter
-    * @access protected
-    */
+     * @var LocalConditionsFilter
+     * @access protected
+     */
     protected $localConditionsFilter;
 
     /**
-    * @var MirrorJournalList
-    * @access protected
-    */
+     * @var MirrorJournalList
+     * @access protected
+     */
     protected $mirrorJournalList;
 
     /**
@@ -105,25 +91,28 @@ abstract class AbstractController extends ActionController implements LoggerAwar
      * @return void
      */
     public function __construct()
-    {  
+    {
         // Get extension configuration.
         $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
 
-        $this->client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
-            // You can set any number of default request options.
-            'timeout'  => 10.0,
-            'headers' => [
-                'User-Agent' => $this->extConfig['userAgent'],
-            ],
-        ]);
-        
+        $this->client = new Client(
+            [
+                // Base URI is used with relative requests
+                'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
+                // You can set any number of default request options.
+                'timeout'  => 10.0,
+                'headers' =>
+                [
+                    'User-Agent' => $this->extConfig['userAgent'],
+                ],
+            ]
+        );
+
         $this->requestData = GeneralUtility::_GPmerged('tx_bison');
-        
+
         $this->viewData = [
             'pageUid' => $GLOBALS['TSFE']->id,
-            'uniqueId'=> uniqid(),
+            'uniqueId' => uniqid(),
             'requestData' => $this->requestData
         ];
 
@@ -131,17 +120,19 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         $this->localConditionsFilter = new LocalConditionsFilter();
         $this->mirrorJournalList = new MirrorJournalList();
     }
+
     /**
      * Gets contact data stored in extension configuration.
      *
      * @access protected
      *
-     * @return array 
+     * @return array
      */
-    protected function getContactPerson() { 
+    protected function getContactPerson()
+    {
         return [
             'name' => $this->extConfig['contactName'],
-            'email'=> $this->extConfig['contactEmail'],
+            'email' => $this->extConfig['contactEmail'],
             'url' => $this->extConfig['contactUrl']
         ];
     }

@@ -17,7 +17,7 @@ namespace Slub\Bison\Model;
 /**
  * IndexDatabase DTO - this holds the information about the databases
  * in which the journal is indexed. This information comes from the CSV file.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -31,6 +31,7 @@ namespace Slub\Bison\Model;
  */
 class IndexDatabase
 {
+
     /**
      * P-ISSN of the journal
      *
@@ -48,42 +49,42 @@ class IndexDatabase
     /**
      * PubMed
      *
-     * @var bool
+     * @var boolean
      */
     protected $pubMed;
 
     /**
      * OpenAlex
      *
-     * @var bool
+     * @var boolean
      */
     protected $openAlex;
 
     /**
      * Web of Science
      *
-     * @var bool
+     * @var boolean
      */
     protected $webOfScience;
 
     /**
      * Scopus
      *
-     * @var bool
+     * @var boolean
      */
     protected $scopus;
 
     /**
      * Constructor for index database
-     * 
+     *
      * @access public
-     * 
-     * @param string $pIssn: the P-ISSN of the journal
-     * @param string $eIssn: the E-ISSN of the journal
-     * @param string $pubMed: format 'Y' or 'N' - if 'Y', the journal is indexed in database
-     * @param string $openAlex: format 'Y' or 'N' - if 'Y', the journal is indexed in database
-     * @param string $webOfScience: format 'Y' or 'N' - if 'Y', the journal is indexed in database
-     * @param string $scopus: format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     *
+     * @param string $pIssn the P-ISSN of the journal
+     * @param string $eIssn the E-ISSN of the journal
+     * @param string $pubMed format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $openAlex format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $webOfScience format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     * @param string $scopus format 'Y' or 'N' - if 'Y', the journal is indexed in database
      */
     public function __construct($pIssn, $eIssn, $pubMed, $openAlex, $webOfScience, $scopus)
     {
@@ -155,10 +156,19 @@ class IndexDatabase
         return $this->scopus;
     }
 
-    private function setValue($value) {
+    /**
+     * Set boolean value for database.
+     *
+     * @param string $value format 'Y' or 'N' - if 'Y', the journal is indexed in database
+     *
+     * @return bool
+     */
+    private function setValue($value)
+    {
         if ($value == 'Y') {
             return true;
         }
+
         return false;
     }
 }

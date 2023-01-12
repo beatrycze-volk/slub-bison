@@ -23,21 +23,21 @@ class License extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * nonCommercial
      *
-     * @var bool
+     * @var boolean
      */
     protected $nonCommercial = null;
 
     /**
      * noDerivative
      *
-     * @var bool
+     * @var boolean
      */
     protected $noDerivative = null;
 
     /**
      * attribution
      *
-     * @var bool
+     * @var boolean
      */
     protected $attribution = null;
 

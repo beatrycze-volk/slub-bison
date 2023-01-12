@@ -4,28 +4,14 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Controller;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
- *  (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>, SLUB
+ */
 
 use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Model\Journal;
@@ -38,7 +24,7 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 /**
  * The journal controller for the Bison extension.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -50,19 +36,21 @@ class JournalController extends AbstractController
 {
 
     /**
-    * @var JournalRepository
-    * @access private
-    */
-   private $journalRepository;
+     * @var JournalRepository
+     * @access private
+     */
+    private $journalRepository;
 
-   /**
-    * @var Journal
-    * @access private
-    */
-   private $journal;
+    /**
+     * @var Journal
+     * @access private
+     */
+    private $journal;
 
     /**
      * @param JournalRepository $journalRepository
+     *
+     * @return void
      */
     public function injectJournalRepository(JournalRepository $journalRepository)
     {
@@ -71,10 +59,13 @@ class JournalController extends AbstractController
 
     /**
      * The journal function returning one journal based on idx.
-     * 
+     *
      * @access public
+     *
+     * @return void
      */
-    public function mainAction() {
+    public function mainAction()
+    {
         $this->getJournal();
 
         $this->view->assign('journal', $this->journal);
@@ -84,25 +75,28 @@ class JournalController extends AbstractController
 
     /**
      * Gets journal from API.
-     * 
+     *
      * @access private
+     *
+     * @return void
      */
-    private function getJournal() {
+    private function getJournal()
+    {
         try {
             $response = $this->client->request(
                 'GET',
                 'journal/' . $this->requestData['id']
             );
-    
-            if ($response->getStatusCode() == 200) {
+
+            if ($response->getStatusCode() === 200) {
                 $content = $response->getBody()->getContents();
                 $journalJson = json_decode($content);
                 $this->journal = new Journal($journalJson);
                 $this->mirrorJournalList->assignMirrorJournal($this->journal);
                 $this->localConditionsFilter->applyIssnFilter($this->journal);
             }
-        } catch(Exception $e) {
-            $this->logger->error('Request error: ' + $e->getMessage());
+        } catch (Exception $e) {
+            $this->logger->error('Request error: ' . $e->getMessage());
         }
     }
 }

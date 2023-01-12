@@ -30,7 +30,7 @@ class ApcMax extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * price
      *
-     * @var int
+     * @var integer
      */
     protected $price = null;
 

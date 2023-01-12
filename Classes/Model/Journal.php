@@ -16,7 +16,7 @@ namespace Slub\Bison\Model;
 
 /**
  * Journal DTO
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -34,6 +34,7 @@ namespace Slub\Bison\Model;
  */
 class Journal
 {
+
     /**
      * idx of the journal
      *
@@ -93,35 +94,35 @@ class Journal
     /**
      * plan S compliance
      *
-     * @var bool
+     * @var boolean
      */
     protected $planSCompliance;
 
     /**
      * information if the author retains copyright
      *
-     * @var bool
+     * @var boolean
      */
     protected $retainsCopyrightAuthor;
 
     /**
      * information if the article receives DOI
      *
-     * @var bool
+     * @var boolean
      */
     protected $doiPidScheme;
 
     /**
      * has APC
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasApc;
 
     /**
      * has other charges
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasOtherCharges;
 
@@ -135,7 +136,7 @@ class Journal
     /**
      * publication time weeks
      *
-     * @var int
+     * @var integer
      */
     protected $publicationTimeWeeks;
 
@@ -226,7 +227,7 @@ class Journal
     /**
      * mark as mirror journal
      *
-     * @var bool
+     * @var boolean
      */
     protected $isMirrorJournal;
 
@@ -239,11 +240,11 @@ class Journal
 
     /**
      * Construct for journal instance
-     * 
+     *
      * @access public
-     * 
-     * @param array $journal: The journal JSON
-     * 
+     *
+     * @param array $journal The journal JSON
+     *
      * @return void
      */
     public function __construct($journal)
@@ -267,20 +268,25 @@ class Journal
         foreach ($journal->keywords as $keyword) {
             $this->keywords[] = new Keyword($keyword);
         }
+
         foreach ($journal->languages as $language) {
             $this->languages[] = new Language($language);
         }
+
         foreach ($journal->licenses as $license) {
             $this->licenses[] = new License($license);
         }
+
         foreach ($journal->subjects as $subject) {
             $this->subjects[] = Subject::fromSubject($subject);
         }
+
         foreach ($journal->editorial_review_process as $process) {
             $this->editorialReviewProcesses[] = new EditorialReviewProcess($process);
         }
+
         $this->createdDate = $journal->created_date;
-        $this->isMirrorJournal =  false;
+        $this->isMirrorJournal = false;
     }
 
     /**
@@ -304,14 +310,14 @@ class Journal
     }
 
     /**
-    * Returns the score
-    *
-    * @return Score
-    */
-   public function getScore()
-   {
-       return $this->score;
-   }
+     * Returns the score
+     *
+     * @return Score
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
 
    /**
     * Returns the max APC
@@ -572,7 +578,7 @@ class Journal
     /**
      * Sets the the information if is mirror journal
      *
-     * @var bool
+     * @var boolean
      */
     public function setIsMirrorJournal($isMirrorJournal)
     {

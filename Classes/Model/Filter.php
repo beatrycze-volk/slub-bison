@@ -17,7 +17,7 @@ namespace Slub\Bison\Model;
 /**
  * Filter DTO - this holds the local filter conditions read
  * from the CSV file.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -30,6 +30,7 @@ namespace Slub\Bison\Model;
  */
 class Filter
 {
+
     /**
      * P-ISSN
      *
@@ -67,14 +68,15 @@ class Filter
 
     /**
      * Constructor for local filter condition read from the CSV file
-     * 
+     *
      * @access public
-     * 
-     * @param string $pIssn: the P-ISSN of the journal
-     * @param string $eIssn: the E-ISSN of the journal
-     * @param string $amount: the amount of publication charge for the journal
-     * @param string $currency: the information about financing
-     * @param string $source: the source of the price information
+     *
+     * @param string $pIssn the P-ISSN of the journal
+     * @param string $eIssn the E-ISSN of the journal
+     * @param string $amount the amount of publication charge for the journal
+     * @param string $currency the currency of publication charge for the journal
+     * @param string $financing the source of the price information
+     * @param string $source the source of the price information
      */
     public function __construct($pIssn, $eIssn, $amount, $currency, $financing, $source)
     {

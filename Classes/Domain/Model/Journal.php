@@ -30,7 +30,7 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * retainsCopyrightAuthor
      *
-     * @var bool
+     * @var boolean
      */
     protected $retainsCopyrightAuthor = null;
 
@@ -65,7 +65,7 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * publicationTimeWeeks
      *
-     * @var int
+     * @var integer
      */
     protected $publicationTimeWeeks = null;
 
@@ -86,7 +86,7 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * hasPreservation
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasPreservation = null;
 
@@ -114,21 +114,21 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * hasApc
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasApc = null;
 
     /**
      * hasOtherCharges
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasOtherCharges = null;
 
     /**
      * hasPidScheme
      *
-     * @var bool
+     * @var boolean
      */
     protected $hasPidScheme = null;
 
@@ -142,7 +142,7 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * doiPidScheme
      *
-     * @var int
+     * @var integer
      */
     protected $doiPidScheme = null;
 
@@ -177,7 +177,7 @@ class Journal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * planSCompliance
      *
-     * @var bool
+     * @var boolean
      */
     protected $planSCompliance = null;
 

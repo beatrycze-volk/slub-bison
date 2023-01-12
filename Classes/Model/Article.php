@@ -16,7 +16,7 @@ namespace Slub\Bison\Model;
 
 /**
  * Article DTO
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
@@ -27,6 +27,7 @@ namespace Slub\Bison\Model;
  */
 class Article
 {
+
     /**
      * title
      *
@@ -43,10 +44,10 @@ class Article
 
     /**
      * Constructor for article
-     * 
+     *
      * @access public
-     * 
-     * @param array $article: JSON article
+     *
+     * @param array $article JSON article
      */
     public function __construct($article)
     {

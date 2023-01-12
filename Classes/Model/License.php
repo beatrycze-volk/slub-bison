@@ -19,31 +19,32 @@ namespace Slub\Bison\Model;
  */
 class License
 {
+
     /**
      * non-commercial
      *
-     * @var bool
+     * @var boolean
      */
     protected $nonCommercial;
 
     /**
      * no derivative
      *
-     * @var bool
+     * @var boolean
      */
     protected $noDerivative;
 
     /**
      * attribution
      *
-     * @var bool
+     * @var boolean
      */
     protected $attribution;
 
     /**
      * share alike
      *
-     * @var bool
+     * @var boolean
      */
     protected $shareAlike;
 

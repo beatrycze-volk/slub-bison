@@ -19,6 +19,7 @@ namespace Slub\Bison\Model;
  */
 class Language
 {
+
     /**
      * code
      *

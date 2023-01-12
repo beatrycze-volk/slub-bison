@@ -4,28 +4,14 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Controller;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
- *  (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>, SLUB
+ */
 
 use Slub\Bison\Domain\Repository\JournalRepository;
 use Slub\Bison\Model\Journal;
@@ -51,19 +37,21 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 class RecommenderController extends AbstractController
 {
     /**
-    * @var JournalRepository
-    * @access private
-    */
+     * @var JournalRepository
+     * @access private
+     */
     private $journalRepository;
 
     /**
-    * @var array<Journal>
-    * @access private
-    */
+     * @var array<Journal>
+     * @access private
+     */
     private $results;
 
     /**
      * @param JournalRepository $journalRepository
+     *
+     * @return void
      */
     public function injectJournalRepository(JournalRepository $journalRepository)
     {
@@ -72,24 +60,28 @@ class RecommenderController extends AbstractController
 
     /**
      * The recommender function returning journals based on title etc.
+     *
+     * @return void
      */
-    public function mainAction() {
+    public function mainAction()
+    {
         $this->results = [];
 
-        if (!empty($this->requestData['title']) || !empty($this->requestData['abstract']) || $this->requestData['references']) {
+        if (!empty($this->requestData['title']) || !empty($this->requestData['abstract']) || !empty($this->requestData['references'])) {
             try {
                 $response = $this->client->request(
                     'POST',
                     'search',
-                    ['json' => [
-                        'title' => $this->requestData['title'],
-                        'abstract' => $this->requestData['abstract'],
-                        'references' => $this->requestData['references'],
+                    [
+                        'json' => [
+                            'title' => $this->requestData['title'],
+                            'abstract' => $this->requestData['abstract'],
+                            'references' => $this->requestData['references'],
                         ]
                     ]
                 );
-        
-                if ($response->getStatusCode() == 200) {
+
+                if ($response->getStatusCode() === 200) {
                     $content = $response->getBody()->getContents();
                     $result = json_decode($content);
                     foreach ($result->journals as $journal) {
@@ -115,11 +107,11 @@ class RecommenderController extends AbstractController
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
-                $this->logger->error('Request error: ' + $e->getMessage());
+                $this->logger->error('Request error: ' . $e->getMessage());
                 $this->view->assign('error', $e->getMessage());
             }
         }
-        
+
         $this->view->assign('contact', $this->getContactPerson());
         $this->view->assign('viewData', $this->viewData);
     }
@@ -127,38 +119,55 @@ class RecommenderController extends AbstractController
     /**
      * Checks if local filters are too strict. It is a case when after
      * filtering we have no results, but without filters there are results.
+     *
+     * @return bool
      */
-    private function isFilterTooStrict() {
+    private function isFilterTooStrict()
+    {
         return $this->countResultsAfterFilter() == 0 && count($this->results) > 0;
     }
 
     /**
      * Counts all results which match to filter conditions.
+     *
+     * @return int
      */
-    private function countResultsAfterFilter() {
+    private function countResultsAfterFilter()
+    {
         $count = 0;
         foreach ($this->results as $result) {
-            if ($result->getFilter() != false) {
+            if ($result->getFilter() !== false) {
                 $count++;
             }
         }
+
         return $count;
     }
 
     /**
      * Gets the language suggested for results.
+     *
+     * @param array $result JSON array with results
+     *
+     * @return Language|null
      */
-    private function getSuggestLanguage($result) {
-        if ($result->language != NULL) {
+    private function getSuggestLanguage($result)
+    {
+        if ($result->language !== NULL) {
             return new Language($result->language);
         }
     }
 
     /**
      * Gets the subject suggested for results.
+     *
+     * @param array $result JSON array with results
+     *
+     * @return Subject|null
      */
-    private function getSuggestSubject($result) {
-        if ($result->subject->code != NULL) {
+    private function getSuggestSubject($result)
+    {
+        if ($result->subject->code !== NULL) {
             return Subject::fromSubject($result->subject);
         }
     }
@@ -167,29 +176,35 @@ class RecommenderController extends AbstractController
      * Gets the max APC for client side filter. APC can be stored
      * in filter field (when overwritten by local data)
      * or in APC max field.
+     *
+     * @return int
      */
-    private function getMaxApc() {
+    private function getMaxApc()
+    {
         $apc = 0;
         foreach ($this->results as $result) {
-            if ($result->getFilter() && !empty($result->getFilter()->getPrice())) {
+            if ($result->getFilter() !== false && !empty($result->getFilter()->getPrice())) {
                 $euro = $result->getFilter()->getPrice()->getEuro();
-                if ($euro != NULL && $apc < $euro) {
-                    $apc =  $euro;
+                if ($euro !== NULL && $apc < $euro) {
+                    $apc = $euro;
                 }
             } else {
                 $euro = $result->getApcMax()->getEuro();
-                if ($euro != NULL && $apc < $euro) {
-                    $apc =  $euro;
+                if ($euro !== NULL && $apc < $euro) {
+                    $apc = $euro;
                 }
             }
         }
-        return ceil($apc / 100) * 100;
+        return (ceil($apc / 100) * 100);
     }
 
     /**
      * Gets the max publication time for client side filter.
+     *
+     * @return int
      */
-    private function getMaxPublicationTime() {
+    private function getMaxPublicationTime()
+    {
         $weeks = 0;
         foreach ($this->results as $result) {
             if ($weeks < $result->getPublicationTimeWeeks()) {
@@ -201,8 +216,11 @@ class RecommenderController extends AbstractController
 
     /**
      * Gets the keywords for client side filter.
+     *
+     * @return array
      */
-    private function getKeywords() {
+    private function getKeywords()
+    {
         $keywords = [];
         foreach ($this->results as $result) {
             $resultKeywords = $result->getKeywords();
@@ -218,8 +236,11 @@ class RecommenderController extends AbstractController
 
     /**
      * Gets the languages for client side filter.
+     *
+     * @return array
      */
-    private function getLanguages() {
+    private function getLanguages()
+    {
         $languages = [];
         foreach ($this->results as $result) {
             $resultLanguages = $result->getLanguages();
@@ -229,16 +250,19 @@ class RecommenderController extends AbstractController
                 }
             }
         }
-        usort($languages, function($a, $b) {
-            return strcmp($a->getName(), $b->getName());
+        usort($languages, function ($first, $second) {
+            return strcmp($first->getName(), $second->getName());
         });
         return $languages;
     }
 
     /**
      * Gets the subjects for client side filter.
+     *
+     * @return array
      */
-    private function getSubjects() {
+    private function getSubjects()
+    {
         $subjects = [];
         foreach ($this->results as $result) {
             $resultSubjects = $result->getSubjects();
@@ -252,8 +276,8 @@ class RecommenderController extends AbstractController
                 }
             }
         }
-        usort($subjects, function($a, $b) {
-            return strcmp($a->getCode(), $b->getCode());
+        usort($subjects, function ($first, $second) {
+            return strcmp($first->getCode(), $second->getCode());
         });
         return $subjects;
     }

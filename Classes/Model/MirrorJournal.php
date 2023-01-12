@@ -19,6 +19,7 @@ namespace Slub\Bison\Model;
  */
 class MirrorJournal
 {
+
     /**
      * ISSN
      *
@@ -57,7 +58,7 @@ class MirrorJournal
     /**
      * discontinued year
      *
-     * @var int
+     * @var integer
      */
     protected $discontinuedYear;
 

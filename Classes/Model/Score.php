@@ -19,6 +19,7 @@ namespace Slub\Bison\Model;
  */
 class Score
 {
+
     /**
      * abstract articles
      *
@@ -43,7 +44,7 @@ class Score
     /**
      * semantic score
      *
-     * @var int
+     * @var integer
      */
     protected $semanticScore;
 
@@ -57,7 +58,7 @@ class Score
     /**
      * percentage
      *
-     * @var int
+     * @var integer
      */
     protected $percentage;
 
@@ -77,6 +78,7 @@ class Score
         foreach ($score->dois as $doi) {
             $this->referenceArticles[] = new Article($doi);
         }
+
         $this->semanticScore = $score->semantic_score;
         $this->value = $score->value;
         $this->percentage = round($score->value * 100);

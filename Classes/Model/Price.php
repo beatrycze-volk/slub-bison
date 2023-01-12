@@ -22,6 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class Price
 {
+
     /**
      * euro
      *
@@ -32,7 +33,7 @@ class Price
     /**
      * price
      *
-     * @var int
+     * @var integer
      */
     protected $price;
 
