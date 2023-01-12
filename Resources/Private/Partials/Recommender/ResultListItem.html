@@ -48,7 +48,7 @@
                         <a href="/journal?tx_bison[id]={result.id}" class="stretched-link">{result.title}</a>
                     </h5>
                     <f:if condition="{result.isMirrorJournal}">
-                        <p class="card-text">(<f:translate key="result.mirrorJournal" default="Mirror Journal"/>)</p>
+                        <p class="card-text">(<f:translate key="result.mirrorJournal" default="Mirror journal"/>)</p>
                     </f:if>
                     <p class="card-text"><f:translate key="result.publisher" default="Publisher"/>: {result.publisher.name}</p>
                     <p class="card-text"><f:translate key="result.keywords" default="Keywords"/>: <bison:trim content="{keywords}"/></p>

@@ -112,7 +112,7 @@
 				<source>Abstract of your paper...</source>
 			</trans-unit>
 			<trans-unit id="placeholder.references" xml:space="preserve">
-				<source>References</source>
+				<source>References of your paper...</source>
 			</trans-unit>
 			<trans-unit id="placeholder.title" xml:space="preserve">
 				<source>Title of your paper...</source>
@@ -139,7 +139,7 @@
 				<source>%d Results</source>
 			</trans-unit>
 			<trans-unit id="result.countMatching" xml:space="preserve">
-				<source>%d Filter Matching Results</source>
+				<source>%d results match the filter criteria set by your institution</source>
 			</trans-unit>
 			<trans-unit id="result.createdDate" xml:space="preserve">
 				<source>In DOAJ since</source>
@@ -159,11 +159,14 @@
 			<trans-unit id="result.license" xml:space="preserve">
 				<source>License(s)</source>
 			</trans-unit>
+			<trans-unit id="result.mirrorJournal" xml:space="preserve">
+				<source>Mirror journal</source>
+			</trans-unit>
 			<trans-unit id="result.plan" xml:space="preserve">
 				<source>Plan S compliance</source>
 			</trans-unit>
 			<trans-unit id="result.priceSource" xml:space="preserve">
-				<source>Amount and currency</source>
+				<source>Publication fees: amount and currency</source>
 			</trans-unit>
 			<trans-unit id="result.publisher" xml:space="preserve">
 				<source>Publisher</source>

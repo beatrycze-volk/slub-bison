@@ -184,8 +184,8 @@
 				<target>%d Ergebnisse</target>
 			</trans-unit>
 			<trans-unit id="result.countMatching" xml:space="preserve"  approved="yes">
-				<source>%d Filter Matching Results</source>
-				<target>%d Filter passende Ergebnisse</target>
+				<source>%d results match the filter criteria set by your institution</source>
+				<target>%d Ergebnisse entsprechen den von Ihrer Institution festgelegten Filterkriterien</target>
 			</trans-unit>
 			<trans-unit id="result.createdDate" xml:space="preserve"  approved="yes">
 				<source>In DOAJ since</source>
@@ -211,13 +211,17 @@
 				<source>License(s)</source>
 				<target>Lizenze(n)</target>
 			</trans-unit>
+			<trans-unit id="result.mirrorJournal" xml:space="preserve" approved="yes">
+				<source>Mirror journal</source>
+				<target>Spiegeljournal</target>
+			</trans-unit>
 			<trans-unit id="result.plan" xml:space="preserve" approved="yes">
 				<source>Plan S compliance</source>
 				<target>Plan-S-Konformität</target>
 			</trans-unit>
 			<trans-unit id="result.priceSource" xml:space="preserve" approved="yes">
-				<source>Amount and currency</source>
-				<target>Betrag und Währung</target>
+				<source>Publication fees: amount and currency</source>
+				<target>Veröffentlichungsgebühren: Betrag und Währung</target>
 			</trans-unit>
 			<trans-unit id="result.publisher" xml:space="preserve" approved="yes">
 				<source>Publisher</source>
