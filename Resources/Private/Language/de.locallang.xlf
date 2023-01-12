@@ -155,6 +155,22 @@
 				<source>Title of your paper...</source>
 				<target>Titel Ihrer Arbeit...</target>
 			</trans-unit>
+			<trans-unit id="recommendation.abstract" xml:space="preserve" approved="yes">
+				<source>Similarities in abstract:</source>
+				<target>Ähnlichkeiten in Zusammenfassung:</target>
+			</trans-unit>
+			<trans-unit id="recommendation.neuralNetwork" xml:space="preserve" approved="yes">
+				<source>The neural network component suggested this journal with a confidence compared to other journals of: </source>
+				<target>Die neuronale Netzwerkkomponente schlug diese Zeitschrift mit einem Vertrauen im Vergleich zu anderen Zeitschriften vor: </target>
+			</trans-unit>
+			<trans-unit id="recommendation.title" xml:space="preserve" approved="yes">
+				<source>Similarities in title:</source>
+				<target>Ähnlichkeiten im Titel:</target>
+			</trans-unit>
+			<trans-unit id="recommendation.references" xml:space="preserve" approved="yes">
+				<source>Articles citing the references:</source>
+				<target>Artikel, die die Referenzen zitieren:</target>
+			</trans-unit>
 			<trans-unit id="result.aimsScope" xml:space="preserve" approved="yes">
 				<source>Aims &amp; scope</source>
 				<target>Ziele &amp; Umfang</target>

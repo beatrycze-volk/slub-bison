@@ -117,6 +117,18 @@
 			<trans-unit id="placeholder.title" xml:space="preserve">
 				<source>Title of your paper...</source>
 			</trans-unit>
+			<trans-unit id="recommendation.abstract" xml:space="preserve">
+				<source>Similarities in abstract:</source>
+			</trans-unit>
+			<trans-unit id="recommendation.neuralNetwork" xml:space="preserve">
+				<source>The neural network component suggested this journal with a confidence compared to other journals of: </source>
+			</trans-unit>
+			<trans-unit id="recommendation.title" xml:space="preserve">
+				<source>Similarities in title:</source>
+			</trans-unit>
+			<trans-unit id="recommendation.references" xml:space="preserve">
+				<source>Articles citing the references:</source>
+			</trans-unit>
 			<trans-unit id="result.aimsScope" xml:space="preserve">
 				<source>Aims &amp; scope</source>
 			</trans-unit>

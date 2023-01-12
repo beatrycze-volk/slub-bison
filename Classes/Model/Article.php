@@ -42,26 +42,16 @@ class Article
     protected $doi;
 
     /**
-     * type
-     *
-     * @var string
-     */
-    //TODO: probably Enum would be better here
-    protected $type;
-
-    /**
      * Constructor for article
      * 
      * @access public
      * 
      * @param array $article: JSON article
-     * @param string $type: article type
      */
-    public function __construct($article, $type)
+    public function __construct($article)
     {
         $this->title = $article->title;
         $this->doi = $article->doi;
-        $this->type = $type;
     }
 
     /**
@@ -82,15 +72,5 @@ class Article
     public function getDoi()
     {
         return $this->doi;
-    }
-
-    /**
-     * Returns the type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 }

@@ -7,18 +7,7 @@
         <f:else></f:else>
     </f:if>
 </f:variable>
-<f:variable name="dataPopover">Similarities in title:
-    <ul>
-        <f:for each="{result.score.articles}" as="article">
-            <li>
-                <f:if condition="{article.doi}">
-                    <f:then><a href=https://doi.org/{article.doi}>{article.title}</a></f:then>
-                    <f:else>{article.title}</f:else>
-                </f:if>
-            </li>
-        </f:for>
-    </ul>
-</f:variable>
+<f:variable name="dataPopover"><f:render partial="Recommender/RecommendationList" arguments="{_all}"/></f:variable>
 <f:variable name="dataKeywords"><f:for each="{result.keywords}" as="keyword">{keyword.keyword};</f:for></f:variable>
 <f:variable name="dataLanguages"><f:for each="{result.languages}" as="language">{language.code};</f:for></f:variable>
 <f:variable name="dataSubjects"><f:for each="{result.subjects}" as="subject">{subject.code};</f:for></f:variable>

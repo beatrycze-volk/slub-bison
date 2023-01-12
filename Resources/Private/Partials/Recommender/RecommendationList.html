@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{result.score.titleArticles}">
+    <f:translate key="recommendation.title"/>
+    <ul>
+        <f:for each="{result.score.titleArticles}" as="article">
+            <f:render partial="Recommender/RecommendationListItem" arguments="{_all}"/>
+        </f:for>
+    </ul>
+</f:if>
+<f:if condition="{result.score.abstractArticles}">
+    <f:translate key="recommendation.abstract"/>
+    <ul>
+        <f:for each="{result.score.abstractArticles}" as="article">
+            <f:render partial="Recommender/RecommendationListItem" arguments="{_all}"/>
+        </f:for>
+    </ul>
+</f:if>
+<f:if condition="{result.score.referenceArticles}">
+    <f:translate key="recommendation.references"/>
+    <ul>
+        <li>
+            <f:for each="{result.score.referenceArticles}" as="article">
+                <a href=https://doi.org/{article.doi}>{article.doi}</a>
+            </f:for>
+        </li>
+    </ul>
+</f:if>
+
+<f:translate key="recommendation.neuralNetwork"/> {result.score.percentage}%
+
+</html>

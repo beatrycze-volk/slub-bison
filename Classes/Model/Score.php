@@ -20,11 +20,25 @@ namespace Slub\Bison\Model;
 class Score
 {
     /**
-     * articles
+     * abstract articles
      *
      * @var array<Article>
      */
-    protected $articles = [];
+    protected $abstractArticles = [];
+
+    /**
+     * title articles
+     *
+     * @var array<Article>
+     */
+    protected $titleArticles = [];
+
+    /**
+     * reference articles
+     *
+     * @var array<Article>
+     */
+    protected $referenceArticles = [];
 
     /**
      * semantic score
@@ -53,27 +67,49 @@ class Score
     public function __construct($score)
     {
         foreach ($score->title as $title) {
-            $this->articles[] = new Article($title, 'title');
+            $this->titleArticles[] = new Article($title);
         }
+
         foreach ($score->abstract as $abstract) {
-            $this->articles[] = new Article($abstract, 'abstract');
+            $this->abstractArticles[] = new Article($abstract);
         }
+
         foreach ($score->dois as $doi) {
-            $this->articles[] = new Article($doi, 'doi');
+            $this->referenceArticles[] = new Article($doi);
         }
         $this->semanticScore = $score->semantic_score;
         $this->value = $score->value;
-        $this->percentage = intval($score->value * 100);
+        $this->percentage = round($score->value * 100);
     }
 
     /**
-     * Returns the articles
+     * Returns the abstract articles
      *
      * @return array<Article>
      */
-    public function getArticles()
+    public function getAbstractArticles()
     {
-        return $this->articles;
+        return $this->abstractArticles;
+    }
+
+    /**
+     * Returns the title articles
+     *
+     * @return array<Article>
+     */
+    public function getTitleArticles()
+    {
+        return $this->titleArticles;
+    }
+
+    /**
+     * Returns the reference articles
+     *
+     * @return array<Article>
+     */
+    public function getReferenceArticles()
+    {
+        return $this->referenceArticles;
     }
 
     /**
