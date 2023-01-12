@@ -269,9 +269,9 @@ $(document).ready(function() {
 
     function matchSubject(row) {
         var dataSubject = row.getAttribute('data-subjects');
-        if (subject && subject.length != 1) {
+        if (subject && subject.length !== 1) {
             return dataSubject.includes(subject);
-        } else if (subject && subject.length == 1) {
+        } else if (subject && subject.length === 1) {
             var subjects = dataSubject.split(";");
             for (let i = 0; i < subjects.length; i++) {
                 if (subjects[i].substring(0, 1).includes(subject)) {
