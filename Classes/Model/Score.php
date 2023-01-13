@@ -26,6 +26,7 @@ namespace Slub\Bison\Model;
  * @property integer $semanticScore This holds the score returned by neural network
  * @property float $value This holds the score
  * @property integer $percentage This holds the score converted to percent
+ * @property integer $percentageSemantic This holds the semantic score converted to percent
  */
 class Score
 {
@@ -66,11 +67,18 @@ class Score
     protected $value;
 
     /**
-     * percentage
+     * percentage of score
      *
      * @var integer
      */
     protected $percentage;
+
+    /**
+     * percentage of semantic score
+     *
+     * @var integer
+     */
+    protected $percentageSemantic;
 
     /**
      * Constructs score instance
@@ -96,6 +104,7 @@ class Score
         $this->semanticScore = $score->semantic_score;
         $this->value = $score->value;
         $this->percentage = round($score->value * 100);
+        $this->percentageSemantic = round($score->semantic_score * 100);
     }
 
     /**
@@ -149,12 +158,22 @@ class Score
     }
 
     /**
-     * Returns the percentage
+     * Returns the percentage of score
      *
      * @return int
      */
     public function getPercentage()
     {
         return $this->percentage;
+    }
+
+    /**
+     * Returns the percentage of semantic score
+     *
+     * @return int
+     */
+    public function getPercentageSemantic()
+    {
+        return $this->percentageSemantic;
     }
 }

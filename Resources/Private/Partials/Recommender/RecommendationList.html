@@ -20,14 +20,15 @@
 <f:if condition="{result.score.referenceArticles}">
     <f:translate key="recommendation.references"/>
     <ul>
-        <li>
-            <f:for each="{result.score.referenceArticles}" as="article">
+        <f:for each="{result.score.referenceArticles}" as="article">
+            <li>
                 <a href=https://doi.org/{article.doi}>{article.doi}</a>
-            </f:for>
-        </li>
+            </li>
+        </f:for>
     </ul>
 </f:if>
-
-<f:translate key="recommendation.neuralNetwork"/> {result.score.percentage}%
+<f:if condition="{result.score.percentageSemantic} > 0">
+    <f:translate key="recommendation.neuralNetwork"/> {result.score.percentageSemantic}%
+</f:if>
 
 </html>
