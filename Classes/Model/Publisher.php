@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -16,13 +15,13 @@ namespace Slub\Bison\Model;
 
 /**
  * Publisher DTO
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
  * @access public
- * @property-read string $name the name of the publisher
- * @property-read string $country the country of the publisher
+ * @property string $name the name of the publisher
+ * @property string $country the country of the publisher
  */
 class Publisher
 {
@@ -42,12 +41,14 @@ class Publisher
     protected $country;
 
     /**
-     * __construct
+     * Constructs publisher instance
      * 
-     * @var string $name the name of the publisher
-     * @var string $country the country of the publisher
+     * @param string $name the name of the publisher
+     * @param string $country the country of the publisher
+     * 
+     * @return void
      */
-    public function __construct(string $name, string $country)
+    public function __construct($name, $country)
     {
         $this->name = $name;
         $this->country = $country;

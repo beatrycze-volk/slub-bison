@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -16,6 +15,13 @@ namespace Slub\Bison\Model;
 
 /**
  * Keyword DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $keyword This holds the keyword
+ * @property string $label This holds the keyword without white spaces
  */
 class Keyword
 {
@@ -35,7 +41,13 @@ class Keyword
     protected $label;
 
     /**
-     * __construct
+     * Constructs keyword instance
+     *
+     * @access public
+     *
+     * @param array $keyword The keyword
+     *
+     * @return void
      */
     public function __construct($keyword)
     {

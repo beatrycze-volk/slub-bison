@@ -100,7 +100,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
                 // Base URI is used with relative requests
                 'base_uri' => 'https://service.tib.eu/bison/api/public/v1/',
                 // You can set any number of default request options.
-                'timeout'  => 10.0,
+                'timeout' => 10.0,
                 'headers' =>
                 [
                     'User-Agent' => $this->extConfig['userAgent'],

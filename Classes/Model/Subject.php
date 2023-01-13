@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -15,7 +14,18 @@ namespace Slub\Bison\Model;
  */
 
 /**
- * Journal DTO
+ * Subject DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property array<Article> $abstractArticles This holds the articles matching by abstract
+ * @property array<Article> $titleArticles This holds the articles matching by title
+ * @property array<Article> $referenceArticles This holds the articles matching by reference
+ * @property integer $semanticScore This holds the score returned by neural network
+ * @property float $value This holds the score
+ * @property integer $percentage This holds the score converted to percent
  */
 class Subject
 {
@@ -42,14 +52,24 @@ class Subject
     protected $parent;
 
     /**
-     * __construct
+     * Empty constructor
+     *
+     * @return void
      */
     public function __construct()
     {
     }
 
     /**
-     * __construct
+     * Constructor from the subject JSON
+     *
+     * @access public
+     *
+     * @static
+     *
+     * @param array $subject JSON array
+     *
+     * @return Subject instance of this class
      */
     public static function fromSubject($subject)
     {
@@ -60,7 +80,16 @@ class Subject
     }
 
     /**
-     * __construct
+     * Constructor from the code and term
+     *
+     * @access public
+     *
+     * @static
+     *
+     * @param string $code of subject
+     * @param string $term of subject
+     *
+     * @return Subject instance of this class
      */
     public static function fromCodeAndTerm($code, $term)
     {
@@ -101,8 +130,16 @@ class Subject
         return $this->parent;
     }
 
-    private function setParentClassification() {
-        $classification = array(
+    /**
+     * Sets parent subject from LC Classification code
+     *
+     * @access private
+     *
+     * @return void
+     */
+    private function setParentClassification()
+    {
+        $classification = [
             "A" => "General Works",
             "B" => "Philosophy, Psychology and Religion",
             "C" => "Auxiliary Sciences of History",
@@ -124,7 +161,7 @@ class Subject
             "U" => "Military Science",
             "V" => "Naval Science",
             "Z" => "Bibliography, Library Science and Information Resources"
-        );
+        ];
         $code = substr($this->code, 0, 1);
         $this->parent = self::fromCodeAndTerm($code, $classification[$code]);
     }

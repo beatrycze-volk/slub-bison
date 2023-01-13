@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -16,6 +15,17 @@ namespace Slub\Bison\Model;
 
 /**
  * Score DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property array<Article> $abstractArticles This holds the articles matching by abstract
+ * @property array<Article> $titleArticles This holds the articles matching by title
+ * @property array<Article> $referenceArticles This holds the articles matching by reference
+ * @property integer $semanticScore This holds the score returned by neural network
+ * @property float $value This holds the score
+ * @property integer $percentage This holds the score converted to percent
  */
 class Score
 {
@@ -63,7 +73,11 @@ class Score
     protected $percentage;
 
     /**
-     * __construct
+     * Constructs score instance
+     *
+     * @param array $score the score JSON array
+     *
+     * @return void
      */
     public function __construct($score)
     {

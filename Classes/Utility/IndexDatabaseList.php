@@ -15,16 +15,18 @@ use Slub\Bison\Model\IndexDatabase;
 
 /**
  * The class for handling assigning index databases stored in CSV file.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
  * @access public
+ * @property array $indexDatabases This holds the index databases data from CSV file
  */
 class IndexDatabaseList extends SpreadsheetLoader
 {
+
     /**
-     * This holds the mirror journals from CSV file
+     * This holds the index databases data from CSV file
      *
      * @var array
      * @access private
@@ -32,6 +34,8 @@ class IndexDatabaseList extends SpreadsheetLoader
     private $indexDatabases;
 
     /**
+     * Constructs the index databases list
+     *
      * @access public
      */
     public function __construct()
@@ -51,21 +55,41 @@ class IndexDatabaseList extends SpreadsheetLoader
         }
     }
 
-    public function assignIndexDatabases(&$journals) {
+    /**
+     * Assigns index databases to the list of journals
+     *
+     * @access public
+     *
+     * @param array $journals the list of journals
+     *
+     * @return void
+     */
+    public function assignIndexDatabases(&$journals)
+    {
         for ($i = 0; $i < count($journals); $i++) {
             $this->assignIndexDatabase($journals[$i]);
         }
     }
 
-    public function assignIndexDatabase(&$journal) {
+    /**
+     * Assigns index databases to the journal
+     *
+     * @access public
+     *
+     * @param Journal $journal the single journal
+     *
+     * @return void
+     */
+    public function assignIndexDatabase(&$journal)
+    {
         foreach ($this->indexDatabases as $indexDatabase) {
             if (!empty($indexDatabase->getEIssn()) && !empty($journal->getEIssn())) {
-                if ($indexDatabase->getEIssn() == $journal->getEIssn()) {
+                if ($indexDatabase->getEIssn() === $journal->getEIssn()) {
                     $journal->setIndexDatabase($indexDatabase);
                     break;
                 }
             } else {
-                if ($indexDatabase->getPIssn() == $journal->getPIssn()) {
+                if ($indexDatabase->getPIssn() === $journal->getPIssn()) {
                     $journal->setIndexDatabase($indexDatabase);
                     break;
                 }

@@ -18,11 +18,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The currency converter for prices.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
  * @access public
+ * @property CacheManager $cache This holds the cache
+ * @property LogManager $logger This holds the logger
+ * @property RequestFactory $logger This holds the request factory
  */
 class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
 {
@@ -47,10 +50,16 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
     /**
      * This holds the request factory
      *
+     * @var RequestFactory
      * @access private
      */
     private $requestFactory;
 
+    /**
+     * Constructs the currency converter
+     * 
+     * @return void
+     */
     public function __construct()
     {
         $this->cache = GeneralUtility::makeInstance(CacheManager::class)->getCache('tx_bison_currency');
@@ -60,14 +69,20 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * Converts value in currency to euro.
+     * 
+     * @param integer $value to be converted
+     * @param string $currency currency from which conversion happens
+     * 
+     * @return float
      */
-    public function convert($value, $currency) {
+    public function convert($value, $currency)
+    {
         if ($currency === 'EUR') {
             return $value;
         }
-    
+
         $rates = $this->cache->get('exchange_rates');
-        // update exchange rates if they are not in the cache
+        // Update exchange rates if they are not in the cache
         if (!$rates) {
             $configuration = ['timeout' => 60];
             try {
@@ -76,10 +91,11 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
                 $this->logger->warning('Updating exchange rates from "' . self::API_URL . '" failed. Error: ' . $e->getMessage() . '.');
                 return false;
             }
+
             $content = $response->getBody()->getContents();
             $result = json_decode($content, true);
             $rates = $result['rates'];
-            //convert content into array key - currency, value - rate
+            // Convert content into array key - currency, value - rate
             $this->cache->set('exchange_rates', $rates);
         }
 
@@ -88,6 +104,6 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
             return false;
         }
 
-        return round($value / $rates[$currency], 2);
+        return round(($value / $rates[$currency]), 2);
     }
 }

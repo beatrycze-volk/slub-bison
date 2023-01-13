@@ -32,16 +32,14 @@ class TrimViewHelper extends AbstractViewHelper
     /**
      * Trims content by stripping off ', '
      *
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
+     * @param array $arguments for rendering
+     * @param \Closure $renderChildrenClosure render children closure
+     * @param RenderingContextInterface $renderingContext rendering context
+     *
      * @return mixed
      */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        RenderingContextInterface $renderingContext
-    ) {
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    {
         return substr(trim($arguments['content']), 0, -1);
     }
 }

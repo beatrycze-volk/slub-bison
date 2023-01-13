@@ -24,9 +24,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @subpackage bison
  * @access public
  * @abstract
+ * @property LogManager $logger This holds the logger
+ * @property array $extConfig This holds the extension configuration
+ * @property array $data This holds the data from CSV file
  */
 abstract class SpreadsheetLoader
 {
+
     /**
      * This holds the logger
      *
@@ -49,6 +53,15 @@ abstract class SpreadsheetLoader
      */
     protected $data;
 
+    /**
+     * Constructs the spreadsheet loader
+     *
+     * @access public
+     *
+     * @param string $file name of file config which is loaded
+     *
+     * @return void
+     */
     public function __construct($file)
     {
         $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
@@ -60,6 +73,7 @@ abstract class SpreadsheetLoader
         foreach ($spreadsheet->getWorksheetIterator() as $worksheet) {
             $results[] = $worksheet->toArray(null, false, true);
         }
+
         $spreadsheet->__destruct();
         $spreadsheet = NULL;
 

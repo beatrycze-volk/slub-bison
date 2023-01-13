@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -16,6 +15,18 @@ namespace Slub\Bison\Model;
 
 /**
  * Mirror Journal DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $issn This holds the ISSN of mirror journal
+ * @property string $originalIssn This holds the ISSN of original journal
+ * @property string $title This holds the title of mirror journal
+ * @property Publisher $publisher This holds the publisher of mirror journal
+ * @property AccessData $accessData This holds the access data of mirror journal
+ * @property integer $discontinuedYear This holds the year in which mirror journal was discontinued
+ * @property integer $lastUpdated This holds the date of the last update
  */
 class MirrorJournal
 {
@@ -74,13 +85,13 @@ class MirrorJournal
      * 
      * @access public
      * 
-     * @param string $issn: The ISSN of mirror journal
-     * @param string $originalIssn: The ISSN of original journal
-     * @param string $title: The title of mirror journal
-     * @param string $publisher: The publisher of mirror journal
-     * @param string $url: The URL of mirror journal
-     * @param int $discontinuedYear: The year in which mirror journal was discontinued
-     * @param \DateTime $lastUpdated: The date in which mirror journal was last updated
+     * @param string $issn The ISSN of mirror journal
+     * @param string $originalIssn The ISSN of original journal
+     * @param string $title The title of mirror journal
+     * @param string $publisher The publisher of mirror journal
+     * @param string $url The URL of mirror journal
+     * @param int $discontinuedYear The year in which mirror journal was discontinued
+     * @param \DateTime $lastUpdated The date in which mirror journal was last updated
      * 
      * @return void
      */

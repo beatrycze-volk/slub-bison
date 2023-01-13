@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -15,53 +14,43 @@ namespace Slub\Bison\Model;
  */
 
 /**
- * Journal DTO
+ * Replacement DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $id This holds the id of the replacement journal
  */
 class Replacement
 {
 
     /**
-     * idx
-     *
-     * @var string
-     */
-    protected $idx;
-
-    /**
-     * id
+     * the id of the replacement journal
      *
      * @var string
      */
     protected $id;
 
     /**
-     * __construct
+     * Constructs replacement instance
+     *
+     * @param string $replacement the id of the replacement journal
+     *
+     * @return void
      */
-    public function __construct($journal)
+    public function __construct($replacement)
     {
-
+        $this->id = $replacement;
     }
 
     /**
-     * Returns the idx
+     * Returns the id od replacement journal
      *
      * @return string
      */
-    public function getIdx()
+    public function getId()
     {
-        return $this->idx;
+        return $this->id;
     }
-
-    /**
-     * Sets the idx
-     *
-     * @param string $idx
-     * @return void
-     */
-    public function setIdx(string $idx)
-    {
-        $this->idx = $idx;
-    }
-
-
 }

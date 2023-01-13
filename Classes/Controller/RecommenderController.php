@@ -195,6 +195,7 @@ class RecommenderController extends AbstractController
                 }
             }
         }
+
         return (ceil($apc / 100) * 100);
     }
 

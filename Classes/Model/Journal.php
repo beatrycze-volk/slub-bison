@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -319,11 +318,11 @@ class Journal
         return $this->score;
     }
 
-   /**
-    * Returns the max APC
-    *
-    * @return Apc
-    */
+    /**
+     * Returns the max APC
+     *
+     * @return Apc
+     */
     public function getApcMax()
     {
         return $this->apcMax;
@@ -538,7 +537,9 @@ class Journal
     /**
      * Sets the information if the journal matches filter results
      *
-     * @var boolean|Filter
+     * @var boolean|Filter filter data or false if there is no filter match
+     *
+     * @return void
      */
     public function setFilter($filter)
     {
@@ -559,6 +560,8 @@ class Journal
      * Sets the the mirror journal
      *
      * @var MirrorJournal
+     *
+     * @return void
      */
     public function setMirrorJournal($mirrorJournal)
     {
@@ -579,6 +582,8 @@ class Journal
      * Sets the the information if is mirror journal
      *
      * @var boolean
+     *
+     * @return void
      */
     public function setIsMirrorJournal($isMirrorJournal)
     {
@@ -599,6 +604,8 @@ class Journal
      * Sets the the information the index databases
      *
      * @var IndexDatabase
+     *
+     * @return void
      */
     public function setIndexDatabase($indexDatabase)
     {

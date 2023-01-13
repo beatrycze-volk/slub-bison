@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -59,6 +58,8 @@ class AccessData
 
     /**
      * Empty constructor
+     *
+     * @return void
      */
     public function __construct()
     {

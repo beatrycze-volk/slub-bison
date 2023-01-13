@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -165,10 +164,6 @@ class IndexDatabase
      */
     private function setValue($value)
     {
-        if ($value == 'Y') {
-            return true;
-        }
-
-        return false;
+        return $value === 'Y';
     }
 }

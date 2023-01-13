@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Slub\Bison\Model;
 
-
 /**
  * This file is part of the "Bison" Extension for TYPO3 CMS.
  *
@@ -15,7 +14,14 @@ namespace Slub\Bison\Model;
  */
 
 /**
- * Journal DTO
+ * License DTO
+ *
+ * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
+ * @package TYPO3
+ * @subpackage bison
+ * @access public
+ * @property string $code This holds the code of language in ISO 639
+ * @property string $name This holds the name of language in English
  */
 class License
 {
@@ -56,7 +62,13 @@ class License
     protected $type;
 
     /**
-     * __construct
+     * Constructs license instance
+     *
+     * @access public
+     *
+     * @param array $license The JSON array containing license information
+     *
+     * @return void
      */
     public function __construct($license)
     {

@@ -16,14 +16,17 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The class for handling filtering by local conditions stored in CSV file.
- * 
+ *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
  * @access public
+ * @property array<Filter> $filters This holds the list of local condition filters
+ * @property array $filters This holds the list of allowed licenses
  */
 class LocalConditionsFilter extends SpreadsheetLoader
 {
+
     /**
      * This holds the filters from CSV file
      *
@@ -40,6 +43,13 @@ class LocalConditionsFilter extends SpreadsheetLoader
      */
     private $licenses;
 
+    /**
+     * Constructs the local condition filter
+     *
+     * @access public
+     *
+     * @return void
+     */
     public function __construct()
     {
         parent::__construct('fileFilters');
@@ -60,9 +70,16 @@ class LocalConditionsFilter extends SpreadsheetLoader
     }
 
     /**
-     * Filter results against the local conditions.
+     * Filters the journals against the local conditions.
+     *
+     * @access public
+     *
+     * @param array<Journal> $journals the list of journals to be filtered
+     *
+     * @return void
      */
-    public function filter(&$journals) {
+    public function filter(&$journals)
+    {
         for ($i = 0; $i < count($journals); $i++) {
             $this->applyIssnFilter($journals[$i]);
             $this->applyLicenseFilter($journals[$i]);
@@ -70,7 +87,17 @@ class LocalConditionsFilter extends SpreadsheetLoader
         }
     }
 
-    public function applyIssnFilter(&$journal) {
+    /**
+     * Filters the single journal against the local conditions.
+     *
+     * @access public
+     *
+     * @param Journal $journal the journal to be filtered
+     *
+     * @return void
+     */
+    public function applyIssnFilter(&$journal)
+    {
         foreach ($this->filters as $filter) {
             if (!empty($filter->getEIssn()) && !empty($journal->getEIssn())) {
                 if ($filter->getEIssn() == $journal->getEIssn()) {
@@ -87,7 +114,17 @@ class LocalConditionsFilter extends SpreadsheetLoader
         }
     }
 
-    private function applyLicenseFilter(&$journal) {
+    /**
+     * Applies license filter the single journal
+     *
+     * @access private
+     *
+     * @param Journal $journal the journal to which filter is applied
+     *
+     * @return void
+     */
+    private function applyLicenseFilter(&$journal)
+    {
         $foundLicense = false;
         foreach ($this->licenses as $license) {
             $journalLicenses = $journal->getLicenses();
@@ -104,14 +141,32 @@ class LocalConditionsFilter extends SpreadsheetLoader
         }
     }
 
-    private function applyMirrorJournalFilter(&$journal) {
+    /**
+     * Applies mirror journal filter the single journal
+     *
+     * @access private
+     *
+     * @param Journal $journal the journal to which filter is applied
+     *
+     * @return void
+     */
+    private function applyMirrorJournalFilter(&$journal)
+    {
         $displayMirrorJournals = filter_var($this->extConfig['displayMirrorJournals'], FILTER_VALIDATE_BOOLEAN);
         if (!$displayMirrorJournals && $journal->getIsMirrorJournal()) {
             $journal->setFilter(false);
         }
     }
 
-    private function getLicenses() {
+    /**
+     * Gets licenses for which journals should be filtered
+     *
+     * @access private
+     *
+     * @return void
+     */
+    private function getLicenses()
+    {
         $configuredLicenses = $this->extConfig['licenses'];
         $this->licenses = [];
         $this->convertLicense($configuredLicenses, 'cc0', "CC0");
@@ -125,8 +180,16 @@ class LocalConditionsFilter extends SpreadsheetLoader
         $this->convertLicense($configuredLicenses, 'publisher', "Publisher's own license");
     }
 
-    private function convertLicense($licenses, $key, $value) {
-        if (intval($licenses[$key]) == 1) {
+    /**
+     * Converts licenses from CSV to format matching journal
+     *
+     * @access private
+     *
+     * @return void
+     */
+    private function convertLicense($licenses, $key, $value)
+    {
+        if ((int) $licenses[$key] === 1) {
             $this->licenses[] = $value;
         }
     }
