@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
     const popoverList = [...popoverTriggerList].map(
         popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl)
@@ -13,7 +13,7 @@ $(document).ready(function() {
     var keywords;
     var keywordsElement = document.getElementById("list-keywords");
     if (keywordsElement) {
-        keywordsList = keywordsElement.querySelectorAll("li"); 
+        keywordsList = keywordsElement.querySelectorAll("li");
         keywords = $("#list-keywords :input");
     }
 
@@ -24,23 +24,23 @@ $(document).ready(function() {
     var subject = false;
     var checkedKeywords = [];
 
-    if ($('#suggest-language').length) {
-        language = $('#suggest-language').val();
+    if ($("#suggest-language").length) {
+        language = $("#suggest-language").val();
         $("#filter-languages").val(language);
         filter();
     }
 
-    $('#button-list').trigger('click');
+    $("#button-list").trigger('click');
 
-    $('#button-list').click(function() {
+    $("#button-list").click(function () {
         changeResultView('#result-table', '#result-list');
     });
-    
-    $('#button-table').click(function() {
+
+    $("#button-table").click(function () {
         changeResultView('#result-list', '#result-table');
     });
 
-    $('#button-clear').click(function(e) {
+    $("#button-clear").click(function (e) {
         e.preventDefault();
         $('#results').hide();
         $('#input-title').val('');
@@ -48,26 +48,26 @@ $(document).ready(function() {
         $('#input-references').val('');
     });
 
-    $('#btn-fetch').click(function() {
+    $("#btn-fetch").click(function () {
         $.get(
             "https://service.tib.eu/bison/api/fetchdoi",
             {
-                doi: $('#input-doi').val(),
+                doi: $("#input-doi").val(),
                 format: "json"
             }
         )
-        .done(function(json) {
-            $('#input-title').val(json.title);
-            $('#input-abstract').val(json.abstract);
-            $('#input-references').val(json.references);
-            $("#modal-doi .btn-close").click();
-        })
-        .fail(function() {
-            $('#validation-doi-feedback').show();
-        })
+            .done(function (json) {
+                $("#input-title").val(json.title);
+                $("#input-abstract").val(json.abstract);
+                $("#input-references").val(json.references);
+                $("#modal-doi .btn-close").click();
+            })
+            .fail(function () {
+                $("#validation-doi-feedback").show();
+            })
     });
 
-    $('#checkbox-author-rights').bind('change', function () {
+    $("#checkbox-author-rights").bind('change', function () {
         if ($(this).is(':checked')) {
             retainsAuthorCopyright = true;
         }
@@ -77,7 +77,7 @@ $(document).ready(function() {
         filter();
     });
 
-    $('.form-check-input').bind('change', function () {
+    $(".form-check-input").bind('change', function () {
         if ($(this).is(':checked') && $(this).id != '#checkbox-author-rights') {
             checkedKeywords.push($(this).val());
         }
@@ -90,9 +90,9 @@ $(document).ready(function() {
         filter();
     });
 
-    $(document).on('input change', '#input-publication-time-max', function() {
+    $(document).on('input change', '#input-publication-time-max', function () {
         publicationTimeMax = $(this).val();
-        var labelParts = $("#label-publication-time-max").text().split(' ');
+        let labelParts = $("#label-publication-time-max").text().split(' ');
         $("#label-publication-time-max").empty();
         $("#label-publication-time-max").append(
             '<b>'.concat(
@@ -102,9 +102,9 @@ $(document).ready(function() {
         filter();
     });
 
-    $(document).on('input change', '#input-apc-max', function() {
+    $(document).on('input change', '#input-apc-max', function () {
         apcMax = $(this).val();
-        var labelParts = $("#label-apc-max").text().split(' ');
+        let labelParts = $("#label-apc-max").text().split(' ');
         $("#label-apc-max").empty();
         $("#label-apc-max").append(
             '<b>'.concat(
@@ -114,7 +114,7 @@ $(document).ready(function() {
         filter();
     });
 
-    $(document).on('input change', '#filter-keywords', function() { 
+    $(document).on('input change', '#filter-keywords', function () {
         if ($(this).val() !== '') {
             for (let i = 0; i < keywords.length; i++) {
                 if (keywords[i].value.indexOf($(this).val()) >= 0) {
@@ -126,7 +126,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#filter-languages').change(function () { 
+    $("#filter-languages").change(function () {
         if ($(this).val() === '') {
             language = false;
         } else {
@@ -135,7 +135,7 @@ $(document).ready(function() {
         filter();
     });
 
-    $('#filter-subjects').change(function () { 
+    $("#filter-subjects").change(function () {
         if ($(this).val() === '') {
             subject = false;
         } else {
@@ -144,7 +144,7 @@ $(document).ready(function() {
         filter();
     });
 
-    $('#sort-select').change(function () { 
+    $("#sort-select").change(function () {
         if ($(this).val() === 'score') {
             sortList('data-score');
             sortTable('data-score');
@@ -167,7 +167,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#reset-filters').click(function() {
+    $("#reset-filters").click(function () {
         resetFilters();
     });
 
@@ -177,7 +177,7 @@ $(document).ready(function() {
     }
 
     function filter() {
-        var listRows, tableRows;
+        let listRows, tableRows;
         listRows = getListRows();
         tableRows = getTableRows();
 
@@ -185,7 +185,7 @@ $(document).ready(function() {
             if (matchFilters(listRows[i])) {
                 listRows[i].style.display = "list-item";
             } else {
-                listRows[i].style.display = "none";              
+                listRows[i].style.display = "none";
             }
         }
 
@@ -199,7 +199,7 @@ $(document).ready(function() {
     }
 
     function resetFilters() {
-        var listRows, tableRows;
+        let listRows, tableRows;
         listRows = getListRows();
         tableRows = getTableRows();
 
@@ -235,7 +235,7 @@ $(document).ready(function() {
 
     function matchPublicationTime(row) {
         if (publicationTimeMax) {
-            return (parseInt(row.getAttribute('data-publication-time')) || 0) <= parseInt(publicationTimeMax);
+            return (parseInt(row.getAttribute('data-publication-time'), 10) || 0) <= parseInt(publicationTimeMax, 10);
         }
         return true;
     }
@@ -247,10 +247,10 @@ $(document).ready(function() {
         return true;
     }
 
-    function matchKeywords(row) {  
+    function matchKeywords(row) {
         if (checkedKeywords.length > 0) {
             for (let i = 0; i < checkedKeywords.length; i++) {
-                if(row.getAttribute('data-keywords').includes(checkedKeywords[i])) {
+                if (row.getAttribute('data-keywords').includes(checkedKeywords[i])) {
                     return true;
                 }
             }
@@ -268,11 +268,11 @@ $(document).ready(function() {
     }
 
     function matchSubject(row) {
-        var dataSubject = row.getAttribute('data-subjects');
+        let dataSubject = row.getAttribute('data-subjects');
         if (subject && subject.length !== 1) {
             return dataSubject.includes(subject);
         } else if (subject && subject.length === 1) {
-            var subjects = dataSubject.split(";");
+            let subjects = dataSubject.split(";");
             for (let i = 0; i < subjects.length; i++) {
                 if (subjects[i].substring(0, 1).includes(subject)) {
                     return true;
@@ -284,8 +284,8 @@ $(document).ready(function() {
     }
 
     function sortList(data) {
-        var rows, sorting, c, rowA, rowB, listSort;
-        sorting = true;
+        let rows, c, rowA, rowB, listSort;
+        let sorting = true;
         while (sorting) {
             sorting = false;
             rows = getListRows();
@@ -298,8 +298,8 @@ $(document).ready(function() {
                         listSort = true;
                         break;
                     }
-                } else if(data === 'data-apc' || data === 'data-publication-time') {
-                    if ((parseInt(rowA) || 0) > (parseInt(rowB) || 0)) {
+                } else if (data === 'data-apc' || data === 'data-publication-time') {
+                    if ((parseInt(rowA, 10) || 0) > (parseInt(rowB, 10) || 0)) {
                         listSort = true;
                         break;
                     }
@@ -318,8 +318,8 @@ $(document).ready(function() {
     }
 
     function sortTable(data) {
-        var rows, sorting, c, rowA, rowB, tableSort;
-        sorting = true;
+        let rows, c, rowA, rowB, tableSort;
+        let sorting = true;
         while (sorting) {
             sorting = false;
             rows = getTableRows();
@@ -332,8 +332,8 @@ $(document).ready(function() {
                         tableSort = true;
                         break;
                     }
-                } else if(data === 'data-apc' || data === 'data-publication-time') {
-                    if ((parseInt(rowA) || 0) > (parseInt(rowB) || 0)) {
+                } else if (data === 'data-apc' || data === 'data-publication-time') {
+                    if ((parseInt(rowA, 10) || 0) > (parseInt(rowB, 10) || 0)) {
                         tableSort = true;
                         break;
                     }
