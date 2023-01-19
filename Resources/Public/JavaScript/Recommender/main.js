@@ -78,15 +78,18 @@ $(document).ready(function () {
     });
 
     $(".form-check-input").bind('change', function () {
-        if ($(this).is(':checked') && $(this).id != '#checkbox-author-rights') {
-            checkedKeywords.push($(this).val());
-        }
-        else {
-            var index = array.indexOf($(this).val());
-            if (index !== -1) {
-                array.splice(index, 1);
+        if ($(this).attr('id') != 'checkbox-author-rights') {
+            if ($(this).is(':checked')) {
+                checkedKeywords.push($(this).val());
+            }
+            else {
+                let index = checkedKeywords.indexOf($(this).val());
+                if (index !== -1) {
+                    checkedKeywords.splice(index, 1);
+                }
             }
         }
+
         filter();
     });
 
