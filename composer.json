@@ -4,10 +4,22 @@
     "description": "",
     "authors": [
         {
+            "name": "SLUB TYPO3 Team",
+            "email": "typo3@slub-dresden.de",
+            "homepage": "https://www.slub-dresden.de",
+            "role": "Developer"
+        },
+        {
             "name": "Beatrycze Volk",
+            "email": "beatrycze.volk@slub-dresden.de",
+            "homepage": "https://github.com/beatrycze-volk",
             "role": "Developer"
         }
     ],
+    "support": {
+        "email": "typo3@slub-dresden.de",
+        "source": "https://git.slub-dresden.de/typo3/slub-bison"
+    },
     "license": "GPL-2.0-or-later",
     "require": {
         "typo3/cms-core": "^11.5",
