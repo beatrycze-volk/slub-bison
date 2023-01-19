@@ -88,7 +88,7 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
             try {
                 $response = $this->requestFactory->request(self::API_URL, 'GET', $configuration);
             } catch (\Exception $e) {
-                $this->logger->warning('Updating exchange rates from "' . self::API_URL . '" failed. Error: ' . $e->getMessage() . '.');
+                $this->logger->warning('Updating exchange rates from "'.self::API_URL.'" failed. Error: '.$e->getMessage().'.');
                 return false;
             }
 
@@ -100,7 +100,7 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
         }
 
         if (!array_key_exists($currency, $rates)) {
-            $this->logger->warning('Unknown exchange rate for ' . $currency . '.');
+            $this->logger->warning('Unknown exchange rate for '.$currency.'.');
             return false;
         }
 

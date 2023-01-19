@@ -107,7 +107,7 @@ class RecommenderController extends AbstractController
                     $this->view->assign('results', $this->results);
                 }
             } catch (Exception $e) {
-                $this->logger->error('Request error: ' . $e->getMessage());
+                $this->logger->error('Request error: '.$e->getMessage());
                 $this->view->assign('error', $e->getMessage());
             }
         }

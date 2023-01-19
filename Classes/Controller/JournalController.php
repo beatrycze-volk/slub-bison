@@ -85,7 +85,7 @@ class JournalController extends AbstractController
         try {
             $response = $this->client->request(
                 'GET',
-                'journal/' . $this->requestData['id']
+                'journal/'.$this->requestData['id']
             );
 
             if ($response->getStatusCode() === 200) {
@@ -96,7 +96,7 @@ class JournalController extends AbstractController
                 $this->localConditionsFilter->applyIssnFilter($this->journal);
             }
         } catch (Exception $e) {
-            $this->logger->error('Request error: ' . $e->getMessage());
+            $this->logger->error('Request error: '.$e->getMessage());
         }
     }
 }

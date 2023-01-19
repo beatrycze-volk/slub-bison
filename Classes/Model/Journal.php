@@ -356,7 +356,7 @@ class Journal
     public function getIssns()
     {
         if (!empty($this->eIssn) && !empty($this->pIssn)) {
-            return $this->eIssn . ', ' . $this->pIssn;
+            return $this->eIssn.', '.$this->pIssn;
         } else if (!empty($this->eIssn)) {
             return $this->eIssn;
         } else {
