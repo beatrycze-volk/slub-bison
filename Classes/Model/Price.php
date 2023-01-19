@@ -93,7 +93,8 @@ class Price
      * @return Price instance of this class
      */
     public static function fromAmountAndCurrency($amount, $currency)
-    {   if (!empty($amount)) {
+    {
+        if (!empty($amount)) {
             $instance = new self();
             $instance->price = $amount;
             $instance->currency = $currency;

@@ -212,6 +212,7 @@ class RecommenderController extends AbstractController
                 $weeks = $result->getPublicationTimeWeeks();
             }
         }
+
         return $weeks;
     }
 

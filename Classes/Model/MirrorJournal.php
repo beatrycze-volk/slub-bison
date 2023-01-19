@@ -82,9 +82,9 @@ class MirrorJournal
 
     /**
      * Construct mirror journal instance
-     * 
+     *
      * @access public
-     * 
+     *
      * @param string $issn The ISSN of mirror journal
      * @param string $originalIssn The ISSN of original journal
      * @param string $title The title of mirror journal
@@ -92,7 +92,7 @@ class MirrorJournal
      * @param string $url The URL of mirror journal
      * @param int $discontinuedYear The year in which mirror journal was discontinued
      * @param \DateTime $lastUpdated The date in which mirror journal was last updated
-     * 
+     *
      * @return void
      */
     public function __construct($issn, $originalIssn, $title, $publisher, $url, $discontinuedYear, $lastUpdated)

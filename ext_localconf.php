@@ -38,7 +38,7 @@ defined('TYPO3') || die();
         ],
         // non-cacheable actions
         [
-            \Slub\Bison\Controller\JournalController::class =>'main'
+            \Slub\Bison\Controller\JournalController::class => 'main'
         ]
     );
 

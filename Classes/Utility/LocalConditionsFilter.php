@@ -110,6 +110,7 @@ class LocalConditionsFilter extends SpreadsheetLoader
                     break;
                 }
             }
+
             $journal->setFilter(false);
         }
     }

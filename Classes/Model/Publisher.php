@@ -42,10 +42,10 @@ class Publisher
 
     /**
      * Constructs publisher instance
-     * 
+     *
      * @param string $name the name of the publisher
      * @param string $country the country of the publisher
-     * 
+     *
      * @return void
      */
     public function __construct($name, $country)

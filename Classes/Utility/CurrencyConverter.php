@@ -57,7 +57,7 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * Constructs the currency converter
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -69,10 +69,10 @@ class CurrencyConverter implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * Converts value in currency to euro.
-     * 
+     *
      * @param integer $value to be converted
      * @param string $currency currency from which conversion happens
-     * 
+     *
      * @return float
      */
     public function convert($value, $currency)

@@ -537,7 +537,7 @@ class Journal
     /**
      * Sets the information if the journal matches filter results
      *
-     * @var boolean|Filter filter data or false if there is no filter match
+     * @param boolean|Filter $filter data or false if there is no filter match
      *
      * @return void
      */
@@ -559,7 +559,7 @@ class Journal
     /**
      * Sets the the mirror journal
      *
-     * @var MirrorJournal
+     * @param MirrorJournal $mirrorJournal
      *
      * @return void
      */
@@ -581,7 +581,7 @@ class Journal
     /**
      * Sets the the information if is mirror journal
      *
-     * @var boolean
+     * @param boolean $isMirrorJournal
      *
      * @return void
      */
@@ -603,7 +603,7 @@ class Journal
     /**
      * Sets the the information the index databases
      *
-     * @var IndexDatabase
+     * @param IndexDatabase $indexDatabase
      *
      * @return void
      */
