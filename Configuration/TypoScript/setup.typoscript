@@ -13,7 +13,7 @@ page {
         bison_bootstrap {
             disableCompression = 1
         }
-        bison_jQuery = EXT:bison/Resources/Public/JavaScript/jQuery/jquery-3.6.0.min.js
+        bison_jQuery = EXT:bison/Resources/Public/JavaScript/jQuery/jquery-3.6.1.min.js
         bison_jQuery {
             forceOnTop = 1
             disableCompression = 1
