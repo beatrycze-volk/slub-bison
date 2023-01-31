@@ -61,13 +61,13 @@
         </f:if>
     </td>
     <td>{result.publisher.name}</td>
-    <f:if condition="{result.filter.price}">
+    <f:if condition="{result.localPrice.price}">
         <f:then>
-            <td>{result.filter.price.price} {result.filter.price.currency}
-                <f:if condition="{result.filter.price.price} && {result.filter.price.currency} != 'EUR'">
-                    <span><br>(approx. {result.filter.price.euro}€)</span>
+            <td>{result.localPrice.price.price} {result.localPrice.price.currency}
+                <f:if condition="{result.localPrice.price.price} && {result.localPrice.price.currency} != 'EUR'">
+                    <span><br>(approx. {result.localPrice.price.euro}€)</span>
                 </f:if>
-                <span><br>({result.filter.financing})</span>
+                <span><br>({result.localPrice.financing})</span>
             </td>
         </f:then>
         <f:else>

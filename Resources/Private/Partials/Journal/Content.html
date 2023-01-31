@@ -66,14 +66,14 @@
                             </tr>
                             <tr>
                                 <td class="right-aligned"><f:translate key="result.apcs"/>: </td>
-                                <f:if condition="{journal.filter.price}">
+                                <f:if condition="{journal.localPrice.price}">
                                     <f:then>
-                                        <td><span>{journal.filter.price.price} {journal.filter.price.currency}
-                                            <f:if condition="{journal.filter.price} && {journal.filter.price.currency} != 'EUR'">
-                                                <span>(approx. {journal.filter.price.euro}€)</span>
+                                        <td><span>{journal.localPrice.price.price} {journal.localPrice.price.currency}
+                                            <f:if condition="{journal.localPrice.price} && {journal.localPrice.price.currency} != 'EUR'">
+                                                <span>(approx. {journal.localPrice.price.euro}€)</span>
                                             </f:if>
                                         </span>
-                                        <span><br>({journal.filter.financing})</span>
+                                        <span><br>({journal.localPrice.financing})</span>
                                         </td>
                                     </f:then>
                                     <f:else>

@@ -14,7 +14,7 @@ namespace Slub\Bison\Model;
  */
 
 /**
- * Filter DTO - this holds the local filter conditions read
+ * Local Price DTO - this holds the local prices read
  * from the CSV file.
  *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
@@ -27,7 +27,7 @@ namespace Slub\Bison\Model;
  * @property string $financing This holds the information about financing
  * @property string $source This holds the source of the price information
  */
-class Filter
+class LocalPrice
 {
 
     /**

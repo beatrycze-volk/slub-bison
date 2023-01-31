@@ -30,8 +30,8 @@
 			<trans-unit id="config.fileDatabases" xml:space="preserve">
 				<source>Path to file with index databases</source>
 			</trans-unit>
-			<trans-unit id="config.fileFilters" xml:space="preserve">
-				<source>Path to file with local filters</source>
+			<trans-unit id="config.filePrices" xml:space="preserve">
+				<source>Path to file with local prices</source>
 			</trans-unit>
 			<trans-unit id="config.fileMirrorJournals" xml:space="preserve">
 				<source>Path to file with mirror journals</source>

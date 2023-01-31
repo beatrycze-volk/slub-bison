@@ -14,8 +14,8 @@ displayMirrorJournals = 1
 
 #File settings
 
-# cat=File/10; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileFilters
-fileFilters = ./fileadmin/bison/dummy.xlsx
+# cat=File/10; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.filePrices
+filePrices = ./fileadmin/bison/dummy.xlsx
 # cat=File/20; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileDatabases
 fileDatabases = ./fileadmin/bison/index_databases.xlsx
 # cat=File/30; type=string; label=LLL:EXT:bison/Resources/Private/Language/locallang_be.xlf:config.fileMirrorJournals

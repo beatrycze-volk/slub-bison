@@ -26,10 +26,15 @@ namespace Slub\Bison\Model;
  * @property Price $apcMax This holds the P-ISSN of the journal
  * @property string $pIssn This holds the P-ISSN of the journal
  * @property string $eIssn This holds the E-ISSN of the journal
- * @property bool $pubMed This holds the information if the journal is indexed in PubMed database
- * @property bool $openAlex This holds the information if the journal is indexed in Open Alex database
- * @property bool $webOfScience This holds the information if the journal is indexed in Web of Science database
- * @property bool $scopus This holds the information if the journal is indexed in Scopus database
+ * @property string $title This holds the title of the journal
+ * @property string $alternativeTitle This holds the alternative title of the journal
+ * @property bool $planSCompliance This holds the information if the journal is plan S compliant
+ * @property bool $retainsCopyrightAuthor This holds the information if the author retains copyright
+ * @property bool $doiPidScheme This holds the information if the article receives DOI
+ * @property bool $hasApc This holds the information if the journal has APC
+ * @property bool $hasOtherCharges This holds the information if the journal has other charges
+ * @property Publisher $publisher This holds the information about the publisher
+ * @property integer $publicationTimeWeeks This holds the information about the amount of weeks needed for publication
  */
 class Journal
 {
@@ -210,11 +215,18 @@ class Journal
     protected $hasPreservation;
 
     /**
-     * false if doesn't match filter, else filter data
+     * true if matches filter, false if doesn't match filter
      *
-     * @var boolean|Filter
+     * @var boolean
      */
     protected $filter;
+
+    /**
+     * local price
+     *
+     * @var LocalPrice
+     */
+    protected $localPrice;
 
     /**
      * mirror journal
@@ -285,6 +297,7 @@ class Journal
         }
 
         $this->createdDate = $journal->created_date;
+        $this->filter = false;
         $this->isMirrorJournal = false;
     }
 
@@ -527,7 +540,7 @@ class Journal
     /**
      * Returns the information if the journal matches filter results
      *
-     * @return boolean|Filter
+     * @return boolean
      */
     public function getFilter()
     {
@@ -537,13 +550,35 @@ class Journal
     /**
      * Sets the information if the journal matches filter results
      *
-     * @param boolean|Filter $filter data or false if there is no filter match
+     * @param boolean $filter data or false if there is no filter match
      *
      * @return void
      */
     public function setFilter($filter)
     {
         $this->filter = $filter;
+    }
+
+    /**
+     * Returns the local price
+     *
+     * @return LocalPrice
+     */
+    public function getLocalPrice()
+    {
+        return $this->localPrice;
+    }
+
+    /**
+     * Sets the the local price
+     *
+     * @param LocalPrice $localPrice
+     *
+     * @return void
+     */
+    public function setLocalPrice($localPrice)
+    {
+        $this->localPrice = $localPrice;
     }
 
     /**

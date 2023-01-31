@@ -11,29 +11,25 @@ namespace Slub\Bison\Utility;
  * (c) 2022 Beatrycze Volk <beatrycze.volk@slub-dresden.de>, SLUB
  */
 
-use Slub\Bison\Model\Filter;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * The class for handling filtering by local conditions stored in CSV file.
+ * The class for handling local filters (currently licenses and mirror journals).
  *
  * @author Beatrycze Volk <beatrycze.volk@slub-dresden.de>
  * @package TYPO3
  * @subpackage bison
  * @access public
- * @property array<Filter> $filters This holds the list of local condition filters
- * @property array $filters This holds the list of allowed licenses
+ * @property array $licenses This holds the list of allowed licenses
  */
-class LocalConditionsFilter extends SpreadsheetLoader
+class LocalFilter
 {
-
     /**
-     * This holds the filters from CSV file
-     *
-     * @var array<Filter>
+     * @var array
      * @access private
      */
-    private $filters;
+    private $extConfig;
 
     /**
      * This holds the licenses from extension configuration
@@ -44,7 +40,7 @@ class LocalConditionsFilter extends SpreadsheetLoader
     private $licenses;
 
     /**
-     * Constructs the local condition filter
+     * Constructs the local filter
      *
      * @access public
      *
@@ -52,20 +48,8 @@ class LocalConditionsFilter extends SpreadsheetLoader
      */
     public function __construct()
     {
-        parent::__construct('fileFilters');
-
-        $this->filters = [];
-        for ($i = 1; $i < count($this->data); $i++) {
-            $this->filters[] = new Filter(
-                $this->data[$i][0],
-                $this->data[$i][1],
-                $this->data[$i][2],
-                $this->data[$i][3],
-                $this->data[$i][4],
-                $this->data[$i][5]
-            );
-        }
-
+        $this->extConfig = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('bison');
+        
         $this->getLicenses();
     }
 
@@ -81,37 +65,8 @@ class LocalConditionsFilter extends SpreadsheetLoader
     public function filter(&$journals)
     {
         for ($i = 0; $i < count($journals); $i++) {
-            $this->applyIssnFilter($journals[$i]);
             $this->applyLicenseFilter($journals[$i]);
             $this->applyMirrorJournalFilter($journals[$i]);
-        }
-    }
-
-    /**
-     * Filters the single journal against the local conditions.
-     *
-     * @access public
-     *
-     * @param Journal $journal the journal to be filtered
-     *
-     * @return void
-     */
-    public function applyIssnFilter(&$journal)
-    {
-        foreach ($this->filters as $filter) {
-            if (!empty($filter->getEIssn()) && !empty($journal->getEIssn())) {
-                if ($filter->getEIssn() == $journal->getEIssn()) {
-                    $journal->setFilter($filter);
-                    break;
-                }
-            } else {
-                if ($filter->getPIssn() == $journal->getPIssn()) {
-                    $journal->setFilter($filter);
-                    break;
-                }
-            }
-
-            $journal->setFilter(false);
         }
     }
 
@@ -126,19 +81,14 @@ class LocalConditionsFilter extends SpreadsheetLoader
      */
     private function applyLicenseFilter(&$journal)
     {
-        $foundLicense = false;
         foreach ($this->licenses as $license) {
             $journalLicenses = $journal->getLicenses();
             for ($i = 0; $i < count($journalLicenses); $i++) {
                 if ($journalLicenses[$i]->getType() == $license) {
-                    $foundLicense = true;
+                    $journal->setFilter(true);
                     break;
                 }
             }
-        }
-
-        if (!$foundLicense) {
-            $journal->setFilter(false);
         }
     }
 

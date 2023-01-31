@@ -93,7 +93,7 @@ class JournalController extends AbstractController
                 $journalJson = json_decode($content);
                 $this->journal = new Journal($journalJson);
                 $this->mirrorJournalList->assignMirrorJournal($this->journal);
-                $this->localConditionsFilter->applyIssnFilter($this->journal);
+                $this->localPriceList->assignLocalPrice($this->journal);
             }
         } catch (Exception $e) {
             $this->logger->error('Request error: '.$e->getMessage());

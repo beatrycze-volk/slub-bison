@@ -38,9 +38,9 @@
 				<source>Path to file with index databases</source>
 				<target>Pfad zur Datei mit Indexdatenbanken</target>
 			</trans-unit>
-			<trans-unit id="config.fileFilters" xml:space="preserve" approved="yes">
-				<source>Path to file with local filters</source>
-				<target>Pfad zur Datei mit lokalen Filtern</target>
+			<trans-unit id="config.filePrices" xml:space="preserve" approved="yes">
+				<source>Path to file with local prices</source>
+				<target>Pfad zur Datei mit lokalen Preisen</target>
 			</trans-unit>
 			<trans-unit id="config.fileMirrorJournals" xml:space="preserve" approved="yes">
 				<source>Path to file with mirror journals</source>

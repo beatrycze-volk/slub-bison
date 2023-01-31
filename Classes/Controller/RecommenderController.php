@@ -89,9 +89,10 @@ class RecommenderController extends AbstractController
                     }
 
                     $this->indexDatabaseList->assignIndexDatabases($this->results);
+                    $this->localPriceList->assignLocalPrices($this->results);
                     $this->mirrorJournalList->assignMirrorJournals($this->results);
                     $this->mirrorJournalList->markMirrorJournals($this->results);
-                    $this->localConditionsFilter->filter($this->results);
+                    $this->localFilter->filter($this->results);
 
                     $this->view->assign('maxApc', $this->getMaxApc());
                     $this->view->assign('maxPublicationTime', $this->getMaxPublicationTime());
@@ -183,8 +184,8 @@ class RecommenderController extends AbstractController
     {
         $apc = 0;
         foreach ($this->results as $result) {
-            if ($result->getFilter() !== false && !empty($result->getFilter()->getPrice())) {
-                $euro = $result->getFilter()->getPrice()->getEuro();
+            if (!empty($result->getLocalPrice()) && !empty($result->getLocalPrice()->getPrice())) {
+                $euro = $result->getLocalPrice()->getPrice()->getEuro();
                 if ($euro !== NULL && $apc < $euro) {
                     $apc = $euro;
                 }

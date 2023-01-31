@@ -16,8 +16,9 @@ use Elastic\Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Slub\Bison\Utility\IndexDatabaseList;
+use Slub\Bison\Utility\LocalFilter;
+use Slub\Bison\Utility\LocalPriceList;
 use Slub\Bison\Utility\MirrorJournalList;
-use Slub\Bison\Utility\LocalConditionsFilter;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -72,16 +73,22 @@ abstract class AbstractController extends ActionController implements LoggerAwar
     protected $indexDatabaseList;
 
     /**
-     * @var LocalConditionsFilter
+     * @var LocalPriceList
      * @access protected
      */
-    protected $localConditionsFilter;
+    protected $localPriceList;
 
     /**
      * @var MirrorJournalList
      * @access protected
      */
     protected $mirrorJournalList;
+
+    /**
+     * @var LocalFilter
+     * @access protected
+     */
+    protected $localFilter;
 
     /**
      * This is the constructor to initialize controllers.
@@ -117,8 +124,10 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         ];
 
         $this->indexDatabaseList = new IndexDatabaseList();
-        $this->localConditionsFilter = new LocalConditionsFilter();
+        $this->localPriceList = new LocalPriceList();
         $this->mirrorJournalList = new MirrorJournalList();
+
+        $this->localFilter = new LocalFilter();
     }
 
     /**
